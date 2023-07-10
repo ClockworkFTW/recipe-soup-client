@@ -6,6 +6,9 @@ import { getRecipe } from "../../api/recipe";
 import Button from "../../components/Button";
 import Time from "../../components/Time";
 
+import IngredientList from "./IngredientList";
+import InstructionList from "./InstructionList";
+
 function RecipeDetails() {
   const navigate = useNavigate();
   const { recipeId } = useParams();
@@ -16,7 +19,7 @@ function RecipeDetails() {
   });
 
   function editRecipe() {
-    navigate(`/recipe/edit/${recipeId}`);
+    navigate(`/recipes/edit/${recipeId}`);
   }
 
   return recipe.data ? (
@@ -29,18 +32,8 @@ function RecipeDetails() {
         label="Total Time"
         timeArray={[recipe.data.prepTime, recipe.data.cookTime]}
       />
-      <h3>Ingredients</h3>
-      <ul>
-        {recipe.data.ingredients.map((ingredient) => (
-          <li key={ingredient.id}>{ingredient.text}</li>
-        ))}
-      </ul>
-      <h3>Instructions</h3>
-      <ul>
-        {recipe.data.instructions.map((instruction) => (
-          <li key={instruction.id}>{instruction.text}</li>
-        ))}
-      </ul>
+      <IngredientList ingredients={recipe.data.ingredients} />
+      <InstructionList instructions={recipe.data.ingredients} />
     </div>
   ) : null;
 }

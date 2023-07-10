@@ -16,7 +16,7 @@ function RecipeList() {
       <ul>
         {recipes.data.map((recipe) => (
           <li key={recipe.id}>
-            <Link to={`/recipe/${recipe.id}`}>{recipe.name}</Link>
+            <Link to={`/recipes/${recipe.id}`}>{recipe.name}</Link>
           </li>
         ))}
       </ul>

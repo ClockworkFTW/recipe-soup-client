@@ -15,8 +15,8 @@ function App() {
       <Route path="/" element={<Layout />}>
         <Route index element={<Landing />} />
         <Route path="recipes" element={<RecipeList />} />
-        <Route path="recipe/:recipeId" element={<RecipeDetails />} />
-        <Route path="recipe/edit/:recipeId" element={<RecipeEditor />} />
+        <Route path="recipes/:recipeId" element={<RecipeDetails />} />
+        <Route path="recipes/edit/:recipeId" element={<RecipeEditor />} />
         <Route path="register" element={<Register />} />
         <Route path="login" element={<Login />} />
         <Route path="*" element={<NoMatch />} />
