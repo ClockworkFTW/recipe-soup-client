@@ -6,6 +6,10 @@ export const RecipeEditorContext = createContext(null);
 
 function recipeEditorReducer(draft, action) {
   switch (action.type) {
+    case "UPDATE_NAME": {
+      draft.name = action.name;
+      break;
+    }
     case "ADD_INGREDIENT": {
       draft.ingredients.push({ id: uuidv4(), index: action.index, text: "" });
       break;
@@ -23,8 +27,22 @@ function recipeEditorReducer(draft, action) {
       draft.ingredients = draft.ingredients.filter((i) => i.id !== action.id);
       break;
     }
-    case "ADD_INSTRUCTION": {
-      draft.instructions.push({ id: uuidv4(), index: action.index, text: "" });
+    case "ADD_INSTRUCTION_SECTION": {
+      draft.instructions.push({
+        id: uuidv4(),
+        index: draft.instructions.length,
+        type: "section",
+        text: "",
+      });
+      break;
+    }
+    case "ADD_INSTRUCTION_STEP": {
+      draft.instructions.push({
+        id: uuidv4(),
+        index: draft.instructions.length,
+        type: "step",
+        text: "",
+      });
       break;
     }
     case "UPDATE_INSTRUCTION": {
@@ -46,11 +64,28 @@ function recipeEditorReducer(draft, action) {
   }
 }
 
-export function RecipeEditorProvider({ children, initialState }) {
-  const [state, dispatch] = useImmerReducer(recipeEditorReducer, initialState);
+const newRecipe = {
+  name: "",
+  prepTime: null,
+  cookTime: null,
+  ingredients: [],
+  instructions: [],
+};
+
+export function RecipeEditorProvider({ children, originalRecipe = newRecipe }) {
+  const [editedRecipe, dispatch] = useImmerReducer(
+    recipeEditorReducer,
+    originalRecipe
+  );
+
+  const value = {
+    originalRecipe,
+    editedRecipe,
+    dispatch,
+  };
 
   return (
-    <RecipeEditorContext.Provider value={[state, dispatch]}>
+    <RecipeEditorContext.Provider value={value}>
       {children}
     </RecipeEditorContext.Provider>
   );

@@ -13,12 +13,17 @@ import Button from "../../../components/Button/Button";
 import IngredientItem from "./IngredientItem";
 
 function IngredientList() {
-  const [recipe, dispatch] = useContext(RecipeEditorContext);
+  const { editedRecipe, dispatch } = useContext(RecipeEditorContext);
 
-  const ingredients = recipe.ingredients.toSorted((a, b) => a.index - b.index);
+  const ingredients = editedRecipe.ingredients.toSorted(
+    (a, b) => a.index - b.index
+  );
 
   function addIngredient() {
-    dispatch({ type: "ADD_INGREDIENT", index: recipe.ingredients.length });
+    dispatch({
+      type: "ADD_INGREDIENT",
+      index: editedRecipe.ingredients.length,
+    });
   }
 
   function reorderIngredients(event) {

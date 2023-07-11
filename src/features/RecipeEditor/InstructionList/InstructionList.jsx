@@ -13,14 +13,18 @@ import Button from "../../../components/Button/Button";
 import InstructionItem from "./InstructionItem";
 
 function InstructionList() {
-  const [recipe, dispatch] = useContext(RecipeEditorContext);
+  const { editedRecipe, dispatch } = useContext(RecipeEditorContext);
 
-  const instructions = recipe.instructions.toSorted(
+  const instructions = editedRecipe.instructions.toSorted(
     (a, b) => a.index - b.index
   );
 
-  function addInstruction() {
-    dispatch({ type: "ADD_INSTRUCTION", index: recipe.instructions.length });
+  function addInstructionSection() {
+    dispatch({ type: "ADD_INSTRUCTION_SECTION" });
+  }
+
+  function addInstructionStep() {
+    dispatch({ type: "ADD_INSTRUCTION_STEP" });
   }
 
   function reorderInstructions(event) {
@@ -65,7 +69,8 @@ function InstructionList() {
           ))}
         </SortableContext>
       </DndContext>
-      <Button label="add" onClick={addInstruction} />
+      <Button label="add section" onClick={addInstructionSection} />
+      <Button label="add step" onClick={addInstructionStep} />
     </div>
   );
 }

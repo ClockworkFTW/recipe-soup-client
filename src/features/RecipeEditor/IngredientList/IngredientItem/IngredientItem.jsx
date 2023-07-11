@@ -7,7 +7,7 @@ import { RecipeEditorContext } from "../../RecipeEditor.context";
 import Button from "../../../../components/Button/Button";
 
 function IngredientItem({ id, ingredient }) {
-  const [_, dispatch] = useContext(RecipeEditorContext);
+  const { dispatch } = useContext(RecipeEditorContext);
 
   function updateIngredient(e) {
     dispatch({

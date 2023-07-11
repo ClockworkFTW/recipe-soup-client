@@ -1,37 +1,23 @@
-import { useNavigate, useParams } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
+import { useParams } from "react-router-dom";
 
-import { getRecipe } from "../../api/recipe";
+import { useGetRecipe } from "../../hooks/useGetRecipe";
 
 import { RecipeEditorProvider } from "./RecipeEditor.context";
 
-import Button from "../../components/Button";
-
+import FormControls from "./FormControls";
+import RecipeName from "./RecipeName";
 import IngredientList from "./IngredientList";
 import InstructionList from "./InstructionList";
 
 function RecipeEditor() {
-  const navigate = useNavigate();
   const { recipeId } = useParams();
 
-  const recipe = useQuery({
-    queryKey: ["recipes", recipeId],
-    queryFn: () => getRecipe(recipeId),
-  });
+  const { data: recipe } = useGetRecipe(recipeId);
 
-  function discardEdits() {
-    navigate(`/recipes/${recipeId}`);
-  }
-
-  function saveRecipe() {
-    alert("saving...");
-  }
-
-  return recipe.data ? (
-    <RecipeEditorProvider initialState={recipe.data}>
-      <Button label="Discard" onClick={discardEdits} />
-      <Button label="Save" onClick={saveRecipe} />
-      <h2>{recipe.data.name}</h2>
+  return recipe || recipeId === "new" ? (
+    <RecipeEditorProvider originalRecipe={recipe}>
+      <FormControls />
+      <RecipeName />
       <IngredientList />
       <InstructionList />
     </RecipeEditorProvider>

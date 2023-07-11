@@ -1,35 +1,52 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
 
-import { getRecipe } from "../../api/recipe";
+import { useCreateRecipe } from "../../../hooks/useCreateRecipe";
+import { useUpdateRecipe } from "../../../hooks/useUpdateRecipe";
+import { useDeleteRecipe } from "../../../hooks/useDeleteRecipe";
 
 import { RecipeEditorContext } from "../RecipeEditor.context";
 
-import Button from "../../components/Button";
+import Button from "../../../components/Button";
 
 function FormControls() {
   const navigate = useNavigate();
-  const { recipeId } = useParams();
-  const [editedRecipe] = useContext(RecipeEditorContext);
 
-  const originalRecipe = useQuery({
-    queryKey: ["recipes", recipeId],
-    queryFn: () => getRecipe(recipeId),
-  });
+  const { originalRecipe, editedRecipe } = useContext(RecipeEditorContext);
 
-  function discardEdits() {
-    navigate(`/recipes/${recipeId}`);
+  function handleDiscardEdits() {
+    if (JSON.stringify(originalRecipe) !== JSON.stringify(editedRecipe)) {
+      alert("are you sure you want to discard your edits?");
+    }
+    if (originalRecipe.id) {
+      navigate(`/recipes/${originalRecipe.id}`);
+    } else {
+      navigate("/recipes");
+    }
   }
 
-  function saveRecipe() {
-    alert("saving...");
+  const { mutate: updateRecipe } = useUpdateRecipe();
+  const { mutate: createRecipe } = useCreateRecipe();
+  const { mutate: deleteRecipe } = useDeleteRecipe();
+
+  function handleSaveEdits() {
+    if (originalRecipe.id) {
+      updateRecipe(editedRecipe);
+    } else {
+      createRecipe(editedRecipe);
+    }
+  }
+
+  function handleDeleteRecipe() {
+    alert("are you sure you want to delete this recipe?");
+    deleteRecipe(originalRecipe);
   }
 
   return (
     <div>
-      <Button label="Discard" onClick={discardEdits} />
-      <Button label="Save" onClick={saveRecipe} />
+      <Button label="Discard" onClick={handleDiscardEdits} />
+      <Button label="Save" onClick={handleSaveEdits} />
+      <Button label="Delete" onClick={handleDeleteRecipe} />
     </div>
   );
 }

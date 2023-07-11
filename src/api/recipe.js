@@ -1,28 +1,29 @@
 import axios from "axios";
 
-const baseURL = "http://localhost:3000/api";
+const recipeApi = axios.create({
+  baseURL: "http://localhost:3000/api",
+});
 
 export async function getRecipes() {
-  const result = await axios.get(`${baseURL}/recipe`);
+  const result = await recipeApi.get("/recipe");
   return result.data;
 }
 
 export async function getRecipe(recipeId) {
-  const result = await axios.get(`${baseURL}/recipe/${recipeId}`);
+  const result = await recipeApi.get(`/recipe/${recipeId}`);
   return result.data;
 }
 
 export async function createRecipe(recipe) {
-  const result = await axios.post(`${baseURL}/recipe`, recipe);
-  return result.data;
+  return await recipeApi.post(`/recipe`, recipe);
 }
 
 export async function updateRecipe(recipe) {
-  const result = await axios.patch(`${baseURL}/recipe/${recipe.id}`, recipe);
-  return result.data;
+  return await recipeApi.patch(`/recipe/${recipe.id}`, recipe);
 }
 
-export async function deleteRecipe(recipeId) {
-  const result = await axios.delete(`${baseURL}/recipe/${recipeId}`);
-  return result.data;
+export async function deleteRecipe(recipe) {
+  return await recipeApi.delete(`/recipe/${recipe.id}`);
 }
+
+export default recipeApi;
