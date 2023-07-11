@@ -10,6 +10,10 @@ function recipeEditorReducer(draft, action) {
       draft.name = action.name;
       break;
     }
+    case "UPDATE_TIME": {
+      draft[`${action.timeType}Time`] = action.time;
+      break;
+    }
     case "ADD_INGREDIENT": {
       draft.ingredients.push({ id: uuidv4(), index: action.index, text: "" });
       break;

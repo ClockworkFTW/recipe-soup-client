@@ -6,6 +6,7 @@ import { RecipeEditorProvider } from "./RecipeEditor.context";
 
 import FormControls from "./FormControls";
 import RecipeName from "./RecipeName";
+import TimePicker from "./TimePicker";
 import IngredientList from "./IngredientList";
 import InstructionList from "./InstructionList";
 
@@ -18,6 +19,8 @@ function RecipeEditor() {
     <RecipeEditorProvider originalRecipe={recipe}>
       <FormControls />
       <RecipeName />
+      <TimePicker timeType="prep" />
+      <TimePicker timeType="cook" />
       <IngredientList />
       <InstructionList />
     </RecipeEditorProvider>
