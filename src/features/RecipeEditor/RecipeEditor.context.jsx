@@ -10,8 +10,28 @@ function recipeEditorReducer(draft, action) {
       draft.name = action.name;
       break;
     }
-    case "UPDATE_TIME": {
-      draft[`${action.timeType}Time`] = action.time;
+    case "UPDATE_DESCRIPTION": {
+      draft.description = action.description;
+      break;
+    }
+    case "UPDATE_PREP_TIME": {
+      draft.prepTime = action.time;
+      break;
+    }
+    case "UPDATE_COOK_TIME": {
+      draft.cookTime = action.time;
+      break;
+    }
+    case "UPDATE_CUISINE": {
+      draft.cuisine = action.cuisine;
+      break;
+    }
+    case "UPDATE_RATING": {
+      draft.rating = action.rating;
+      break;
+    }
+    case "UPDATE_SERVINGS": {
+      draft.servings = action.servings;
       break;
     }
     case "ADD_INGREDIENT": {
@@ -70,10 +90,15 @@ function recipeEditorReducer(draft, action) {
 
 const newRecipe = {
   name: "",
+  descrription: "",
+  rating: 0,
   prepTime: null,
   cookTime: null,
   ingredients: [],
   instructions: [],
+  cuisine: null,
+  category: null,
+  yield: 1,
 };
 
 export function RecipeEditorProvider({ children, originalRecipe = newRecipe }) {

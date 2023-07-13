@@ -9,15 +9,15 @@ import Button from "../../../../components/Button/Button";
 function IngredientItem({ id, ingredient }) {
   const { dispatch } = useContext(RecipeEditorContext);
 
-  function updateIngredient(e) {
+  function handleUpdateIngredient(event) {
     dispatch({
       type: "UPDATE_INGREDIENT",
       id: ingredient.id,
-      text: e.target.value,
+      text: event.target.value,
     });
   }
 
-  function deleteIngredient() {
+  function handleDeleteIngredient() {
     dispatch({
       type: "DELETE_INGREDIENT",
       id: ingredient.id,
@@ -34,8 +34,12 @@ function IngredientItem({ id, ingredient }) {
 
   return (
     <li ref={setNodeRef} style={style}>
-      <input type="text" value={ingredient.text} onChange={updateIngredient} />
-      <Button label="delete" onClick={deleteIngredient} />
+      <input
+        type="text"
+        value={ingredient.text}
+        onChange={handleUpdateIngredient}
+      />
+      <Button label="delete" onClick={handleDeleteIngredient} />
       <span {...attributes} {...listeners}>
         DRAG
       </span>

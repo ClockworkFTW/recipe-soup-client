@@ -9,6 +9,11 @@ import Register from "./features/Auth/Register";
 import Login from "./features/Auth/Login";
 import NoMatch from "./features/NoMatch";
 
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faStar } from "@fortawesome/pro-solid-svg-icons";
+
+library.add(faStar);
+
 function App() {
   return (
     <Routes>

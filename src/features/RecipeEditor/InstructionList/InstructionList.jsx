@@ -19,15 +19,15 @@ function InstructionList() {
     (a, b) => a.index - b.index
   );
 
-  function addInstructionSection() {
+  function handleAddInstructionSection() {
     dispatch({ type: "ADD_INSTRUCTION_SECTION" });
   }
 
-  function addInstructionStep() {
+  function handleAddInstructionStep() {
     dispatch({ type: "ADD_INSTRUCTION_STEP" });
   }
 
-  function reorderInstructions(event) {
+  function handleReorderInstructions(event) {
     const { active, over } = event;
 
     if (active.id === over.id) return;
@@ -53,7 +53,7 @@ function InstructionList() {
     <div>
       <h3>Instructions</h3>
       <DndContext
-        onDragEnd={reorderInstructions}
+        onDragEnd={handleReorderInstructions}
         modifiers={[restrictToVerticalAxis]}
       >
         <SortableContext
@@ -69,8 +69,8 @@ function InstructionList() {
           ))}
         </SortableContext>
       </DndContext>
-      <Button label="add section" onClick={addInstructionSection} />
-      <Button label="add step" onClick={addInstructionStep} />
+      <Button label="add section" onClick={handleAddInstructionSection} />
+      <Button label="add step" onClick={handleAddInstructionStep} />
     </div>
   );
 }

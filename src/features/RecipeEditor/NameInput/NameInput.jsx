@@ -2,7 +2,7 @@ import { useContext } from "react";
 
 import { RecipeEditorContext } from "../RecipeEditor.context";
 
-function RecipeName() {
+const NameInput = () => {
   const { editedRecipe, dispatch } = useContext(RecipeEditorContext);
 
   function handleNameChange(event) {
@@ -11,6 +11,7 @@ function RecipeName() {
 
   return (
     <div>
+      <h3>Name</h3>
       <input
         type="text"
         value={editedRecipe.name}
@@ -18,6 +19,6 @@ function RecipeName() {
       />
     </div>
   );
-}
+};
 
-export default RecipeName;
+export default NameInput;

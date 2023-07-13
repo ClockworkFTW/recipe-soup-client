@@ -5,8 +5,12 @@ import { useGetRecipe } from "../../hooks/useGetRecipe";
 import { RecipeEditorProvider } from "./RecipeEditor.context";
 
 import FormControls from "./FormControls";
-import RecipeName from "./RecipeName";
+import NameInput from "./NameInput";
+import DescriptionInput from "./DescriptionInput";
+import ServingsInput from "./ServingsInput";
 import TimePicker from "./TimePicker";
+import RatingPicker from "./RatingPicker";
+import CuisinePicker from "./CuisinePicker";
 import IngredientList from "./IngredientList";
 import InstructionList from "./InstructionList";
 
@@ -18,9 +22,13 @@ function RecipeEditor() {
   return recipe || recipeId === "new" ? (
     <RecipeEditorProvider originalRecipe={recipe}>
       <FormControls />
-      <RecipeName />
+      <NameInput />
+      <DescriptionInput />
+      <ServingsInput />
       <TimePicker timeType="prep" />
       <TimePicker timeType="cook" />
+      <RatingPicker />
+      <CuisinePicker />
       <IngredientList />
       <InstructionList />
     </RecipeEditorProvider>

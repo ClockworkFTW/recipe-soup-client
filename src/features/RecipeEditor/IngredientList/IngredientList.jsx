@@ -19,14 +19,14 @@ function IngredientList() {
     (a, b) => a.index - b.index
   );
 
-  function addIngredient() {
+  function handleAddIngredient() {
     dispatch({
       type: "ADD_INGREDIENT",
       index: editedRecipe.ingredients.length,
     });
   }
 
-  function reorderIngredients(event) {
+  function handleReorderIngredients(event) {
     const { active, over } = event;
 
     if (active.id === over.id) return;
@@ -52,7 +52,7 @@ function IngredientList() {
     <div>
       <h3>Ingredients</h3>
       <DndContext
-        onDragEnd={reorderIngredients}
+        onDragEnd={handleReorderIngredients}
         modifiers={[restrictToVerticalAxis]}
       >
         <SortableContext
@@ -68,7 +68,7 @@ function IngredientList() {
           ))}
         </SortableContext>
       </DndContext>
-      <Button label="add" onClick={addIngredient} />
+      <Button label="add" onClick={handleAddIngredient} />
     </div>
   );
 }

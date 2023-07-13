@@ -16,16 +16,31 @@ function TimePicker({ timeType }) {
   const hourOptions = [...Array(24).keys()];
   const minuteOptions = [...Array(60).keys()];
 
+  function updateTime(time) {
+    switch (timeType) {
+      case "prep":
+        dispatch({ type: "UPDATE_PREP_TIME", time });
+        break;
+      case "cook":
+        dispatch({ type: "UPDATE_COOK_TIME", time });
+        break;
+      default:
+        break;
+    }
+  }
+
   function handleUpdateHours(value) {
     const diff = value - hours;
     duration.add(diff, "h");
-    dispatch({ type: "UPDATE_TIME", time: duration.toISOString(), timeType });
+    const time = duration.toISOString();
+    updateTime(time);
   }
 
   function handleUpdateMinutes(value) {
     const diff = value - minutes;
     duration.add(diff, "m");
-    dispatch({ type: "UPDATE_TIME", time: duration.toISOString(), timeType });
+    const time = duration.toISOString();
+    updateTime(time);
   }
 
   return (
