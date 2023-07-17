@@ -1,7 +1,7 @@
 function NoMatch() {
   return (
     <div>
-      <h2>NoMatch</h2>
+      <h2>No Match</h2>
     </div>
   );
 }

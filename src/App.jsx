@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 
 import Layout from "./features/Layout";
 import Landing from "./features/Landing";
+import RequireAuth from "./features/Auth/RequireAuth";
 import RecipeList from "./features/RecipeList";
 import RecipeEditor from "./features/RecipeEditor";
 import RecipeDetails from "./features/RecipeDetails";
@@ -19,9 +20,11 @@ function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Landing />} />
-        <Route path="recipes" element={<RecipeList />} />
-        <Route path="recipes/:recipeId" element={<RecipeDetails />} />
-        <Route path="recipes/edit/:recipeId" element={<RecipeEditor />} />
+        <Route path="/recipes" element={<RequireAuth />}>
+          <Route index element={<RecipeList />} />
+          <Route path=":recipeId" element={<RecipeDetails />} />
+          <Route path="edit/:recipeId" element={<RecipeEditor />} />
+        </Route>
         <Route path="register" element={<Register />} />
         <Route path="login" element={<Login />} />
         <Route path="*" element={<NoMatch />} />
