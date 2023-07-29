@@ -7,6 +7,7 @@ import { RecipeEditorProvider } from "./RecipeEditor.context";
 import FormControls from "./FormControls";
 import NameInput from "./NameInput";
 import DescriptionInput from "./DescriptionInput";
+import ImagePicker from "./ImagePicker";
 import ServingsInput from "./ServingsInput";
 import TimePicker from "./TimePicker";
 import RatingPicker from "./RatingPicker";
@@ -24,6 +25,7 @@ function RecipeEditor() {
       <FormControls />
       <NameInput />
       <DescriptionInput />
+      <ImagePicker />
       <ServingsInput />
       <TimePicker timeType="prep" />
       <TimePicker timeType="cook" />

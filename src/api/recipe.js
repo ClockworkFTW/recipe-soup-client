@@ -19,10 +19,10 @@ export async function createRecipe(recipe) {
   return await recipeApi.post(`/`, recipe);
 }
 
-export async function updateRecipe(recipe) {
-  return await recipeApi.patch(`/${recipe.id}`, recipe);
+export async function updateRecipe({ recipeId, recipe }) {
+  return await recipeApi.patch(`/${recipeId}`, recipe);
 }
 
-export async function deleteRecipe(recipe) {
-  return await recipeApi.delete(`/${recipe.id}`);
+export async function deleteRecipe(recipeId) {
+  return await recipeApi.delete(`/${recipeId}`);
 }

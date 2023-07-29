@@ -14,6 +14,10 @@ function recipeEditorReducer(draft, action) {
       draft.description = action.description;
       break;
     }
+    case "UPDATE_IMAGE": {
+      draft.image.url = action.image;
+      break;
+    }
     case "UPDATE_PREP_TIME": {
       draft.prepTime = action.time;
       break;
@@ -90,7 +94,8 @@ function recipeEditorReducer(draft, action) {
 
 const newRecipe = {
   name: "",
-  descrription: "",
+  description: "",
+  image: { url: null },
   rating: 0,
   prepTime: null,
   cookTime: null,

@@ -14,7 +14,7 @@ const DescriptionInput = () => {
       <h3>Description</h3>
       <textarea
         type="text"
-        value={editedRecipe.description}
+        value={editedRecipe.description || ""}
         onChange={handleDescriptionChange}
       />
     </div>

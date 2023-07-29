@@ -14,32 +14,45 @@ function FormControls() {
 
   const { originalRecipe, editedRecipe } = useContext(RecipeEditorContext);
 
-  function handleDiscardEdits() {
-    if (JSON.stringify(originalRecipe) !== JSON.stringify(editedRecipe)) {
-      alert("are you sure you want to discard your edits?");
-    }
-    if (originalRecipe.id) {
-      navigate(`/recipes/${originalRecipe.id}`);
-    } else {
-      navigate("/recipes");
-    }
-  }
+  const recipeId = originalRecipe.id;
 
   const { mutate: updateRecipe } = useUpdateRecipe();
   const { mutate: createRecipe } = useCreateRecipe();
   const { mutate: deleteRecipe } = useDeleteRecipe();
 
+  function formatRecipe() {
+    const formData = new FormData();
+    const { image, ...data } = editedRecipe;
+    if (typeof image.url !== "string") {
+      formData.append("image", image.url);
+    }
+    formData.append("data", JSON.stringify(data));
+    return formData;
+  }
+
   function handleSaveEdits() {
-    if (originalRecipe.id) {
-      updateRecipe(editedRecipe);
+    const recipe = formatRecipe();
+    if (recipeId) {
+      updateRecipe({ recipeId, recipe });
     } else {
-      createRecipe(editedRecipe);
+      createRecipe(recipe);
     }
   }
 
   function handleDeleteRecipe() {
     alert("are you sure you want to delete this recipe?");
-    deleteRecipe(originalRecipe);
+    deleteRecipe(recipeId);
+  }
+
+  function handleDiscardEdits() {
+    if (JSON.stringify(originalRecipe) !== JSON.stringify(editedRecipe)) {
+      alert("are you sure you want to discard your edits?");
+    }
+    if (recipeId) {
+      navigate(`/recipes/${recipeId}`);
+    } else {
+      navigate("/recipes");
+    }
   }
 
   return (
