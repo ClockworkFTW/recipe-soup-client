@@ -1,4 +1,4 @@
-import * as Styled from "./Flag.styles";
+import * as Styled from "./Country.styles";
 
 function Country({ code, label }) {
   return (

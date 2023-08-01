@@ -1,14 +1,38 @@
-function IngredientList({ ingredients }) {
+import { useState } from "react";
+
+import * as Styled from "./IngredientList.styles";
+
+const IngredientList = ({ ingredients }) => {
+  const [completedIngredients, setCompletedIngredients] = useState([]);
+
+  function handleIngredientClicked(id) {
+    if (completedIngredients.includes(id)) {
+      setCompletedIngredients(
+        completedIngredients.filter((completedId) => completedId !== id)
+      );
+    } else {
+      setCompletedIngredients((completedIds) => [...completedIds, id]);
+    }
+    console.log(completedIngredients.includes(id));
+  }
+
   return (
     <div>
-      <h3>Ingredients</h3>
-      <ul>
-        {ingredients.map((ingredient) => (
-          <li key={ingredient.id}>{ingredient.text}</li>
+      <h2>Ingredients</h2>
+      <Styled.List>
+        {ingredients.map(({ id, text }) => (
+          <Styled.Ingredient
+            key={id}
+            onClick={() => handleIngredientClicked(id)}
+          >
+            <Styled.Text $isComplete={completedIngredients.includes(id)}>
+              {text}
+            </Styled.Text>
+          </Styled.Ingredient>
         ))}
-      </ul>
+      </Styled.List>
     </div>
   );
-}
+};
 
 export default IngredientList;

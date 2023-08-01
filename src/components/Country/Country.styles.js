@@ -10,5 +10,5 @@ export const Flag = styled.img`
 `;
 
 export const Label = styled.span`
-  margin-left: 4px;
+  margin-left: 8px;
 `;

@@ -1,5 +1,7 @@
 import moment from "moment";
 
+import * as Styled from "./Time.style";
+
 function Time({ label, timeArray }) {
   const duration = moment.duration(timeArray[0]);
 
@@ -10,12 +12,14 @@ function Time({ label, timeArray }) {
   const h = duration.get("h").toString();
   const m = duration.get("m").toString();
 
-  const time = `${h}:${m.length === 1 ? "0".concat(m) : m}`;
-
   return (
-    <p>
-      {label} {time}
-    </p>
+    <div>
+      <Styled.Label>{label}</Styled.Label>
+      <div>
+        {h > 0 && `${h} hr${h == 1 ? "" : "s"}${m > 0 ? " " : ""}`}
+        {m > 0 && `${m} min${m == 1 ? "" : "s"}`}
+      </div>
+    </div>
   );
 }
 

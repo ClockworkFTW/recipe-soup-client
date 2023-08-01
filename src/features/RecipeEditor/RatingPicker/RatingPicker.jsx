@@ -6,7 +6,7 @@ import * as Styled from "./RatingPicker.styles";
 
 import Icon from "../../../components/Icon";
 
-const StarRating = () => {
+const RatingPicker = () => {
   const { editedRecipe, dispatch } = useContext(RecipeEditorContext);
 
   const [hover, setHover] = useState(editedRecipe.rating);
@@ -18,7 +18,7 @@ const StarRating = () => {
   return (
     <div>
       <h3>Rating</h3>
-      {[...Array(5)].map((star, index) => {
+      {[...Array(5)].map((_, index) => {
         const color =
           index + 1 <= (hover || editedRecipe.rating) ? "#f1c40f" : "#bdc3c7";
 
@@ -39,4 +39,4 @@ const StarRating = () => {
   );
 };
 
-export default StarRating;
+export default RatingPicker;
