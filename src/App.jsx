@@ -11,9 +11,15 @@ import Login from "./features/Auth/Login";
 import NoMatch from "./features/NoMatch";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faClock, faPen, faStar } from "@fortawesome/pro-solid-svg-icons";
+import {
+  faCheck,
+  faGripVertical,
+  faPen,
+  faStar,
+  faTrashCan,
+} from "@fortawesome/pro-solid-svg-icons";
 
-library.add(faClock, faPen, faStar);
+library.add(faCheck, faGripVertical, faPen, faStar, faTrashCan);
 
 function App() {
   return (

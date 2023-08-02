@@ -1,4 +1,5 @@
 import { useContext } from "react";
+
 import { DndContext } from "@dnd-kit/core";
 import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
 import {
@@ -8,9 +9,9 @@ import {
 } from "@dnd-kit/sortable";
 
 import { RecipeEditorContext } from "../RecipeEditor.context";
-
 import Button from "../../../components/Button/Button";
 import InstructionItem from "./InstructionItem";
+import * as Styled from "./InstructionList.styles";
 
 function InstructionList() {
   const { editedRecipe, dispatch } = useContext(RecipeEditorContext);
@@ -51,26 +52,30 @@ function InstructionList() {
 
   return (
     <div>
-      <h3>Instructions</h3>
-      <DndContext
-        onDragEnd={handleReorderInstructions}
-        modifiers={[restrictToVerticalAxis]}
-      >
-        <SortableContext
-          items={instructions}
-          strategy={verticalListSortingStrategy}
+      <h2>Instructions</h2>
+      <Styled.List>
+        <DndContext
+          onDragEnd={handleReorderInstructions}
+          modifiers={[restrictToVerticalAxis]}
         >
-          {instructions.map((instruction) => (
-            <InstructionItem
-              key={instruction.id}
-              id={instruction.id}
-              instruction={instruction}
-            />
-          ))}
-        </SortableContext>
-      </DndContext>
-      <Button label="add section" onClick={handleAddInstructionSection} />
-      <Button label="add step" onClick={handleAddInstructionStep} />
+          <SortableContext
+            items={instructions}
+            strategy={verticalListSortingStrategy}
+          >
+            {instructions.map((instruction) => (
+              <InstructionItem
+                key={instruction.id}
+                id={instruction.id}
+                instruction={instruction}
+              />
+            ))}
+          </SortableContext>
+        </DndContext>
+      </Styled.List>
+      <Styled.Controls>
+        <Button label="Add Section" onClick={handleAddInstructionSection} />
+        <Button label="Add Step" onClick={handleAddInstructionStep} />
+      </Styled.Controls>
     </div>
   );
 }

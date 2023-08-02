@@ -1,4 +1,5 @@
 import { useContext } from "react";
+
 import { DndContext } from "@dnd-kit/core";
 import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
 import {
@@ -8,9 +9,9 @@ import {
 } from "@dnd-kit/sortable";
 
 import { RecipeEditorContext } from "../RecipeEditor.context";
-
 import Button from "../../../components/Button/Button";
 import IngredientItem from "./IngredientItem";
+import * as Styled from "./IngredientList.styles";
 
 function IngredientList() {
   const { editedRecipe, dispatch } = useContext(RecipeEditorContext);
@@ -50,25 +51,29 @@ function IngredientList() {
 
   return (
     <div>
-      <h3>Ingredients</h3>
-      <DndContext
-        onDragEnd={handleReorderIngredients}
-        modifiers={[restrictToVerticalAxis]}
-      >
-        <SortableContext
-          items={ingredients}
-          strategy={verticalListSortingStrategy}
+      <h2>Ingredients</h2>
+      <Styled.List>
+        <DndContext
+          onDragEnd={handleReorderIngredients}
+          modifiers={[restrictToVerticalAxis]}
         >
-          {ingredients.map((ingredient) => (
-            <IngredientItem
-              key={ingredient.id}
-              id={ingredient.id}
-              ingredient={ingredient}
-            />
-          ))}
-        </SortableContext>
-      </DndContext>
-      <Button label="add" onClick={handleAddIngredient} />
+          <SortableContext
+            items={ingredients}
+            strategy={verticalListSortingStrategy}
+          >
+            {ingredients.map((ingredient) => (
+              <IngredientItem
+                key={ingredient.id}
+                id={ingredient.id}
+                ingredient={ingredient}
+              />
+            ))}
+          </SortableContext>
+        </DndContext>
+      </Styled.List>
+      <Styled.Controls>
+        <Button label="Add Ingredient" onClick={handleAddIngredient} />
+      </Styled.Controls>
     </div>
   );
 }

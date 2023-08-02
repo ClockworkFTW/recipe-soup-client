@@ -17,7 +17,7 @@ export const Section = styled.div`
 
 export const Step = styled.div`
   display: inline-grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: minmax(20px, auto) auto;
   column-gap: 10px;
   border-radius: 8px;
   padding: ${({ $isFocused }) => ($isFocused ? "10px" : "10px 0px")};
@@ -29,6 +29,8 @@ export const Step = styled.div`
 `;
 
 export const Number = styled.span`
-  font-weight: 700;
-  color: red;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
+  color: #22c55e;
 `;

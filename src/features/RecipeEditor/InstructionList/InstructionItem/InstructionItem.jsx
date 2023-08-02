@@ -1,10 +1,12 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
 import { RecipeEditorContext } from "../../RecipeEditor.context";
 
-import Button from "../../../../components/Button/Button";
+import Icon from "../../../../components/Icon";
+import TextArea from "../../../../components/TextArea";
+import * as Styled from "./InstructionItem.styles";
 
 function InstructionItem({ id, instruction }) {
   const { dispatch } = useContext(RecipeEditorContext);
@@ -28,23 +30,30 @@ function InstructionItem({ id, instruction }) {
     useSortable({ id });
 
   const style = {
-    transform: CSS.Transform.toString(transform),
+    transform: CSS.Translate.toString(transform),
     transition,
   };
 
+  const [isHoverNumber, setIsHoverNumber] = useState(false);
+
   return (
-    <li ref={setNodeRef} style={style}>
-      <span>{instruction.index + 1}</span>
-      <input
-        type="text"
-        value={instruction.text}
-        onChange={handleUpdateInstruction}
-      />
-      <Button label="delete" onClick={handleDeleteInstruction} />
-      <span {...attributes} {...listeners}>
-        DRAG
-      </span>
-    </li>
+    <Styled.Item ref={setNodeRef} style={style}>
+      <Styled.Number
+        onMouseEnter={() => setIsHoverNumber(true)}
+        onMouseLeave={() => setIsHoverNumber(false)}
+        onClick={handleDeleteInstruction}
+      >
+        {isHoverNumber ? <Icon icon="trash-can" /> : instruction.index + 1}
+      </Styled.Number>
+      <Styled.Content
+        fontWeight={instruction.type === "section" ? "bold" : "normal"}
+      >
+        <TextArea value={instruction.text} onChange={handleUpdateInstruction} />
+      </Styled.Content>
+      <Styled.Grip {...attributes} {...listeners}>
+        <Icon icon="grip-vertical" />
+      </Styled.Grip>
+    </Styled.Item>
   );
 }
 
