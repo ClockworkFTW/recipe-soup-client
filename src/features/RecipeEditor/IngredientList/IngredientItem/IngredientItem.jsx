@@ -1,32 +1,25 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
-import { RecipeEditorContext } from "../../RecipeEditor.context";
+import { useRecipeEditorActions } from "../../../../hooks/useRecipeEditor";
 import Icon from "../../../../components/Icon";
 import TextArea from "../../../../components/TextArea";
 import * as Styled from "./IngredientItem.styles";
 
-function IngredientItem({ id, ingredient }) {
-  const { dispatch } = useContext(RecipeEditorContext);
+function IngredientItem({ sortableId, ingredient }) {
+  const { updateIngredient, deleteIngredient } = useRecipeEditorActions();
 
   function handleUpdateIngredient(event) {
-    dispatch({
-      type: "UPDATE_INGREDIENT",
-      id: ingredient.id,
-      text: event.target.value,
-    });
+    updateIngredient(ingredient.id, event.target.value);
   }
 
   function handleDeleteIngredient() {
-    dispatch({
-      type: "DELETE_INGREDIENT",
-      id: ingredient.id,
-    });
+    deleteIngredient(ingredient.id);
   }
 
   const { attributes, listeners, setNodeRef, transform, transition } =
-    useSortable({ id });
+    useSortable({ id: sortableId });
 
   const style = {
     transform: CSS.Translate.toString(transform),

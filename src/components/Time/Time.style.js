@@ -1,10 +1,7 @@
 import styled from "styled-components";
 
-export const Label = styled.span`
+export const Label = styled.div`
+  margin-bottom: 4px;
   font-weight: 700;
   text-transform: capitalize;
-`;
-
-export const Time = styled.span`
-  margin-left: 8px;
 `;

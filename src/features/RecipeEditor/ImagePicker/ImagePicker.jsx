@@ -1,33 +1,39 @@
-import { useContext } from "react";
-
-import { RecipeEditorContext } from "../RecipeEditor.context";
+import {
+  useImage,
+  useRecipeEditorActions,
+} from "../../../hooks/useRecipeEditor";
 
 import Icon from "../../../components/Icon";
-
 import * as Styled from "./ImagePicker.style";
 
 const ImagePicker = () => {
-  const { editedRecipe, dispatch } = useContext(RecipeEditorContext);
+  const image = useImage();
+  const { updateImage } = useRecipeEditorActions();
 
-  const image = editedRecipe.image.url
-    ? typeof editedRecipe.image.url === "string"
-      ? editedRecipe.image.url
-      : URL.createObjectURL(editedRecipe.image.url)
+  const url = image
+    ? typeof image === "string"
+      ? image
+      : URL.createObjectURL(image)
     : null;
 
   function handleImageChange(event) {
-    dispatch({ type: "UPDATE_IMAGE", image: event.target.files[0] });
+    updateImage(event.target.files[0]);
   }
 
   return (
-    <div>
-      <h3>Image</h3>
-      <label>
+    <Styled.Container>
+      <Styled.Button>
         <Icon icon="pen" />
         <input type="file" onChange={handleImageChange} hidden />
-      </label>
-      {image && <Styled.Image src={image} alt="recipe-image" />}
-    </div>
+      </Styled.Button>
+      {url ? (
+        <Styled.Image src={url} alt="recipe-image" />
+      ) : (
+        <Styled.Placeholder>
+          <Icon icon="camera-retro" />
+        </Styled.Placeholder>
+      )}
+    </Styled.Container>
   );
 };
 

@@ -15,8 +15,8 @@ export const Ingredient = styled.li`
 
 export const Text = styled.div`
   padding: 10px 0;
+  transition: opacity 0.2s, text-decoration 0.2s;
   opacity: ${({ $isComplete }) => ($isComplete ? "0.4" : "1")};
   text-decoration: ${({ $isComplete }) =>
-    $isComplete ? "line-through" : "none"};
-  transition: opacity 0.2s cubic-bezier(0.33, 1, 0.68, 1);
+    `line-through ${$isComplete ? "currentcolor" : "transparent"}`};
 `;

@@ -1,24 +1,18 @@
-import { useContext } from "react";
-
-import { RecipeEditorContext } from "../RecipeEditor.context";
+import {
+  useName,
+  useRecipeEditorActions,
+} from "../../../hooks/useRecipeEditor";
 
 const NameInput = () => {
-  const { editedRecipe, dispatch } = useContext(RecipeEditorContext);
+  const name = useName();
+
+  const { updateName } = useRecipeEditorActions();
 
   function handleNameChange(event) {
-    dispatch({ type: "UPDATE_NAME", name: event.target.value });
+    updateName(event.target.value);
   }
 
-  return (
-    <div>
-      <h3>Name</h3>
-      <input
-        type="text"
-        value={editedRecipe.name}
-        onChange={handleNameChange}
-      />
-    </div>
-  );
+  return <input type="text" value={name} onChange={handleNameChange} />;
 };
 
 export default NameInput;

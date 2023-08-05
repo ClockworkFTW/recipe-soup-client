@@ -1,8 +1,8 @@
 import { Link, Outlet } from "react-router-dom";
 
+import Button from "../../components/Button";
 import { useAuth } from "../../hooks/useAuth";
 import { useLogoutUser } from "../../hooks/useLogoutUser";
-
 import * as Styled from "./Layout.styles";
 
 const Layout = () => {
@@ -21,7 +21,7 @@ const Layout = () => {
             </nav>
             <nav>
               <Link to="/profile">{auth.username}</Link>
-              <button onClick={logoutUser}>Logout</button>
+              <Button label="Logout" onClick={logoutUser} />
             </nav>
           </>
         ) : (

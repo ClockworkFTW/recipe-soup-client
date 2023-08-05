@@ -1,29 +1,28 @@
-import { useContext } from "react";
-
-import { RecipeEditorContext } from "../RecipeEditor.context";
+import {
+  useServings,
+  useRecipeEditorActions,
+} from "../../../hooks/useRecipeEditor";
 
 const ServingsInput = () => {
-  const { editedRecipe, dispatch } = useContext(RecipeEditorContext);
+  const servings = useServings();
+  const { updateServings } = useRecipeEditorActions();
 
-  function updateServings(servings) {
+  function handleServingsDecrement() {
     if (servings > 0) {
-      dispatch({ type: "UPDATE_SERVINGS", servings });
+      updateServings(servings - 1);
     }
   }
 
-  function handleServingsDecrement() {
-    const servings = editedRecipe.servings - 1;
-    updateServings(servings);
-  }
-
   function handleServingsIncrement() {
-    const servings = editedRecipe.servings + 1;
-    updateServings(servings);
+    if (servings > 0) {
+      updateServings(servings + 1);
+    }
   }
 
   function handleServingsChange(event) {
-    const servings = event.target.value;
-    updateServings(servings);
+    if (servings > 0) {
+      updateServings(event.target.value);
+    }
   }
 
   return (

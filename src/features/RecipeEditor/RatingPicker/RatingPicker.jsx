@@ -1,35 +1,31 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 
-import { RecipeEditorContext } from "../RecipeEditor.context";
-
+import {
+  useRating,
+  useRecipeEditorActions,
+} from "../../../hooks/useRecipeEditor";
+import Icon from "../../../components/Icon";
 import * as Styled from "./RatingPicker.styles";
 
-import Icon from "../../../components/Icon";
-
 const RatingPicker = () => {
-  const { editedRecipe, dispatch } = useContext(RecipeEditorContext);
+  const rating = useRating();
 
-  const [hover, setHover] = useState(editedRecipe.rating);
+  const { updateRating } = useRecipeEditorActions();
 
-  function setRating(rating) {
-    dispatch({ type: "UPDATE_RATING", rating });
-  }
+  const [hover, setHover] = useState(rating);
 
   return (
     <div>
-      <h3>Rating</h3>
       {[...Array(5)].map((_, index) => {
-        const color =
-          index + 1 <= (hover || editedRecipe.rating) ? "#f1c40f" : "#bdc3c7";
-
+        const $isActive = index + 1 <= (hover || rating);
         return (
           <Styled.Button
             type="button"
             key={index + 1}
-            color={color}
-            onClick={() => setRating(index + 1)}
+            $isActive={$isActive}
+            onClick={() => updateRating(index + 1)}
             onMouseEnter={() => setHover(index + 1)}
-            onMouseLeave={() => setHover(editedRecipe.rating)}
+            onMouseLeave={() => setHover(rating)}
           >
             <Icon icon="star" />
           </Styled.Button>

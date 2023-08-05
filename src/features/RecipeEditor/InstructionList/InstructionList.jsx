@@ -1,53 +1,46 @@
-import { useContext } from "react";
-
-import { DndContext } from "@dnd-kit/core";
-import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
 import {
   arrayMove,
   SortableContext,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
+import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
+import { DndContext } from "@dnd-kit/core";
 
-import { RecipeEditorContext } from "../RecipeEditor.context";
+import {
+  useInstructions,
+  useRecipeEditorActions,
+} from "../../../hooks/useRecipeEditor";
 import Button from "../../../components/Button/Button";
 import InstructionItem from "./InstructionItem";
 import * as Styled from "./InstructionList.styles";
 
 function InstructionList() {
-  const { editedRecipe, dispatch } = useContext(RecipeEditorContext);
+  const instructions = useInstructions();
+  const { addInstructionSection, addInstructionStep, updateInstructions } =
+    useRecipeEditorActions();
 
-  const instructions = editedRecipe.instructions.toSorted(
-    (a, b) => a.index - b.index
-  );
-
-  function handleAddInstructionSection() {
-    dispatch({ type: "ADD_INSTRUCTION_SECTION" });
-  }
-
-  function handleAddInstructionStep() {
-    dispatch({ type: "ADD_INSTRUCTION_STEP" });
-  }
+  const sortedInstructions = instructions.toSorted((a, b) => a.index - b.index);
 
   function handleReorderInstructions(event) {
     const { active, over } = event;
 
     if (active.id === over.id) return;
 
-    const oldIndex = instructions.findIndex(
+    const oldIndex = sortedInstructions.findIndex(
       (instruction) => instruction.id === active.id
     );
-    const newIndex = instructions.findIndex(
+    const newIndex = sortedInstructions.findIndex(
       (instruction) => instruction.id === over.id
     );
 
-    let newInstructions = arrayMove(instructions, oldIndex, newIndex);
+    let newInstructions = arrayMove(sortedInstructions, oldIndex, newIndex);
 
     newInstructions = newInstructions.map((instruction, i) => ({
       ...instruction,
       index: i,
     }));
 
-    dispatch({ type: "REORDER_INSTRUCTIONS", instructions: newInstructions });
+    updateInstructions(newInstructions);
   }
 
   return (
@@ -65,7 +58,7 @@ function InstructionList() {
             {instructions.map((instruction) => (
               <InstructionItem
                 key={instruction.id}
-                id={instruction.id}
+                sortableId={instruction.id}
                 instruction={instruction}
               />
             ))}
@@ -73,8 +66,8 @@ function InstructionList() {
         </DndContext>
       </Styled.List>
       <Styled.Controls>
-        <Button label="Add Section" onClick={handleAddInstructionSection} />
-        <Button label="Add Step" onClick={handleAddInstructionStep} />
+        <Button label="Add Section" onClick={addInstructionSection} />
+        <Button label="Add Step" onClick={addInstructionStep} />
       </Styled.Controls>
     </div>
   );

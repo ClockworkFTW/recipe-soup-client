@@ -16,11 +16,16 @@ export const Input = styled.input`
   border-radius: 8px;
   border: none;
   background-color: #f5f5f5;
+  transition: outline 0.2s;
   outline: ${({ $hasErrors }) =>
-    `2px solid ${$hasErrors ? "#f87171" : "#ffffff"}`};
+    `2px solid ${$hasErrors ? "#ef4444" : "#ffffff"}`};
   &:focus {
     outline: ${({ $hasErrors }) =>
-      `2px solid ${$hasErrors ? "#f87171" : "#d1d5db"}`};
+      `2px solid ${$hasErrors ? "#ef4444" : "#d1d5db"}`};
+  }
+  &:hover {
+    outline: ${({ $hasErrors }) =>
+      `2px solid ${$hasErrors ? "#ef4444" : "#d1d5db"}`};
   }
 `;
 

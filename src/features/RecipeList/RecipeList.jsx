@@ -1,8 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 
-import { useGetRecipes } from "../../hooks/useGetRecipes";
-
 import Button from "../../components/Button";
+import { useGetRecipes } from "../../hooks/useGetRecipes";
 
 function RecipeList() {
   const navigate = useNavigate();
@@ -16,7 +15,7 @@ function RecipeList() {
   return (
     <div>
       <h2>Recipe List</h2>
-      <Button label="create recipe" onClick={initRecipe} />
+      <Button label="Add Recipe" onClick={initRecipe} />
       <ul>
         {recipes.map((recipe) => (
           <li key={recipe.id}>

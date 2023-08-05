@@ -1,0 +1,56 @@
+import styled from "styled-components";
+
+export const Container = styled.div`
+  position: relative;
+`;
+
+export const Label = styled.label`
+  display: block;
+  margin-bottom: 4px;
+`;
+
+export const Selection = styled.div`
+  display: inline-grid;
+  grid-template-columns: auto auto;
+  column-gap: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #f5f5f5;
+  outline: ${({ $isOpen }) => `2px solid ${$isOpen ? "#d1d5db" : "#ffffff"}`};
+  transition: outline 0.2s;
+  &:hover {
+    cursor: pointer;
+    outline: 2px solid #d1d5db;
+  }
+`;
+
+export const Value = styled.div``;
+
+export const Arrow = styled.div`
+  display: flex;
+  align-items: center;
+  color: #a3a3a3;
+`;
+
+export const Options = styled.ul`
+  z-index: 1;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 400px;
+  overflow-y: scroll;
+  margin: 10px 0 0 0;
+  padding: 0;
+  border-radius: 8px;
+  border: 2px solid #d1d5db;
+  list-style-type: none;
+  background-color: #f5f5f5;
+`;
+
+export const Option = styled.li`
+  padding: 10px;
+  &:hover {
+    cursor: pointer;
+  }
+`;

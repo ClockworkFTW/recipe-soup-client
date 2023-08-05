@@ -14,7 +14,7 @@ function Time({ label, timeArray }) {
 
   return (
     <div>
-      <Styled.Label>{label}</Styled.Label>
+      <Styled.Label>{label} time</Styled.Label>
       <div>
         {h > 0 && `${h} hr${h == 1 ? "" : "s"}${m > 0 ? " " : ""}`}
         {m > 0 && `${m} min${m == 1 ? "" : "s"}`}

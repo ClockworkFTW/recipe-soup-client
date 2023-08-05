@@ -18,10 +18,13 @@ export const Menu = styled.div`
   position: absolute;
   top: 0;
   right: 0;
+  display: inline-grid;
+  grid-template-columns: auto auto auto;
+  column-gap: 10px;
 `;
 
 export const Body = styled.div`
   display: grid;
   grid-template-columns: 40% 60%;
-  column-gap: 20px;
+  column-gap: 30px;
 `;

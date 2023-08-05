@@ -1,33 +1,25 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
-import { RecipeEditorContext } from "../../RecipeEditor.context";
-
+import { useRecipeEditorActions } from "../../../../hooks/useRecipeEditor";
 import Icon from "../../../../components/Icon";
 import TextArea from "../../../../components/TextArea";
 import * as Styled from "./InstructionItem.styles";
 
-function InstructionItem({ id, instruction }) {
-  const { dispatch } = useContext(RecipeEditorContext);
+function InstructionItem({ sortableId, instruction }) {
+  const { updateInstruction, deleteInstruction } = useRecipeEditorActions();
 
   function handleUpdateInstruction(event) {
-    dispatch({
-      type: "UPDATE_INSTRUCTION",
-      id: instruction.id,
-      text: event.target.value,
-    });
+    updateInstruction(instruction.id, event.target.value);
   }
 
   function handleDeleteInstruction() {
-    dispatch({
-      type: "DELETE_INSTRUCTION",
-      id: instruction.id,
-    });
+    deleteInstruction(instruction.id);
   }
 
   const { attributes, listeners, setNodeRef, transform, transition } =
-    useSortable({ id });
+    useSortable({ id: sortableId });
 
   const style = {
     transform: CSS.Translate.toString(transform),

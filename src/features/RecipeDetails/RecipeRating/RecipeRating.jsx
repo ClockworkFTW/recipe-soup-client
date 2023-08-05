@@ -5,9 +5,9 @@ import Icon from "../../../components/Icon";
 const RecipeRating = ({ rating }) => (
   <div>
     {[...Array(5)].map((_, index) => {
-      const color = index + 1 <= rating ? "#f1c40f" : "#bdc3c7";
+      const $isActive = index + 1 <= rating;
       return (
-        <Styled.Icon key={index + 1} color={color}>
+        <Styled.Icon key={index + 1} $isActive={$isActive}>
           <Icon icon="star" />
         </Styled.Icon>
       );

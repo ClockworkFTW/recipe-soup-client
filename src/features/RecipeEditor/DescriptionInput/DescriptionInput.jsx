@@ -1,12 +1,14 @@
-import { useContext } from "react";
-
-import { RecipeEditorContext } from "../RecipeEditor.context";
+import {
+  useDescription,
+  useRecipeEditorActions,
+} from "../../../hooks/useRecipeEditor";
 
 const DescriptionInput = () => {
-  const { editedRecipe, dispatch } = useContext(RecipeEditorContext);
+  const description = useDescription();
+  const { updateDescription } = useRecipeEditorActions();
 
   function handleDescriptionChange(event) {
-    dispatch({ type: "UPDATE_DESCRIPTION", description: event.target.value });
+    updateDescription(event.target.value);
   }
 
   return (
@@ -14,7 +16,7 @@ const DescriptionInput = () => {
       <h3>Description</h3>
       <textarea
         type="text"
-        value={editedRecipe.description || ""}
+        value={description || ""}
         onChange={handleDescriptionChange}
       />
     </div>

@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom";
 
-import { useGetRecipe } from "../../hooks/useGetRecipe";
-import { RecipeEditorProvider } from "./RecipeEditor.context";
+import { useInitializeRecipeEditor } from "../../hooks/useRecipeEditor";
 import FormControls from "./FormControls";
 import NameInput from "./NameInput";
 import DescriptionInput from "./DescriptionInput";
@@ -17,28 +16,29 @@ import * as Styled from "./RecipeEditor.styles";
 function RecipeEditor() {
   const { recipeId } = useParams();
 
-  const { data: recipe } = useGetRecipe(recipeId);
+  const { isLoading, isError, isSuccess } = useInitializeRecipeEditor(recipeId);
 
-  return recipe || recipeId === "new" ? (
-    <RecipeEditorProvider originalRecipe={recipe}>
+  return isSuccess ? (
+    <Styled.Container>
       <Styled.Header>
         <ImagePicker />
-        <div>
-          <FormControls />
-          <NameInput />
-          <DescriptionInput />
-          <ServingsInput />
-          <TimePicker timeType="prep" />
-          <TimePicker timeType="cook" />
-          <RatingPicker />
-          <CuisinePicker />
-        </div>
+        <Styled.Content>
+          <div>
+            <CuisinePicker />
+            <NameInput />
+            <RatingPicker />
+          </div>
+          <TimePicker />
+          <Styled.Menu>
+            <FormControls />
+          </Styled.Menu>
+        </Styled.Content>
       </Styled.Header>
       <Styled.Body>
         <IngredientList />
         <InstructionList />
       </Styled.Body>
-    </RecipeEditorProvider>
+    </Styled.Container>
   ) : null;
 }
 

@@ -8,7 +8,7 @@ export const List = styled.ul`
 
 export const Instruction = styled.li`
   opacity: ${({ opacity }) => opacity};
-  transition: opacity 0.2s cubic-bezier(0.33, 1, 0.68, 1);
+  transition: opacity 0.2s;
 `;
 
 export const Section = styled.div`
@@ -22,7 +22,7 @@ export const Step = styled.div`
   border-radius: 8px;
   padding: ${({ $isFocused }) => ($isFocused ? "10px" : "10px 0px")};
   background-color: ${({ $isFocused }) => $isFocused && "#f5f5f5"};
-  transition: padding 0.2s cubic-bezier(0.33, 1, 0.68, 1);
+  transition: padding 0.2s, background-color 0.2s;
   :hover {
     cursor: pointer;
   }

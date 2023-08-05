@@ -1,14 +1,17 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
+
 import Fuse from "fuse.js";
 
+import {
+  useCuisine,
+  useRecipeEditorActions,
+} from "../../../hooks/useRecipeEditor";
 import { countries } from "../../../config";
-
-import { RecipeEditorContext } from "../RecipeEditor.context";
-
 import Country from "../../../components/Country/Country";
 
 function CuisinePicker() {
-  const { editedRecipe, dispatch } = useContext(RecipeEditorContext);
+  const cuisine = useCuisine();
+  const { updateCuisine } = useRecipeEditorActions();
 
   const [searchPattern, setSearchPattern] = useState("");
 
@@ -18,26 +21,22 @@ function CuisinePicker() {
   });
 
   const results = fuse.search(searchPattern);
-
   results.length = 5;
 
   function renderSelectedCuisine() {
-    if (editedRecipe.cuisine) {
-      const country = countries.find(
-        (country) => country.cuisine === editedRecipe.cuisine
-      );
+    if (cuisine) {
+      const country = countries.find((country) => country.cuisine === cuisine);
       return <Country code={country.code} label={country.cuisine} />;
     }
   }
 
   function handleUpdateCuisine(cuisine) {
     setSearchPattern("");
-    dispatch({ type: "UPDATE_CUISINE", cuisine });
+    updateCuisine(cuisine);
   }
 
   return (
     <div>
-      <h3>Cuisine</h3>
       {renderSelectedCuisine()}
       <input
         type="text"
