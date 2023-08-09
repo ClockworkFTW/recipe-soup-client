@@ -7,6 +7,7 @@ import Button from "../../../components/Button";
 import Input from "../../../components/Input";
 import { useAuth } from "../../../hooks/useAuth";
 import { useRegisterUser } from "../../../hooks/useRegisterUser";
+import * as Styled from "./Register.styles";
 
 const schema = yup.object({
   username: yup.string().required("Required"),
@@ -30,7 +31,7 @@ const Register = () => {
   return auth ? (
     <Navigate to="/recipes" />
   ) : (
-    <div>
+    <Styled.Container>
       <h2>Register</h2>
       <form onSubmit={handleSubmit(registerUser)}>
         {error && <p>{error.message}</p>}
@@ -38,6 +39,8 @@ const Register = () => {
           name="username"
           type="text"
           label="Username"
+          placeholder="Username"
+          icon="hat-chef"
           register={register}
           errors={errors}
         />
@@ -45,6 +48,8 @@ const Register = () => {
           name="email"
           type="text"
           label="Email"
+          placeholder="Email"
+          icon="envelope"
           register={register}
           errors={errors}
         />
@@ -52,6 +57,8 @@ const Register = () => {
           name="passwordA"
           type="password"
           label="Password"
+          placeholder="Password"
+          icon="lock"
           register={register}
           errors={errors}
         />
@@ -59,6 +66,8 @@ const Register = () => {
           name="passwordB"
           type="password"
           label="Confirm Password"
+          placeholder="Password"
+          icon="lock"
           register={register}
           errors={errors}
         />
@@ -67,7 +76,7 @@ const Register = () => {
           Already have an account? Login <Link to="/login">here</Link>
         </p>
       </form>
-    </div>
+    </Styled.Container>
   );
 };
 

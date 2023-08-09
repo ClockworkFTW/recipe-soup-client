@@ -1,16 +1,13 @@
 import { useState } from "react";
+import { useFormContext, useWatch } from "react-hook-form";
 
-import {
-  useRating,
-  useRecipeEditorActions,
-} from "../../../hooks/useRecipeEditor";
 import Icon from "../../../components/Icon";
 import * as Styled from "./RatingPicker.styles";
 
 const RatingPicker = () => {
-  const rating = useRating();
+  const { setValue } = useFormContext();
 
-  const { updateRating } = useRecipeEditorActions();
+  const rating = useWatch({ name: "rating" });
 
   const [hover, setHover] = useState(rating);
 
@@ -23,7 +20,7 @@ const RatingPicker = () => {
             type="button"
             key={index + 1}
             $isActive={$isActive}
-            onClick={() => updateRating(index + 1)}
+            onClick={() => setValue("rating", index + 1)}
             onMouseEnter={() => setHover(index + 1)}
             onMouseLeave={() => setHover(rating)}
           >

@@ -1,17 +1,13 @@
 import { useNavigate, useParams } from "react-router-dom";
 
 import { useGetRecipe } from "../../hooks/useGetRecipe";
-
 import Button from "../../components/Button";
-import Time from "../../components/Time";
-
 import RecipeImage from "./RecipeImage";
 import RecipeCuisine from "./RecipeCuisine";
 import RecipeRating from "./RecipeRating";
 import RecipeTimes from "./RecipeTimes";
 import IngredientList from "./IngredientList";
 import InstructionList from "./InstructionList";
-
 import * as Styled from "./RecipeDetails.style";
 
 function RecipeDetails() {
@@ -46,7 +42,6 @@ function RecipeDetails() {
             times={[
               { label: "prep", value: recipe.prepTime },
               { label: "cook", value: recipe.cookTime },
-              { label: "assembly", value: recipe.assemblyTime },
             ]}
           />
           <Styled.Menu>

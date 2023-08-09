@@ -1,14 +1,13 @@
-import {
-  useImage,
-  useRecipeEditorActions,
-} from "../../../hooks/useRecipeEditor";
+import { useFormContext } from "react-hook-form";
 
 import Icon from "../../../components/Icon";
 import * as Styled from "./ImagePicker.style";
 
 const ImagePicker = () => {
-  const image = useImage();
-  const { updateImage } = useRecipeEditorActions();
+  const { formState, getValues, setValue } = useFormContext();
+
+  const image = getValues("image");
+  const error = formState.errors["image"];
 
   const url = image
     ? typeof image === "string"
@@ -17,7 +16,7 @@ const ImagePicker = () => {
     : null;
 
   function handleImageChange(event) {
-    updateImage(event.target.files[0]);
+    setValue("image", event.target.files[0]);
   }
 
   return (

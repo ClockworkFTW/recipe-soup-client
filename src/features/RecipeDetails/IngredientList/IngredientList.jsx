@@ -13,7 +13,6 @@ const IngredientList = ({ ingredients }) => {
     } else {
       setCompletedIngredients((completedIds) => [...completedIds, id]);
     }
-    console.log(completedIngredients.includes(id));
   }
 
   return (

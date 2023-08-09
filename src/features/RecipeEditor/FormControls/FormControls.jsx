@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
+import { useFormContext } from "react-hook-form";
 
-import { useRecipeEditorState } from "../../../hooks/useRecipeEditor";
 import { useCreateRecipe } from "../../../hooks/useCreateRecipe";
 import { useUpdateRecipe } from "../../../hooks/useUpdateRecipe";
 import { useDeleteRecipe } from "../../../hooks/useDeleteRecipe";
@@ -10,45 +10,64 @@ function FormControls() {
   const navigate = useNavigate();
   const { recipeId } = useParams();
 
-  const { originalRecipe, editedRecipe } = useRecipeEditorState();
+  const isNewRecipe = recipeId === "new";
 
   const { mutate: updateRecipe } = useUpdateRecipe();
   const { mutate: createRecipe } = useCreateRecipe();
   const { mutate: deleteRecipe } = useDeleteRecipe();
 
+  const { getValues, handleSubmit } = useFormContext();
+
   function handleSaveEdits() {
-    const { image, ...data } = editedRecipe;
+    handleSubmit(({ image, ...data }) => {
+      const recipe = new FormData();
 
-    const recipe = new FormData();
+      if (typeof image !== "string") {
+        recipe.append("image", image);
+      }
 
-    if (typeof image !== "string") {
-      recipe.append("image", image);
-    }
+      const ingredients = data.ingredients.map((ingredient, index) => ({
+        ...ingredient,
+        index,
+      }));
 
-    recipe.append("data", JSON.stringify(data));
+      const instructions = data.instructions.map((instruction, index) => ({
+        ...instruction,
+        index,
+      }));
 
-    if (recipeId === "new") {
-      createRecipe(recipe);
-    } else {
-      updateRecipe({ recipeId, recipe });
-    }
+      recipe.append(
+        "data",
+        JSON.stringify({ ...data, ingredients, instructions })
+      );
+
+      if (isNewRecipe) {
+        createRecipe(recipe);
+      } else {
+        updateRecipe({ recipeId, recipe });
+      }
+    })();
   }
 
   function handleDeleteRecipe() {
-    alert("are you sure you want to delete this recipe?");
-
-    deleteRecipe(recipeId);
+    if (confirm("Are you sure you want to delete this recipe?")) {
+      deleteRecipe(recipeId);
+    }
   }
 
   function handleDiscardEdits() {
+    const { originalRecipe, ...editedRecipe } = getValues();
+
     if (originalRecipe !== JSON.stringify(editedRecipe)) {
-      alert("are you sure you want to discard your edits?");
+      if (!confirm("Are you sure you want to discard your edits?")) {
+        return;
+      }
     }
 
-    if (recipeId) {
-      navigate(`/recipes/${recipeId}`);
-    } else {
+    if (isNewRecipe) {
       navigate("/recipes");
+    } else {
+      navigate(`/recipes/${recipeId}`);
     }
   }
 
@@ -56,7 +75,7 @@ function FormControls() {
     <>
       <Button label="Discard" onClick={handleDiscardEdits} />
       <Button label="Save" onClick={handleSaveEdits} />
-      <Button label="Delete" onClick={handleDeleteRecipe} />
+      {!isNewRecipe && <Button label="Delete" onClick={handleDeleteRecipe} />}
     </>
   );
 }

@@ -1,46 +1,43 @@
-import {
-  arrayMove,
-  SortableContext,
-  verticalListSortingStrategy,
-} from "@dnd-kit/sortable";
-import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
+import { useFieldArray } from "react-hook-form";
 import { DndContext } from "@dnd-kit/core";
+import { SortableContext } from "@dnd-kit/sortable";
+import { verticalListSortingStrategy } from "@dnd-kit/sortable";
+import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
 
-import {
-  useInstructions,
-  useRecipeEditorActions,
-} from "../../../hooks/useRecipeEditor";
-import Button from "../../../components/Button/Button";
+import Button from "../../../components/Button";
 import InstructionItem from "./InstructionItem";
 import * as Styled from "./InstructionList.styles";
 
 function InstructionList() {
-  const instructions = useInstructions();
-  const { addInstructionSection, addInstructionStep, updateInstructions } =
-    useRecipeEditorActions();
+  const { fields, append, move, remove } = useFieldArray({
+    name: "instructions",
+  });
 
-  const sortedInstructions = instructions.toSorted((a, b) => a.index - b.index);
+  function handleAddInstructionSection() {
+    append({ text: "", type: "section" });
+  }
+
+  function handleAddInstructionStep() {
+    append({ text: "", type: "step" });
+  }
 
   function handleReorderInstructions(event) {
     const { active, over } = event;
 
     if (active.id === over.id) return;
 
-    const oldIndex = sortedInstructions.findIndex(
+    const oldIndex = fields.findIndex(
       (instruction) => instruction.id === active.id
     );
-    const newIndex = sortedInstructions.findIndex(
+    const newIndex = fields.findIndex(
       (instruction) => instruction.id === over.id
     );
 
-    let newInstructions = arrayMove(sortedInstructions, oldIndex, newIndex);
+    move(oldIndex, newIndex);
+  }
 
-    newInstructions = newInstructions.map((instruction, i) => ({
-      ...instruction,
-      index: i,
-    }));
-
-    updateInstructions(newInstructions);
+  function handleRemoveInstruction(index) {
+    remove(index);
   }
 
   return (
@@ -52,22 +49,23 @@ function InstructionList() {
           modifiers={[restrictToVerticalAxis]}
         >
           <SortableContext
-            items={instructions}
+            items={fields}
             strategy={verticalListSortingStrategy}
           >
-            {instructions.map((instruction) => (
+            {fields.map((item, index) => (
               <InstructionItem
-                key={instruction.id}
-                sortableId={instruction.id}
-                instruction={instruction}
+                key={item.id}
+                index={index}
+                instruction={item}
+                handleRemoveInstruction={handleRemoveInstruction}
               />
             ))}
           </SortableContext>
         </DndContext>
       </Styled.List>
       <Styled.Controls>
-        <Button label="Add Section" onClick={addInstructionSection} />
-        <Button label="Add Step" onClick={addInstructionStep} />
+        <Button label="Add Section" onClick={handleAddInstructionSection} />
+        <Button label="Add Step" onClick={handleAddInstructionStep} />
       </Styled.Controls>
     </div>
   );

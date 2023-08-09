@@ -17,10 +17,15 @@ import {
   faAngleUp,
   faCameraRetro,
   faCheck,
+  faEarthAmericas,
+  faEnvelope,
   faGripVertical,
+  faHatChef,
+  faLock,
   faPen,
   faStar,
   faTrashCan,
+  faXmark,
 } from "@fortawesome/pro-solid-svg-icons";
 
 library.add(
@@ -28,10 +33,15 @@ library.add(
   faAngleUp,
   faCameraRetro,
   faCheck,
+  faEarthAmericas,
+  faEnvelope,
   faGripVertical,
+  faHatChef,
+  faLock,
   faPen,
   faStar,
-  faTrashCan
+  faTrashCan,
+  faXmark
 );
 
 function App() {

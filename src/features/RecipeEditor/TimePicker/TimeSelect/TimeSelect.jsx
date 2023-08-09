@@ -12,13 +12,13 @@ function TimeSelect({ timeType, timeValue, updateTime }) {
   function handleUpdateHours(value) {
     const diff = value - hours;
     duration.add(diff, "h");
-    updateTime(duration.toISOString());
+    updateTime(timeType, duration.toISOString());
   }
 
   function handleUpdateMinutes(value) {
     const diff = value - minutes;
     duration.add(diff, "m");
-    updateTime(duration.toISOString());
+    updateTime(timeType, duration.toISOString());
   }
 
   const hourOptions = [...Array(24).keys()];

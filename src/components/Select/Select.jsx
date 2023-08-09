@@ -16,7 +16,7 @@ function Select({ label, options, value, unit, onChange }) {
   }
 
   return (
-    <Styled.Container>
+    <Styled.Container $isOpen={isOpen}>
       {label && <Styled.Label>{label}</Styled.Label>}
       <Styled.Selection $isOpen={isOpen} onClick={toggleIsOpen}>
         <Styled.Value>{unit ? `${value} ${unit}` : value}</Styled.Value>

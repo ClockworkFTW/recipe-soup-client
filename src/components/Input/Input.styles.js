@@ -5,27 +5,45 @@ export const Container = styled.div`
   padding-bottom: 20px;
 `;
 
+export const Content = styled.div`
+  display: grid;
+  grid-template-columns: ${({ $hasIcon }) => ($hasIcon ? "auto 1fr" : "1fr")};
+  border-radius: 0.6em;
+  background-color: #f5f5f5;
+  transition: border 0.2s;
+  border: ${({ $isFocused, $hasError }) =>
+    `2px solid ${$hasError ? "#ef4444" : $isFocused ? "#d1d5db" : "#ffffff"}`};
+  &:hover {
+    border: ${({ $hasError }) =>
+      `2px solid ${$hasError ? "#ef4444" : "#d1d5db"}`};
+  }
+`;
+
 export const Label = styled.label`
   display: block;
   margin-bottom: 4px;
 `;
 
-export const Input = styled.input`
-  display: block;
-  padding: 10px;
-  border-radius: 8px;
-  border: none;
-  background-color: #f5f5f5;
-  transition: outline 0.2s;
-  outline: ${({ $hasErrors }) =>
-    `2px solid ${$hasErrors ? "#ef4444" : "#ffffff"}`};
-  &:focus {
-    outline: ${({ $hasErrors }) =>
-      `2px solid ${$hasErrors ? "#ef4444" : "#d1d5db"}`};
-  }
+export const Icon = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 0.5em 0 0.5em 0.5em;
+  font-size: 1.1rem;
+  color: #d4d4d4;
   &:hover {
-    outline: ${({ $hasErrors }) =>
-      `2px solid ${$hasErrors ? "#ef4444" : "#d1d5db"}`};
+    cursor: text;
+  }
+`;
+
+export const Input = styled.input`
+  width: 100%;
+  padding: 0.5em;
+  border: none;
+  outline: none;
+  background: none;
+  font-weight: inherit;
+  &::placeholder {
+    color: #d4d4d4;
   }
 `;
 
@@ -33,6 +51,7 @@ export const Error = styled.span`
   position: absolute;
   bottom: 0;
   left: 0;
-  font-size: 12px;
+  font-size: 0.8rem;
+  font-weight: normal;
   color: #ef4444;
 `;

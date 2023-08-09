@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   position: relative;
-  width: 200px;
-  height: 200px;
+  width: 240px;
+  height: 240px;
 `;
 
 export const Image = styled.img`
@@ -29,8 +29,8 @@ export const Button = styled.label`
   position: absolute;
   bottom: -4px;
   right: -4px;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   display: flex;
   justify-content: center;
   align-items: center;

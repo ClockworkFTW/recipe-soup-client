@@ -1,45 +1,39 @@
-import {
-  arrayMove,
-  SortableContext,
-  verticalListSortingStrategy,
-} from "@dnd-kit/sortable";
-import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
+import { useFieldArray } from "react-hook-form";
 import { DndContext } from "@dnd-kit/core";
+import { SortableContext } from "@dnd-kit/sortable";
+import { verticalListSortingStrategy } from "@dnd-kit/sortable";
+import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
 
-import {
-  useIngredients,
-  useRecipeEditorActions,
-} from "../../../hooks/useRecipeEditor";
-import Button from "../../../components/Button/Button";
+import Button from "../../../components/Button";
 import IngredientItem from "./IngredientItem";
 import * as Styled from "./IngredientList.styles";
 
 function IngredientList() {
-  const ingredients = useIngredients();
-  const { addIngredient, updateIngredients } = useRecipeEditorActions();
+  const { fields, append, move, remove } = useFieldArray({
+    name: "ingredients",
+  });
 
-  const sortedIngredients = ingredients.toSorted((a, b) => a.index - b.index);
+  function handleAddIngredient() {
+    append({ text: "", index: 0 });
+  }
 
   function handleReorderIngredients(event) {
     const { active, over } = event;
 
     if (active.id === over.id) return;
 
-    const oldIndex = sortedIngredients.findIndex(
+    const oldIndex = fields.findIndex(
       (ingredient) => ingredient.id === active.id
     );
-    const newIndex = sortedIngredients.findIndex(
+    const newIndex = fields.findIndex(
       (ingredient) => ingredient.id === over.id
     );
 
-    let newIngredients = arrayMove(sortedIngredients, oldIndex, newIndex);
+    move(oldIndex, newIndex);
+  }
 
-    newIngredients = newIngredients.map((ingredient, i) => ({
-      ...ingredient,
-      index: i,
-    }));
-
-    updateIngredients(newIngredients);
+  function handleRemoveIngredient(index) {
+    remove(index);
   }
 
   return (
@@ -51,21 +45,22 @@ function IngredientList() {
           modifiers={[restrictToVerticalAxis]}
         >
           <SortableContext
-            items={ingredients}
+            items={fields}
             strategy={verticalListSortingStrategy}
           >
-            {ingredients.map((ingredient) => (
+            {fields.map((item, index) => (
               <IngredientItem
-                key={ingredient.id}
-                sortableId={ingredient.id}
-                ingredient={ingredient}
+                key={item.id}
+                index={index}
+                ingredient={item}
+                handleRemoveIngredient={handleRemoveIngredient}
               />
             ))}
           </SortableContext>
         </DndContext>
       </Styled.List>
       <Styled.Controls>
-        <Button label="Add Ingredient" onClick={addIngredient} />
+        <Button label="Add Ingredient" onClick={handleAddIngredient} />
       </Styled.Controls>
     </div>
   );

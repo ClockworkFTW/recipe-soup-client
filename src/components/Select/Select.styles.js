@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  position: relative;
+  position: ${({ $isOpen }) => ($isOpen ? "relative" : "static")};
 `;
 
 export const Label = styled.label`
@@ -24,7 +24,9 @@ export const Selection = styled.div`
   }
 `;
 
-export const Value = styled.div``;
+export const Value = styled.div`
+  white-space: nowrap;
+`;
 
 export const Arrow = styled.div`
   display: flex;
@@ -35,12 +37,12 @@ export const Arrow = styled.div`
 export const Options = styled.ul`
   z-index: 1;
   position: absolute;
-  top: 100%;
+  top: calc(100% + 10px);
   left: 0;
   right: 0;
   max-height: 400px;
   overflow-y: scroll;
-  margin: 10px 0 0 0;
+  margin: 0;
   padding: 0;
   border-radius: 8px;
   border: 2px solid #d1d5db;
@@ -49,7 +51,7 @@ export const Options = styled.ul`
 `;
 
 export const Option = styled.li`
-  padding: 10px;
+  padding: 0.5em;
   &:hover {
     cursor: pointer;
   }

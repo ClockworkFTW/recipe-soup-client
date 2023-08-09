@@ -7,6 +7,7 @@ import Button from "../../../components/Button";
 import Input from "../../../components/Input";
 import { useAuth } from "../../../hooks/useAuth";
 import { useLoginUser } from "../../../hooks/useLoginUser";
+import * as Styled from "./Login.styles";
 
 const schema = yup.object({
   email: yup.string().required("Required").email("Not a valid email"),
@@ -28,7 +29,7 @@ const Login = () => {
   return auth ? (
     <Navigate to="/recipes" />
   ) : (
-    <div>
+    <Styled.Container>
       <h2>Login</h2>
       <form onSubmit={handleSubmit(loginUser)}>
         {error && <p>{error.message}</p>}
@@ -36,6 +37,8 @@ const Login = () => {
           name="email"
           type="text"
           label="Email"
+          placeholder="Email"
+          icon="envelope"
           register={register}
           errors={errors}
         />
@@ -43,6 +46,8 @@ const Login = () => {
           name="password"
           type="password"
           label="Password"
+          placeholder="Password"
+          icon="lock"
           register={register}
           errors={errors}
         />
@@ -51,7 +56,7 @@ const Login = () => {
           Don't have an account yet? Register <Link to="/register">here</Link>
         </p>
       </form>
-    </div>
+    </Styled.Container>
   );
 };
 

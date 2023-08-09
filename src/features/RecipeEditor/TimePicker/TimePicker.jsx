@@ -1,38 +1,30 @@
-import {
-  usePrepTime,
-  useCookTime,
-  useAssemblyTime,
-  useRecipeEditorActions,
-} from "../../../hooks/useRecipeEditor";
+import { useFormContext, useWatch } from "react-hook-form";
+
 import TimeSelect from "./TimeSelect";
 import * as Styled from "./TimePicker.styles";
 
 function TimePicker() {
-  const prepTime = usePrepTime();
-  const cookTime = useCookTime();
-  const assemblyTime = useAssemblyTime();
+  const { setValue } = useFormContext();
 
-  const { updatePrepTime, updateCookTime, updateAssemblyTime } =
-    useRecipeEditorActions();
+  const prepTime = useWatch({ name: "prepTime" });
+  const cookTime = useWatch({ name: "cookTime" });
+
+  function updateTime(timeType, value) {
+    setValue(`${timeType}Time`, value);
+  }
 
   return (
     <Styled.Container>
       <TimeSelect
         timeType="prep"
         timeValue={prepTime}
-        updateTime={updatePrepTime}
+        updateTime={updateTime}
       />
       <Styled.Spacer />
       <TimeSelect
         timeType="cook"
         timeValue={cookTime}
-        updateTime={updateCookTime}
-      />
-      <Styled.Spacer />
-      <TimeSelect
-        timeType="assembly"
-        timeValue={assemblyTime}
-        updateTime={updateAssemblyTime}
+        updateTime={updateTime}
       />
     </Styled.Container>
   );
