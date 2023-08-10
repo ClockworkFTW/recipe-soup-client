@@ -36,7 +36,7 @@ export const Placeholder = styled.span`
   top: 2px;
   left: 2px;
   padding: 0.5em;
-  font-weight: inherit;
+  font-weight: normal;
   color: #d4d4d4;
 `;
 

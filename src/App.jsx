@@ -15,6 +15,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faAngleDown,
   faAngleUp,
+  faBook,
   faCameraRetro,
   faCheck,
   faSquareSmall,
@@ -32,6 +33,7 @@ import {
 library.add(
   faAngleDown,
   faAngleUp,
+  faBook,
   faCameraRetro,
   faCheck,
   faSquareSmall,

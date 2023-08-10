@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import { useOutsideClick } from "../../hooks/useOutsideClick";
 import Icon from "../Icon";
 import * as Styled from "./Select.styles";
 
@@ -15,8 +16,14 @@ function Select({ label, options, value, unit, onChange }) {
     toggleIsOpen();
   }
 
+  function handleOutsideClick() {
+    setIsOpen(false);
+  }
+
+  const ref = useOutsideClick(handleOutsideClick);
+
   return (
-    <Styled.Container $isOpen={isOpen}>
+    <Styled.Container ref={ref} $isOpen={isOpen}>
       {label && <Styled.Label>{label}</Styled.Label>}
       <Styled.Selection $isOpen={isOpen} onClick={toggleIsOpen}>
         <Styled.Value>{unit ? `${value} ${unit}` : value}</Styled.Value>

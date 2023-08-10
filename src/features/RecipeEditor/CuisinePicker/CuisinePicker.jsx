@@ -3,6 +3,7 @@ import { useFormContext } from "react-hook-form";
 import Fuse from "fuse.js";
 
 import { countries } from "../../../config";
+import { useOutsideClick } from "../../../hooks/useOutsideClick";
 import Country from "../../../components/Country";
 import Input from "../../../components/Input";
 import Icon from "../../../components/Icon";
@@ -12,7 +13,6 @@ function CuisinePicker() {
   const { getValues, setValue, formState } = useFormContext();
 
   const cuisine = getValues("cuisine");
-  const error = formState.errors["cuisine"];
 
   const country = cuisine && countries.find((c) => c.cuisine === cuisine);
 
@@ -31,6 +31,10 @@ function CuisinePicker() {
     setIsSearching(true);
   }
 
+  function handleChangeSearch(event) {
+    setSearchPattern(event.target.value);
+  }
+
   function handleCloseSearch() {
     setSearchPattern("");
     setIsSearching(false);
@@ -41,28 +45,27 @@ function CuisinePicker() {
     handleCloseSearch();
   }
 
+  const ref = useOutsideClick(handleCloseSearch);
+
   return (
-    <Styled.Container $isSearching={isSearching || !cuisine}>
+    <Styled.Container ref={ref} $isSearching={isSearching || !cuisine}>
       {cuisine && !isSearching ? (
         <Styled.Selection onClick={handleOpenSearch}>
           <Country code={country.code} label={country.cuisine} />
         </Styled.Selection>
       ) : (
-        <Styled.Search $hasError={error}>
-          <Styled.Icon>
-            <Icon icon="earth-americas" />
-          </Styled.Icon>
-          <Styled.Input
+        <Styled.Search>
+          <Input
             autoFocus
+            isControlled
+            icon="earth-americas"
             type="text"
+            name="cuisine"
             placeholder="Cuisine"
             value={searchPattern}
-            onChange={(event) => setSearchPattern(event.target.value)}
+            onChange={handleChangeSearch}
+            errors={formState.errors}
           />
-          <Styled.Button onClick={handleCloseSearch}>
-            <Icon icon="xmark" />
-          </Styled.Button>
-          {error && <Styled.Error>{error.message}</Styled.Error>}
         </Styled.Search>
       )}
       {(isSearching || !cuisine) && results.some(() => true) && (

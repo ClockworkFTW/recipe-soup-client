@@ -11,6 +11,7 @@ const NameInput = () => {
       <Input
         name="name"
         type="text"
+        icon="book"
         placeholder="Recipe Name"
         register={register}
         errors={formState.errors}

@@ -5,38 +5,78 @@ import * as Styled from "./Input.styles";
 
 const Input = (props) => {
   const {
-    name,
-    label,
+    autoFocus,
+    errors,
     icon,
+    isControlled,
+    label,
+    name,
+    onChange,
     placeholder,
     register,
-    errors,
     type,
-    autoFocus = false,
+    value,
   } = props;
 
   const inputRef = useRef(null);
   const [isFocused, setIsFocused] = useState(autoFocus);
-
-  const { onChange, onBlur, ref } = register(name);
   const error = errors[name];
-
-  function handleRef(event) {
-    ref(event);
-    inputRef.current = event;
-  }
 
   function handleFocus() {
     setIsFocused(true);
   }
 
-  function handleBlur(event) {
-    onBlur(event);
-    setIsFocused(false);
-  }
-
   function handleIconClick() {
     inputRef.current.focus();
+  }
+
+  function renderControlledInput() {
+    function handleBlur() {
+      setIsFocused(false);
+    }
+
+    return (
+      <Styled.Input
+        ref={inputRef}
+        id={name}
+        name={name}
+        type={type}
+        value={value}
+        placeholder={placeholder}
+        onChange={onChange}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        autoFocus={autoFocus}
+      />
+    );
+  }
+
+  function renderUncontrolledInput() {
+    const field = register(name);
+
+    function handleRef(event) {
+      field.ref(event);
+      inputRef.current = event;
+    }
+
+    function handleBlur(event) {
+      field.onBlur(event);
+      setIsFocused(false);
+    }
+
+    return (
+      <Styled.Input
+        ref={handleRef}
+        id={name}
+        name={name}
+        type={type}
+        placeholder={placeholder}
+        onChange={field.onChange}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        autoFocus={autoFocus}
+      />
+    );
   }
 
   return (
@@ -48,17 +88,7 @@ const Input = (props) => {
             <Icon icon={icon} />
           </Styled.Icon>
         )}
-        <Styled.Input
-          ref={handleRef}
-          id={name}
-          name={name}
-          type={type}
-          placeholder={placeholder}
-          onChange={onChange}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          autoFocus={autoFocus}
-        />
+        {isControlled ? renderControlledInput() : renderUncontrolledInput()}
       </Styled.Content>
       {error && <Styled.Error>{error.message}</Styled.Error>}
     </Styled.Container>
