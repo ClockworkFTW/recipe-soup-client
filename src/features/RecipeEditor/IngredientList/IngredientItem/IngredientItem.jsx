@@ -6,7 +6,7 @@ import Icon from "../../../../components/Icon";
 import TextArea from "../../../../components/TextArea";
 import * as Styled from "./IngredientItem.styles";
 
-function IngredientItem({ index, ingredient, handleRemoveIngredient }) {
+function IngredientItem({ ingredient }) {
   const sortable = useSortable({ id: ingredient.id });
 
   const style = {
@@ -14,18 +14,18 @@ function IngredientItem({ index, ingredient, handleRemoveIngredient }) {
     transition: sortable.transition,
   };
 
-  const [isMouseOverNumber, setIsMouseOverNumber] = useState(false);
+  const [isMouseOverIcon, setIsMouseOverIcon] = useState(false);
 
   return (
     <Styled.Item ref={sortable.setNodeRef} style={style}>
       <Styled.Number
-        onMouseEnter={() => setIsMouseOverNumber(true)}
-        onMouseLeave={() => setIsMouseOverNumber(false)}
-        onClick={() => handleRemoveIngredient(index)}
+        onMouseEnter={() => setIsMouseOverIcon(true)}
+        onMouseLeave={() => setIsMouseOverIcon(false)}
+        onClick={ingredient.remove}
       >
-        {isMouseOverNumber ? <Icon icon="trash-can" /> : index + 1}
+        {isMouseOverIcon ? <Icon icon="trash-can" /> : ingredient.index + 1}
       </Styled.Number>
-      <TextArea name={`ingredients.${index}.text`} placeholder="Ingredient" />
+      <TextArea name={ingredient.fieldName} placeholder="Ingredient" />
       <Styled.Grip {...sortable.attributes} {...sortable.listeners}>
         <Icon icon="grip-vertical" />
       </Styled.Grip>

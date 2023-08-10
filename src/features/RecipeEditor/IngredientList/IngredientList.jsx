@@ -32,8 +32,16 @@ function IngredientList() {
     move(oldIndex, newIndex);
   }
 
-  function handleRemoveIngredient(index) {
-    remove(index);
+  function renderIngredientList({ id, text }, index) {
+    const ingredient = {
+      id,
+      text,
+      index,
+      fieldName: `ingredients.${index}.text`,
+      remove: () => remove(index),
+    };
+
+    return <IngredientItem key={id} ingredient={ingredient} />;
   }
 
   return (
@@ -48,14 +56,7 @@ function IngredientList() {
             items={fields}
             strategy={verticalListSortingStrategy}
           >
-            {fields.map((item, index) => (
-              <IngredientItem
-                key={item.id}
-                index={index}
-                ingredient={item}
-                handleRemoveIngredient={handleRemoveIngredient}
-              />
-            ))}
+            {fields.map(renderIngredientList)}
           </SortableContext>
         </DndContext>
       </Styled.List>

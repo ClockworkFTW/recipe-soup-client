@@ -11,7 +11,7 @@ export const Content = styled.div`
   font-weight: ${({ fontWeight }) => fontWeight};
 `;
 
-export const Number = styled.span`
+export const Icon = styled.span`
   padding: 4px 0;
   font-weight: bold;
   text-align: center;

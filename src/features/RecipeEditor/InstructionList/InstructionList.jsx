@@ -36,8 +36,23 @@ function InstructionList() {
     move(oldIndex, newIndex);
   }
 
-  function handleRemoveInstruction(index) {
-    remove(index);
+  function renderInstructionList({ id, type, text }, index) {
+    if (type === "section") {
+      this.stepNumber = 0;
+    } else {
+      this.stepNumber += 1;
+    }
+
+    const instruction = {
+      id,
+      type,
+      text,
+      fieldName: `instructions.${index}.text`,
+      stepNumber: this.stepNumber,
+      remove: () => remove(index),
+    };
+
+    return <InstructionItem key={id} instruction={instruction} />;
   }
 
   return (
@@ -52,14 +67,7 @@ function InstructionList() {
             items={fields}
             strategy={verticalListSortingStrategy}
           >
-            {fields.map((item, index) => (
-              <InstructionItem
-                key={item.id}
-                index={index}
-                instruction={item}
-                handleRemoveInstruction={handleRemoveInstruction}
-              />
-            ))}
+            {fields.map(renderInstructionList, { stepNumber: 0 })}
           </SortableContext>
         </DndContext>
       </Styled.List>

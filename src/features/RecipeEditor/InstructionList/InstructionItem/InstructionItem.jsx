@@ -6,7 +6,7 @@ import Icon from "../../../../components/Icon";
 import TextArea from "../../../../components/TextArea";
 import * as Styled from "./InstructionItem.styles";
 
-function InstructionItem({ instruction, handleRemoveInstruction, index }) {
+function InstructionItem({ instruction }) {
   const sortable = useSortable({ id: instruction.id });
 
   const style = {
@@ -14,27 +14,36 @@ function InstructionItem({ instruction, handleRemoveInstruction, index }) {
     transition: sortable.transition,
   };
 
-  const [isMouseOverNumber, setIsMouseOverNumber] = useState(false);
+  const [isMouseOverIcon, setIsMouseOverIcon] = useState(false);
+
+  function renderIcon() {
+    if (isMouseOverIcon) {
+      return <Icon icon="trash-can" />;
+    } else {
+      if (instruction.type === "section") {
+        return <Icon icon="square-small" />;
+      } else {
+        return instruction.stepNumber;
+      }
+    }
+  }
 
   const placeholder =
     instruction.type.charAt(0).toUpperCase() + instruction.type.slice(1);
 
   return (
     <Styled.Item ref={sortable.setNodeRef} style={style}>
-      <Styled.Number
-        onMouseEnter={() => setIsMouseOverNumber(true)}
-        onMouseLeave={() => setIsMouseOverNumber(false)}
-        onClick={() => handleRemoveInstruction(index)}
+      <Styled.Icon
+        onMouseEnter={() => setIsMouseOverIcon(true)}
+        onMouseLeave={() => setIsMouseOverIcon(false)}
+        onClick={instruction.remove}
       >
-        {isMouseOverNumber ? <Icon icon="trash-can" /> : index + 1}
-      </Styled.Number>
+        {renderIcon()}
+      </Styled.Icon>
       <Styled.Content
         fontWeight={instruction.type === "section" ? "bold" : "normal"}
       >
-        <TextArea
-          name={`instructions.${index}.text`}
-          placeholder={placeholder}
-        />
+        <TextArea name={instruction.fieldName} placeholder={placeholder} />
       </Styled.Content>
       <Styled.Grip {...sortable.attributes} {...sortable.listeners}>
         <Icon icon="grip-vertical" />
