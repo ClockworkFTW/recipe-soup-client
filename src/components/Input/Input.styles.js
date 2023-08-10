@@ -12,10 +12,12 @@ export const Content = styled.div`
   background-color: #f5f5f5;
   transition: border 0.2s;
   border: ${({ $isFocused, $hasError }) =>
-    `2px solid ${$hasError ? "#ef4444" : $isFocused ? "#d1d5db" : "#ffffff"}`};
+    `2px solid ${$hasError ? "#ef4444" : $isFocused ? "#22c55e" : "#ffffff"}`};
   &:hover {
-    border: ${({ $hasError }) =>
-      `2px solid ${$hasError ? "#ef4444" : "#d1d5db"}`};
+    border: ${({ $isFocused, $hasError }) =>
+      `2px solid ${
+        $hasError ? "#ef4444" : $isFocused ? "#22c55e" : "#d1d5db"
+      }`};
   }
 `;
 

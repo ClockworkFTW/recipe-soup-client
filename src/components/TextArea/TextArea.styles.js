@@ -20,13 +20,14 @@ export const Content = styled.div`
     transition: border 0.2s;
     border: ${({ $hasError }) =>
       `2px solid ${$hasError ? "#ef4444" : "#ffffff"}`};
-    &:focus {
-      border: ${({ $hasError }) =>
-        `2px solid ${$hasError ? "#ef4444" : "#d1d5db"}`};
-    }
+
     &:hover {
       border: ${({ $hasError }) =>
         `2px solid ${$hasError ? "#ef4444" : "#d1d5db"}`};
+    }
+    &:focus {
+      border: ${({ $hasError }) =>
+        `2px solid ${$hasError ? "#ef4444" : "#22c55e"}`};
     }
   }
 `;

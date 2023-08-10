@@ -13,14 +13,14 @@ export const Selection = styled.div`
   display: inline-grid;
   grid-template-columns: auto auto;
   column-gap: 10px;
-  padding: 10px;
-  border-radius: 8px;
+  padding: 0.5em;
+  border-radius: 0.6em;
   background-color: #f5f5f5;
-  outline: ${({ $isOpen }) => `2px solid ${$isOpen ? "#d1d5db" : "#ffffff"}`};
+  outline: ${({ $isOpen }) => `2px solid ${$isOpen ? "#22c55e" : "#ffffff"}`};
   transition: outline 0.2s;
   &:hover {
     cursor: pointer;
-    outline: 2px solid #d1d5db;
+    outline: ${({ $isOpen }) => `2px solid ${$isOpen ? "#22c55e" : "#d1d5db"}`};
   }
 `;
 

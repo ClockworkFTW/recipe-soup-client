@@ -17,6 +17,7 @@ import * as Styled from "./RecipeEditor.styles";
 const schema = yup.object({
   name: yup.string().required("Required"),
   cuisine: yup.string().required("Required"),
+  image: yup.mixed().nullable().required("Required"),
   ingredients: yup
     .array()
     .of(yup.object({ text: yup.string().required("Required") })),

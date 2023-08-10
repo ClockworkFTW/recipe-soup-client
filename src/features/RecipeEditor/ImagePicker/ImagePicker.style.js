@@ -4,6 +4,9 @@ export const Container = styled.div`
   position: relative;
   width: 240px;
   height: 240px;
+  border-radius: 10px;
+  background-color: #f5f5f5;
+  border: ${({ $hasError }) => ($hasError ? "2px solid #ef4444" : "none")};
 `;
 
 export const Image = styled.img`
@@ -20,15 +23,14 @@ export const Placeholder = styled.div`
   justify-content: center;
   align-items: center;
   font-size: 64px;
-  border-radius: 8px;
-  background-color: #f5f5f5;
+
   color: #d4d4d4;
 `;
 
 export const Button = styled.label`
   position: absolute;
-  bottom: -4px;
-  right: -4px;
+  bottom: ${({ $hasError }) => ($hasError ? "-6px" : "-4px")};
+  right: ${({ $hasError }) => ($hasError ? "-6px" : "-4px")};
   width: 44px;
   height: 44px;
   display: flex;
@@ -37,12 +39,12 @@ export const Button = styled.label`
   border-top-left-radius: 12px;
   border-bottom-right-radius: 12px;
   border: 4px solid #ffffff;
-  background-color: #22c55e;
+  background-color: ${({ $hasError }) => ($hasError ? "#ef4444" : "#22c55e")};
   color: #ffffff;
   font-size: 18px;
   transition: background-color 0.2s;
   &:hover {
     cursor: pointer;
-    background-color: #4ade80;
+    background-color: ${({ $hasError }) => ($hasError ? "#f87171" : "#4ade80")};
   }
 `;

@@ -1,12 +1,12 @@
-import { useFormContext } from "react-hook-form";
+import { useFormContext, useWatch } from "react-hook-form";
 
 import Icon from "../../../components/Icon";
 import * as Styled from "./ImagePicker.style";
 
 const ImagePicker = () => {
-  const { formState, getValues, setValue } = useFormContext();
+  const { formState, setValue, trigger } = useFormContext();
 
-  const image = getValues("image");
+  const image = useWatch({ name: "image" });
   const error = formState.errors["image"];
 
   const url = image
@@ -17,11 +17,12 @@ const ImagePicker = () => {
 
   function handleImageChange(event) {
     setValue("image", event.target.files[0]);
+    trigger("image");
   }
 
   return (
-    <Styled.Container>
-      <Styled.Button>
+    <Styled.Container $hasError={error}>
+      <Styled.Button $hasError={error}>
         <Icon icon="pen" />
         <input type="file" onChange={handleImageChange} hidden />
       </Styled.Button>
