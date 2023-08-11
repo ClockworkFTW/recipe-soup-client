@@ -1,9 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-  position: relative;
-  padding-bottom: 20px;
-`;
+export const Container = styled.div``;
 
 export const Label = styled.label``;
 

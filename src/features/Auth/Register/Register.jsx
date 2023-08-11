@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 import Button from "../../../components/Button";
-import Input from "../../../components/Input";
+import { InputForm } from "../../../components/Input";
 import { useAuth } from "../../../hooks/useAuth";
 import { useRegisterUser } from "../../../hooks/useRegisterUser";
 import * as Styled from "./Register.styles";
@@ -36,7 +36,7 @@ const Register = () => {
       <form onSubmit={handleSubmit(registerUser)}>
         {error && <p>{error.message}</p>}
         <Styled.InputGroup>
-          <Input
+          <InputForm
             name="username"
             type="text"
             label="Username"
@@ -47,7 +47,7 @@ const Register = () => {
           />
         </Styled.InputGroup>
         <Styled.InputGroup>
-          <Input
+          <InputForm
             name="email"
             type="text"
             label="Email"
@@ -58,7 +58,7 @@ const Register = () => {
           />
         </Styled.InputGroup>
         <Styled.InputGroup>
-          <Input
+          <InputForm
             name="passwordA"
             type="password"
             label="Password"
@@ -69,7 +69,7 @@ const Register = () => {
           />
         </Styled.InputGroup>
         <Styled.InputGroup>
-          <Input
+          <InputForm
             name="passwordB"
             type="password"
             label="Confirm Password"

@@ -5,8 +5,7 @@ import Fuse from "fuse.js";
 import { countries } from "../../../config";
 import { useOutsideClick } from "../../../hooks/useOutsideClick";
 import Country from "../../../components/Country";
-import Input from "../../../components/Input";
-import Icon from "../../../components/Icon";
+import { InputNorm } from "../../../components/Input";
 import * as Styled from "./CuisinePicker.style";
 
 function CuisinePicker() {
@@ -31,8 +30,8 @@ function CuisinePicker() {
     setIsSearching(true);
   }
 
-  function handleChangeSearch(event) {
-    setSearchPattern(event.target.value);
+  function handleChangeSearch(query) {
+    setSearchPattern(query);
   }
 
   function handleCloseSearch() {
@@ -55,9 +54,8 @@ function CuisinePicker() {
         </Styled.Selection>
       ) : (
         <Styled.Search>
-          <Input
+          <InputNorm
             autoFocus
-            isControlled
             icon="earth-americas"
             type="text"
             name="cuisine"

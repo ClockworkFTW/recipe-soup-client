@@ -1,6 +1,6 @@
 import { useFormContext } from "react-hook-form";
 
-import Input from "../../../components/Input";
+import { InputForm } from "../../../components/Input";
 import * as Styled from "./NameInput.style";
 
 const NameInput = () => {
@@ -8,7 +8,7 @@ const NameInput = () => {
 
   return (
     <Styled.Container>
-      <Input
+      <InputForm
         name="name"
         type="text"
         icon="book"

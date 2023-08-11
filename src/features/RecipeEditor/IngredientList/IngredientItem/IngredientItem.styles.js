@@ -4,7 +4,7 @@ export const Item = styled.li`
   display: grid;
   grid-template-columns: minmax(20px, auto) 1fr auto;
   column-gap: 10px;
-  margin-bottom: 4px;
+  margin-bottom: 18px;
 `;
 
 export const Number = styled.span`

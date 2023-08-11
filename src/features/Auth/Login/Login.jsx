@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 import Button from "../../../components/Button";
-import Input from "../../../components/Input";
+import { InputForm } from "../../../components/Input";
 import { useAuth } from "../../../hooks/useAuth";
 import { useLoginUser } from "../../../hooks/useLoginUser";
 import * as Styled from "./Login.styles";
@@ -34,7 +34,7 @@ const Login = () => {
       <form onSubmit={handleSubmit(loginUser)}>
         {error && <p>{error.message}</p>}
         <Styled.InputGroup>
-          <Input
+          <InputForm
             name="email"
             type="text"
             label="Email"
@@ -45,7 +45,7 @@ const Login = () => {
           />
         </Styled.InputGroup>
         <Styled.InputGroup>
-          <Input
+          <InputForm
             name="password"
             type="password"
             label="Password"

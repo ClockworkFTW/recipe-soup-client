@@ -4,24 +4,31 @@ import Icon from "../Icon";
 import Tooltip from "../Tooltip";
 import * as Styled from "./Input.styles";
 
-const Input = (props) => {
+const InputForm = (props) => {
   const {
-    autoFocus,
-    errors,
+    autoFocus = false,
+    errors = {},
     icon,
-    isControlled,
     label,
     name,
-    onChange,
     placeholder,
     register,
     type,
-    value,
   } = props;
 
   const inputRef = useRef(null);
   const [isFocused, setIsFocused] = useState(autoFocus);
+  const { ref, onBlur, onChange } = register(name);
   const error = errors[name];
+
+  function handleBlur(event) {
+    onBlur(event);
+    setIsFocused(false);
+  }
+
+  function handleChange(event) {
+    onChange(event);
+  }
 
   function handleFocus() {
     setIsFocused(true);
@@ -31,53 +38,9 @@ const Input = (props) => {
     inputRef.current.focus();
   }
 
-  function renderControlledInput() {
-    function handleBlur() {
-      setIsFocused(false);
-    }
-
-    return (
-      <Styled.Input
-        ref={inputRef}
-        id={name}
-        name={name}
-        type={type}
-        value={value}
-        placeholder={placeholder}
-        onChange={onChange}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        autoFocus={autoFocus}
-      />
-    );
-  }
-
-  function renderUncontrolledInput() {
-    const field = register(name);
-
-    function handleRef(event) {
-      field.ref(event);
-      inputRef.current = event;
-    }
-
-    function handleBlur(event) {
-      field.onBlur(event);
-      setIsFocused(false);
-    }
-
-    return (
-      <Styled.Input
-        ref={handleRef}
-        id={name}
-        name={name}
-        type={type}
-        placeholder={placeholder}
-        onChange={field.onChange}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        autoFocus={autoFocus}
-      />
-    );
+  function handleRef(event) {
+    ref(event);
+    inputRef.current = event;
   }
 
   return (
@@ -89,7 +52,17 @@ const Input = (props) => {
             <Icon icon={icon} />
           </Styled.Icon>
         )}
-        {isControlled ? renderControlledInput() : renderUncontrolledInput()}
+        <Styled.Input
+          ref={handleRef}
+          id={name}
+          name={name}
+          type={type}
+          placeholder={placeholder}
+          onChange={handleChange}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          autoFocus={autoFocus}
+        />
         {error && (
           <Styled.Error id={`${name}-error-tooltip`}>
             <Icon icon="circle-exclamation" />
@@ -104,4 +77,4 @@ const Input = (props) => {
   );
 };
 
-export default Input;
+export default InputForm;

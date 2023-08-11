@@ -1,1 +1,2 @@
-export { default } from "./Input";
+export { default as InputForm } from "./InputForm";
+export { default as InputNorm } from "./InputNorm";
