@@ -32,5 +32,5 @@ export const Number = styled.span`
   font-weight: bold;
   font-size: 18px;
   text-align: center;
-  color: #22c55e;
+  color: #0ea5e9;
 `;

@@ -16,11 +16,12 @@ export const Selection = styled.div`
   padding: 0.5em;
   border-radius: 0.6em;
   background-color: #f5f5f5;
-  outline: ${({ $isOpen }) => `2px solid ${$isOpen ? "#22c55e" : "#ffffff"}`};
+  border: ${({ $isOpen }) => `1px solid ${$isOpen ? "#0ea5e9" : "#e5e5e5"}`};
+  outline: ${({ $isOpen }) => `3px solid ${$isOpen ? "#bae6fd" : "#ffffff"}`};
   transition: outline 0.2s;
   &:hover {
     cursor: pointer;
-    outline: ${({ $isOpen }) => `2px solid ${$isOpen ? "#22c55e" : "#d1d5db"}`};
+    border: 1px solid #0ea5e9;
   }
 `;
 
@@ -35,7 +36,7 @@ export const Arrow = styled.div`
 `;
 
 export const Options = styled.ul`
-  z-index: 1;
+  z-index: 2;
   position: absolute;
   top: calc(100% + 10px);
   left: 0;
@@ -45,7 +46,7 @@ export const Options = styled.ul`
   margin: 0;
   padding: 0;
   border-radius: 8px;
-  border: 2px solid #d1d5db;
+  border: 1px solid #e5e5e5;
   list-style-type: none;
   background-color: #f5f5f5;
 `;

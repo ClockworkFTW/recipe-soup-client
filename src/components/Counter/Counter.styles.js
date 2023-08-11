@@ -14,10 +14,7 @@ export const Content = styled.div`
   background-color: #f5f5f5;
   border-radius: 0.6em;
   transition: border 0.2s;
-  border: 2px solid #ffffff;
-  &:hover {
-    border: 2px solid #d1d5db;
-  }
+  border: 1px solid #e5e5e5;
 `;
 
 export const Button = styled.button`

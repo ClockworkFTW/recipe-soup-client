@@ -47,9 +47,9 @@ function InstructionList() {
       id,
       type,
       text,
-      fieldName: `instructions.${index}.text`,
       stepNumber: this.stepNumber,
-      remove: () => remove(index),
+      fieldName: `instructions.${index}.text`,
+      remove: fields.length > 1 ? () => remove(index) : null,
     };
 
     return <InstructionItem key={id} instruction={instruction} />;

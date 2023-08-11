@@ -2,38 +2,36 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   position: ${({ $isSearching }) => ($isSearching ? "relative" : "static")};
-  max-width: min-content;
-  padding-bottom: ${({ $isSearching }) => ($isSearching ? "0" : "20px")};
+  width: 25%;
 `;
 
 export const Selection = styled.div`
+  width: min-content;
   padding: 0.5em;
   border-radius: 0.6em;
   background-color: #f5f5f5;
   white-space: nowrap;
   transition: border 0.2s;
-  border: 2px solid #ffffff;
+  border: 1px solid #e5e5e5;
   &:hover {
     cursor: pointer;
-    border: 2px solid #d1d5db;
+    border: 1px solid #0ea5e9;
   }
 `;
 
-export const Search = styled.div`
-  min-width: 200px;
-`;
+export const Search = styled.div``;
 
 export const Options = styled.ul`
   z-index: 1;
   position: absolute;
-  top: calc(100% - 10px);
+  top: calc(100% + 10px);
   left: 0;
   right: 0;
   margin: 0;
   padding: 0;
   list-style-type: none;
   border-radius: 8px;
-  border: 2px solid #d1d5db;
+  border: 1px solid #e5e5e5;
   background-color: #f5f5f5;
 `;
 

@@ -9,43 +9,43 @@ export const Label = styled.label``;
 
 export const Content = styled.div`
   position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
   background-color: #f5f5f5;
+  font-weight: inherit;
   border-radius: 0.6em;
-  > div {
-    position: relative;
-    padding: 0.5em;
-    border-radius: 0.6em;
-    outline: none;
-    font-weight: inherit;
-    transition: border 0.2s;
+  transition: border 0.2s, outline 0.2s;
+  border: ${({ $hasError, $isFocused }) =>
+    `1px solid ${$hasError ? "#ef4444" : $isFocused ? "#0ea5e9" : "#e5e5e5"}`};
+  outline: ${({ $hasError, $isFocused }) =>
+    `3px solid ${
+      $hasError && $isFocused ? "#fecaca" : $isFocused ? "#bae6fd" : "#ffffff"
+    }`};
+  &:hover {
     border: ${({ $hasError }) =>
-      `2px solid ${$hasError ? "#ef4444" : "#ffffff"}`};
-
-    &:hover {
-      border: ${({ $hasError }) =>
-        `2px solid ${$hasError ? "#ef4444" : "#d1d5db"}`};
-    }
-    &:focus {
-      border: ${({ $hasError }) =>
-        `2px solid ${$hasError ? "#ef4444" : "#22c55e"}`};
-    }
+      `1px solid ${$hasError ? "#ef4444" : "#0ea5e9"}`};
+  }
+  > span {
+    z-index: 1;
+    display: block;
+    padding: 0.5em;
+    outline: none;
   }
 `;
 
-export const Placeholder = styled.span`
+export const Placeholder = styled.div`
   position: absolute;
-  top: 2px;
-  left: 2px;
-  padding: 0.5em;
+  left: 0.5em;
+  top: 50%;
+  transform: translateY(-50%);
   font-weight: normal;
-  color: #d4d4d4;
+  color: #a3a3a3;
 `;
 
-export const Error = styled.span`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  font-size: 0.8rem;
-  font-weight: normal;
+export const Error = styled.div`
+  display: flex;
+  align-items: center;
+  padding-right: 0.5em;
+  font-size: 1.2rem;
   color: #ef4444;
 `;

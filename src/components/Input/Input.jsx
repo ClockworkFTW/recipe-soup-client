@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 
 import Icon from "../Icon";
+import Tooltip from "../Tooltip";
 import * as Styled from "./Input.styles";
 
 const Input = (props) => {
@@ -89,8 +90,16 @@ const Input = (props) => {
           </Styled.Icon>
         )}
         {isControlled ? renderControlledInput() : renderUncontrolledInput()}
+        {error && (
+          <Styled.Error id={`${name}-error-tooltip`}>
+            <Icon icon="circle-exclamation" />
+            <Tooltip
+              anchorSelect={`#${name}-error-tooltip`}
+              content={error.message}
+            />
+          </Styled.Error>
+        )}
       </Styled.Content>
-      {error && <Styled.Error>{error.message}</Styled.Error>}
     </Styled.Container>
   );
 };

@@ -29,34 +29,39 @@ const Login = () => {
   return auth ? (
     <Navigate to="/recipes" />
   ) : (
-    <Styled.Container>
+    <div>
       <h2>Login</h2>
       <form onSubmit={handleSubmit(loginUser)}>
         {error && <p>{error.message}</p>}
-        <Input
-          name="email"
-          type="text"
-          label="Email"
-          placeholder="Email"
-          icon="envelope"
-          register={register}
-          errors={errors}
-        />
-        <Input
-          name="password"
-          type="password"
-          label="Password"
-          placeholder="Password"
-          icon="lock"
-          register={register}
-          errors={errors}
-        />
+        <Styled.InputGroup>
+          <Input
+            name="email"
+            type="text"
+            label="Email"
+            placeholder="Email"
+            icon="envelope"
+            register={register}
+            errors={errors}
+          />
+        </Styled.InputGroup>
+        <Styled.InputGroup>
+          <Input
+            name="password"
+            type="password"
+            label="Password"
+            placeholder="Password"
+            icon="lock"
+            register={register}
+            errors={errors}
+          />
+        </Styled.InputGroup>
+
         <Button type="submit" label={loading ? "Loading" : "Submit"} />
         <p>
           Don't have an account yet? Register <Link to="/register">here</Link>
         </p>
       </form>
-    </Styled.Container>
+    </div>
   );
 };
 

@@ -1,23 +1,23 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-  position: relative;
-  padding-bottom: 20px;
-`;
+export const Container = styled.div``;
 
 export const Content = styled.div`
   display: grid;
-  grid-template-columns: ${({ $hasIcon }) => ($hasIcon ? "auto 1fr" : "1fr")};
+  grid-template-columns: ${({ $hasIcon }) =>
+    $hasIcon ? "auto 1fr auto" : "1fr auto"};
   border-radius: 0.6em;
   background-color: #f5f5f5;
-  transition: border 0.2s;
+  transition: border 0.2s, outline 0.2s;
   border: ${({ $isFocused, $hasError }) =>
-    `2px solid ${$hasError ? "#ef4444" : $isFocused ? "#22c55e" : "#ffffff"}`};
+    `1px solid ${$hasError ? "#ef4444" : $isFocused ? "#0ea5e9" : "#e5e5e5"}`};
+  outline: ${({ $isFocused, $hasError }) =>
+    `3px solid ${
+      $hasError && $isFocused ? "#fecaca" : $isFocused ? "#bae6fd" : "#ffffff"
+    }`};
   &:hover {
-    border: ${({ $isFocused, $hasError }) =>
-      `2px solid ${
-        $hasError ? "#ef4444" : $isFocused ? "#22c55e" : "#d1d5db"
-      }`};
+    border: ${({ $hasError }) =>
+      `1px solid ${$hasError ? "#ef4444" : "#0ea5e9"}`};
   }
 `;
 
@@ -29,7 +29,7 @@ export const Label = styled.label`
 export const Icon = styled.div`
   display: flex;
   align-items: center;
-  padding: 0.5em 0 0.5em 0.5em;
+  padding-left: 0.5em;
   font-size: 1.1rem;
   color: #d4d4d4;
   &:hover {
@@ -45,15 +45,15 @@ export const Input = styled.input`
   background: none;
   font-weight: inherit;
   &::placeholder {
-    color: #d4d4d4;
+    font-weight: normal;
+    color: #a3a3a3;
   }
 `;
 
-export const Error = styled.span`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  font-size: 0.8rem;
-  font-weight: normal;
+export const Error = styled.div`
+  display: flex;
+  align-items: center;
+  padding-right: 0.5em;
+  font-size: 1.2rem;
   color: #ef4444;
 `;

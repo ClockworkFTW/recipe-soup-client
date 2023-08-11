@@ -15,7 +15,7 @@ export const Icon = styled.span`
   padding: 4px 0;
   font-weight: bold;
   text-align: center;
-  color: #22c55e;
+  color: #0ea5e9;
   &:hover {
     cursor: pointer;
     color: #e5e5e5;

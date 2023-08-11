@@ -11,7 +11,7 @@ export const Header = styled.div`
 
 export const Body = styled.div`
   display: grid;
-  grid-template-columns: 40% 60%;
+  grid-template-columns: 300px 1fr;
   column-gap: 30px;
 `;
 

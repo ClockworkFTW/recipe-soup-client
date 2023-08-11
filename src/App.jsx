@@ -25,6 +25,7 @@ import {
   faMinus,
   faPlus,
   faPen,
+  faCircleExclamation,
   faSquareSmall,
   faStar,
   faTrashCan,
@@ -43,6 +44,7 @@ library.add(
   faMinus,
   faPlus,
   faPen,
+  faCircleExclamation,
   faSquareSmall,
   faStar,
   faTrashCan

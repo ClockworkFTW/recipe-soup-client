@@ -38,7 +38,7 @@ function IngredientList() {
       text,
       index,
       fieldName: `ingredients.${index}.text`,
-      remove: () => remove(index),
+      remove: fields.length > 1 ? () => remove(index) : null,
     };
 
     return <IngredientItem key={id} ingredient={ingredient} />;

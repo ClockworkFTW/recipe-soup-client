@@ -6,7 +6,7 @@ export const Container = styled.div`
   height: 220px;
   border-radius: 10px;
   background-color: #f5f5f5;
-  border: ${({ $hasError }) => ($hasError ? "2px solid #ef4444" : "none")};
+  border: ${({ $hasError }) => ($hasError ? "1px solid #ef4444" : "none")};
 `;
 
 export const Image = styled.img`
@@ -29,8 +29,8 @@ export const Placeholder = styled.div`
 
 export const Button = styled.label`
   position: absolute;
-  bottom: ${({ $hasError }) => ($hasError ? "-6px" : "-4px")};
-  right: ${({ $hasError }) => ($hasError ? "-6px" : "-4px")};
+  bottom: ${({ $hasError }) => ($hasError ? "-5px" : "-4px")};
+  right: ${({ $hasError }) => ($hasError ? "-5px" : "-4px")};
   width: 44px;
   height: 44px;
   display: flex;
@@ -39,12 +39,12 @@ export const Button = styled.label`
   border-top-left-radius: 12px;
   border-bottom-right-radius: 12px;
   border: 4px solid #ffffff;
-  background-color: ${({ $hasError }) => ($hasError ? "#ef4444" : "#22c55e")};
+  background-color: ${({ $hasError }) => ($hasError ? "#ef4444" : "#0ea5e9")};
   color: #ffffff;
   font-size: 18px;
   transition: background-color 0.2s;
   &:hover {
     cursor: pointer;
-    background-color: ${({ $hasError }) => ($hasError ? "#f87171" : "#4ade80")};
+    background-color: ${({ $hasError }) => ($hasError ? "#f87171" : "#38bdf8")};
   }
 `;

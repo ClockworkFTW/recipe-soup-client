@@ -31,52 +31,60 @@ const Register = () => {
   return auth ? (
     <Navigate to="/recipes" />
   ) : (
-    <Styled.Container>
+    <div>
       <h2>Register</h2>
       <form onSubmit={handleSubmit(registerUser)}>
         {error && <p>{error.message}</p>}
-        <Input
-          name="username"
-          type="text"
-          label="Username"
-          placeholder="Username"
-          icon="hat-chef"
-          register={register}
-          errors={errors}
-        />
-        <Input
-          name="email"
-          type="text"
-          label="Email"
-          placeholder="Email"
-          icon="envelope"
-          register={register}
-          errors={errors}
-        />
-        <Input
-          name="passwordA"
-          type="password"
-          label="Password"
-          placeholder="Password"
-          icon="lock"
-          register={register}
-          errors={errors}
-        />
-        <Input
-          name="passwordB"
-          type="password"
-          label="Confirm Password"
-          placeholder="Password"
-          icon="lock"
-          register={register}
-          errors={errors}
-        />
+        <Styled.InputGroup>
+          <Input
+            name="username"
+            type="text"
+            label="Username"
+            placeholder="Username"
+            icon="hat-chef"
+            register={register}
+            errors={errors}
+          />
+        </Styled.InputGroup>
+        <Styled.InputGroup>
+          <Input
+            name="email"
+            type="text"
+            label="Email"
+            placeholder="Email"
+            icon="envelope"
+            register={register}
+            errors={errors}
+          />
+        </Styled.InputGroup>
+        <Styled.InputGroup>
+          <Input
+            name="passwordA"
+            type="password"
+            label="Password"
+            placeholder="Password"
+            icon="lock"
+            register={register}
+            errors={errors}
+          />
+        </Styled.InputGroup>
+        <Styled.InputGroup>
+          <Input
+            name="passwordB"
+            type="password"
+            label="Confirm Password"
+            placeholder="Password"
+            icon="lock"
+            register={register}
+            errors={errors}
+          />
+        </Styled.InputGroup>
         <Button type="submit" label={loading ? "Loading" : "Submit"} />
         <p>
           Already have an account? Login <Link to="/login">here</Link>
         </p>
       </form>
-    </Styled.Container>
+    </div>
   );
 };
 
