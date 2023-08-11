@@ -6,7 +6,7 @@ export const Container = styled.div`
 
 export const Label = styled.label`
   display: block;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 `;
 
 export const Selection = styled.div`

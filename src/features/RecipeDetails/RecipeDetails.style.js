@@ -14,6 +14,20 @@ export const Content = styled.div`
   justify-content: space-between;
 `;
 
+export const Test = styled.div`
+  display: inline-grid;
+  grid-template-columns: repeat(7, auto);
+  column-gap: 15px;
+  align-self: start;
+  align-items: center;
+`;
+
+export const Spacer = styled.div`
+  width: 1px;
+  height: 100%;
+  background: #e5e5e5;
+`;
+
 export const Menu = styled.div`
   position: absolute;
   top: 0;

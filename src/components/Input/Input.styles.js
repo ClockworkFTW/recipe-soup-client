@@ -23,7 +23,7 @@ export const Content = styled.div`
 
 export const Label = styled.label`
   display: block;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 `;
 
 export const Icon = styled.div`
@@ -45,7 +45,6 @@ export const Input = styled.input`
   background: none;
   font-weight: inherit;
   &::placeholder {
-    font-weight: normal;
     color: #d4d4d4;
   }
 `;

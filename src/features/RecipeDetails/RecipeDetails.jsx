@@ -2,10 +2,11 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import { useGetRecipe } from "../../hooks/useGetRecipe";
 import Button from "../../components/Button";
+import Time from "../../components/Time";
 import RecipeImage from "./RecipeImage";
 import RecipeCuisine from "./RecipeCuisine";
 import RecipeRating from "./RecipeRating";
-import RecipeTimes from "./RecipeTimes";
+import RecipeServings from "./RecipeServings";
 import IngredientList from "./IngredientList";
 import InstructionList from "./InstructionList";
 import * as Styled from "./RecipeDetails.style";
@@ -38,12 +39,15 @@ function RecipeDetails() {
             <h1>{recipe.name}</h1>
             <RecipeRating rating={recipe.rating} />
           </div>
-          <RecipeTimes
-            times={[
-              { label: "prep", value: recipe.prepTime },
-              { label: "cook", value: recipe.cookTime },
-            ]}
-          />
+          <Styled.Test>
+            <RecipeServings servings={recipe.servings} />
+            <Styled.Spacer />
+            <Time label="Prep" values={[recipe.prepTime]} />
+            <Styled.Spacer />
+            <Time label="Cook" values={[recipe.cookTime]} />
+            <Styled.Spacer />
+            <Time label="Total" values={[recipe.prepTime, recipe.cookTime]} />
+          </Styled.Test>
           <Styled.Menu>
             <Button label="Edit" onClick={editRecipe} />
             <Button label="Share" onClick={shareRecipe} />

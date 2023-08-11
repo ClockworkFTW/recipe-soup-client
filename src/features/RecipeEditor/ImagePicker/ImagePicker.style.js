@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   position: relative;
-  width: 240px;
-  height: 240px;
+  width: 220px;
+  height: 220px;
   border-radius: 10px;
   background-color: #f5f5f5;
   border: ${({ $hasError }) => ($hasError ? "2px solid #ef4444" : "none")};

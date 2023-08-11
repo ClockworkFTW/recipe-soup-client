@@ -22,6 +22,18 @@ export const Content = styled.div`
   justify-content: space-between;
 `;
 
+export const Selectors = styled.div`
+  display: inline-grid;
+  grid-template-columns: auto auto auto auto auto;
+  column-gap: 15px;
+  align-self: start;
+`;
+
+export const Spacer = styled.div`
+  width: 1px;
+  background: #e5e5e5;
+`;
+
 export const Menu = styled.div`
   position: absolute;
   top: 0;

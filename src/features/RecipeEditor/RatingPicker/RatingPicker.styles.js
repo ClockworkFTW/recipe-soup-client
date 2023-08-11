@@ -7,6 +7,7 @@ export const Button = styled.button`
   outline: none;
   font-size: 18px;
   color: ${({ $isActive }) => ($isActive ? "#facc15" : "#e5e5e5")};
+  transition: color 0.2s;
   &:hover {
     cursor: pointer;
   }

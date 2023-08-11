@@ -11,7 +11,8 @@ import IngredientList from "./IngredientList";
 import InstructionList from "./InstructionList";
 import NameInput from "./NameInput";
 import RatingPicker from "./RatingPicker";
-import TimePicker from "./TimePicker";
+import ServingSelect from "./ServingSelect";
+import TimeSelect from "./TimeSelect";
 import * as Styled from "./RecipeEditor.styles";
 
 const schema = yup.object({
@@ -68,7 +69,13 @@ function RecipeEditorForm({ defaultValues }) {
               <NameInput />
               <RatingPicker />
             </div>
-            <TimePicker />
+            <Styled.Selectors>
+              <ServingSelect />
+              <Styled.Spacer />
+              <TimeSelect timeType="prep" />
+              <Styled.Spacer />
+              <TimeSelect timeType="cook" />
+            </Styled.Selectors>
             <Styled.Menu>
               <FormControls />
             </Styled.Menu>
