@@ -21,7 +21,7 @@ export const Placeholder = styled.div`
     width: 100%;
     height: 100%;
     border-radius: 0.625em;
-    border: ${$hasError ? colors.error400 : colors.base200};
+    border: 2px solid ${$hasError ? colors.error400 : colors.base200};
     background-color: ${colors.base100};
     color: ${colors.base300};
   `}
