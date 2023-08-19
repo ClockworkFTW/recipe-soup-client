@@ -1,7 +1,9 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Icon = styled.span`
-  padding: 4px;
-  font-size: 18px;
-  color: ${({ $isActive }) => ($isActive ? "#facc15" : "#e5e5e5")};
+  ${({ theme: { colors }, $isActive }) => css`
+    padding: 4px;
+    font-size: 18px;
+    color: ${$isActive ? colors.yellow : colors.base200};
+  `}
 `;

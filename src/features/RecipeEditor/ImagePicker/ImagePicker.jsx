@@ -16,13 +16,16 @@ const ImagePicker = () => {
     : null;
 
   function handleImageChange(event) {
-    setValue("image", event.target.files[0]);
-    trigger("image");
+    const file = event.target.files[0];
+    if (file) {
+      setValue("image", file);
+      trigger("image");
+    }
   }
 
   return (
     <Styled.Container>
-      <Styled.Button $hasError={error}>
+      <Styled.Button $hasUrl={url} $hasError={error}>
         <Icon icon="pen" />
         <input type="file" onChange={handleImageChange} hidden />
       </Styled.Button>
@@ -30,7 +33,9 @@ const ImagePicker = () => {
         <Styled.Image src={url} alt="recipe-image" />
       ) : (
         <Styled.Placeholder $hasError={error}>
-          <Icon icon="camera-retro" />
+          <Styled.Icon>
+            <Icon icon="camera-retro" />
+          </Styled.Icon>
         </Styled.Placeholder>
       )}
     </Styled.Container>

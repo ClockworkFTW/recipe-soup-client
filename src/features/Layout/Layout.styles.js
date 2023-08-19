@@ -1,8 +1,4 @@
-import styled from "styled-components";
-
-export const Wrapper = styled.div`
-  background-color: #f5f5f5;
-`;
+import styled, { css } from "styled-components";
 
 export const Container = styled.div`
   display: grid;
@@ -16,19 +12,21 @@ export const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px;
-  padding: 30px 60px;
+  margin-bottom: 2em;
+  padding: 2em 4em;
 `;
 
 export const Main = styled.main`
-  padding: 60px;
-  border-radius: 12px;
-  border: 1px solid #e5e5e5;
-  background-color: #ffffff;
+  ${({ theme: { colors } }) => css`
+    padding: 4em;
+    border-radius: 0.75em;
+    border: 2px solid ${colors.base200};
+    background-color: white;
+  `}
 `;
 
 export const Footer = styled.footer`
-  margin-top: 30px;
-  padding: 30px 60px;
+  margin-top: 2em;
+  padding: 2em 4em;
   text-align: center;
 `;

@@ -55,7 +55,7 @@ function InstructionList({ instructions }) {
       <Styled.Instruction
         key={id}
         onClick={() => handleInstructionClicked(id, type)}
-        opacity={opacity}
+        $opacity={opacity}
       >
         {renderInstructionItem(instructionItem)}
       </Styled.Instruction>

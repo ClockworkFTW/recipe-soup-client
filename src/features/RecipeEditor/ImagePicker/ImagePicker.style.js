@@ -1,49 +1,55 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Container = styled.div`
   position: relative;
-  width: 220px;
-  height: 220px;
+  width: 100%;
+  aspect-ratio: 1;
 `;
 
 export const Image = styled.img`
   width: 100%;
   height: 100%;
-  border-radius: 10px;
+  border-radius: 0.625em;
   object-fit: cover;
 `;
 
 export const Placeholder = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 64px;
-  border-radius: 10px;
-  background-color: #f5f5f5;
-  color: #d4d4d4;
-  border: ${({ $hasError }) =>
-    `1px solid ${$hasError ? "#ef4444" : "#e5e5e5"}`};
+  ${({ theme: { colors }, $hasError }) => css`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.625em;
+    border: ${$hasError ? colors.error400 : colors.base200};
+    background-color: ${colors.base100};
+    color: ${colors.base300};
+  `}
+`;
+
+export const Icon = styled.div`
+  font-size: 4em;
 `;
 
 export const Button = styled.label`
-  position: absolute;
-  bottom: 4px;
-  right: 4px;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 12px;
-  border: 3px solid #ffffff;
-  background-color: ${({ $hasError }) => ($hasError ? "#ef4444" : "#0ea5e9")};
-  color: #ffffff;
-  font-size: 18px;
-  transition: background-color 0.2s;
-  &:hover {
-    cursor: pointer;
-    background-color: ${({ $hasError }) => ($hasError ? "#f87171" : "#38bdf8")};
-  }
+  ${({ theme: { colors }, $hasError, $hasUrl }) => css`
+    position: absolute;
+    bottom: 0.375em;
+    right: 0.375em;
+    width: 2.25em;
+    height: 2.25em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.625em;
+    color: white;
+    font-size: 1.125em;
+    transition: background-color 200ms;
+    border: 2px solid ${$hasUrl ? "white" : colors.base100};
+    background-color: ${$hasError ? colors.error500 : colors.primary400};
+    &:hover {
+      cursor: pointer;
+      background-color: ${$hasError ? colors.error400 : colors.primary300};
+    }
+  `}
 `;

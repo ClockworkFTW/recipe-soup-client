@@ -10,46 +10,6 @@ import Register from "./features/Auth/Register";
 import Login from "./features/Auth/Login";
 import NoMatch from "./features/NoMatch";
 
-import { library } from "@fortawesome/fontawesome-svg-core";
-
-import {
-  faAngleDown,
-  faAngleUp,
-  faBook,
-  faCameraRetro,
-  faEarthAmericas,
-  faEnvelope,
-  faGripVertical,
-  faHatChef,
-  faLock,
-  faMinus,
-  faPlus,
-  faPen,
-  faCircleExclamation,
-  faSquareSmall,
-  faStar,
-  faTrashCan,
-} from "@fortawesome/pro-solid-svg-icons";
-
-library.add(
-  faAngleDown,
-  faAngleUp,
-  faBook,
-  faCameraRetro,
-  faEarthAmericas,
-  faEnvelope,
-  faGripVertical,
-  faHatChef,
-  faLock,
-  faMinus,
-  faPlus,
-  faPen,
-  faCircleExclamation,
-  faSquareSmall,
-  faStar,
-  faTrashCan
-);
-
 function App() {
   return (
     <Routes>

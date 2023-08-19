@@ -34,12 +34,12 @@ function RecipeDetails() {
       <Styled.Header>
         <RecipeImage image={recipe.image} />
         <Styled.Content>
-          <div>
+          <Styled.ContentTop>
             <RecipeCuisine cuisine={recipe.cuisine} />
             <h1>{recipe.name}</h1>
             <RecipeRating rating={recipe.rating} />
-          </div>
-          <Styled.Test>
+          </Styled.ContentTop>
+          <Styled.ContentBottom>
             <RecipeServings servings={recipe.servings} />
             <Styled.Spacer />
             <Time label="Prep" values={[recipe.prepTime]} />
@@ -47,7 +47,7 @@ function RecipeDetails() {
             <Time label="Cook" values={[recipe.cookTime]} />
             <Styled.Spacer />
             <Time label="Total" values={[recipe.prepTime, recipe.cookTime]} />
-          </Styled.Test>
+          </Styled.ContentBottom>
           <Styled.Menu>
             <Button label="Edit" onClick={editRecipe} />
             <Button label="Share" onClick={shareRecipe} />

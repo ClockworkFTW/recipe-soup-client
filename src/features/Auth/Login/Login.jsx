@@ -7,7 +7,7 @@ import Button from "../../../components/Button";
 import { InputForm } from "../../../components/Input";
 import { useAuth } from "../../../hooks/useAuth";
 import { useLoginUser } from "../../../hooks/useLoginUser";
-import * as Styled from "./Login.styles";
+import * as Styled from "../Auth.styles";
 
 const schema = yup.object({
   email: yup.string().required("Required").email("Not a valid email"),

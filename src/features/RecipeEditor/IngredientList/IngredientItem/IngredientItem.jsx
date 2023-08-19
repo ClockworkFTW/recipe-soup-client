@@ -18,13 +18,13 @@ function IngredientItem({ ingredient }) {
 
   return (
     <Styled.Item ref={sortable.setNodeRef} style={style}>
-      <Styled.Number
+      <Styled.Icon
         onMouseEnter={() => setIsMouseOverIcon(true)}
         onMouseLeave={() => setIsMouseOverIcon(false)}
         onClick={ingredient.remove}
       >
         {isMouseOverIcon ? <Icon icon="trash-can" /> : ingredient.index + 1}
-      </Styled.Number>
+      </Styled.Icon>
       <TextArea name={ingredient.fieldName} placeholder="Ingredient" />
       <Styled.Grip {...sortable.attributes} {...sortable.listeners}>
         <Icon icon="grip-vertical" />

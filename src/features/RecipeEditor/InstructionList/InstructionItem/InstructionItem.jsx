@@ -21,7 +21,7 @@ function InstructionItem({ instruction }) {
       return <Icon icon="trash-can" />;
     } else {
       if (instruction.type === "section") {
-        return <Icon icon="square-small" />;
+        return <Icon icon="quote-left" />;
       } else {
         return instruction.stepNumber;
       }
@@ -40,9 +40,7 @@ function InstructionItem({ instruction }) {
       >
         {renderIcon()}
       </Styled.Icon>
-      <Styled.Content
-        fontWeight={instruction.type === "section" ? "bold" : "normal"}
-      >
+      <Styled.Content $isSection={instruction.type === "section"}>
         <TextArea name={instruction.fieldName} placeholder={placeholder} />
       </Styled.Content>
       <Styled.Grip {...sortable.attributes} {...sortable.listeners}>

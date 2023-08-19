@@ -1,14 +1,16 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Button = styled.button`
-  padding: 8px 12px;
-  border-radius: 8px;
-  border: none;
-  color: #ffffff;
-  background-color: #0ea5e9;
-  transition: background-color 0.2s;
-  &:hover {
-    cursor: pointer;
-    background-color: #38bdf8;
-  }
+  ${({ theme: { colors } }) => css`
+    padding: 0.5em 0.75em;
+    border-radius: 0.5em;
+    border: none;
+    color: white;
+    background-color: ${colors.primary400};
+    transition: background-color 200ms;
+    &:hover {
+      cursor: pointer;
+      background-color: ${colors.primary300};
+    }
+  `}
 `;

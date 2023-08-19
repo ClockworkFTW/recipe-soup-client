@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Container = styled.div``;
 
@@ -9,25 +9,30 @@ export const Label = styled.label`
 `;
 
 export const Content = styled.div`
-  display: inline-grid;
-  grid-template-columns: auto auto auto;
-  background-color: #f5f5f5;
-  border-radius: 0.6em;
-  transition: border 0.2s;
-  border: 1px solid #e5e5e5;
+  ${({ theme: { colors } }) => css`
+    display: inline-grid;
+    grid-template-columns: auto auto auto;
+    border-radius: 0.6em;
+    border: 2px solid ${colors.base200};
+    background-color: ${colors.base100};
+    transition: border 200ms;
+  `}
 `;
 
 export const Button = styled.button`
-  padding: 0.5em;
-  border: none;
-  outline: none;
-  background: none;
-  color: #a3a3a3;
-  &:hover {
-    cursor: pointer;
-  }
+  ${({ theme: { colors } }) => css`
+    padding: 0.5em;
+    border: none;
+    outline: none;
+    background: none;
+    color: ${colors.base400};
+    &:hover {
+      cursor: pointer;
+    }
+  `}
 `;
 
 export const Value = styled.span`
   padding: 0.5em;
+  white-space: nowrap;
 `;

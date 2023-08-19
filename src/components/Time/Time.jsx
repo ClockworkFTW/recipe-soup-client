@@ -15,10 +15,10 @@ function Time({ label, values }) {
   return (
     <div>
       <Styled.Label>{label}</Styled.Label>
-      <div>
+      <Styled.Content>
         {h > 0 && `${h} hr${h == 1 ? "" : "s"}${m > 0 ? " " : ""}`}
         {m > 0 && `${m} min${m == 1 ? "" : "s"}`}
-      </div>
+      </Styled.Content>
     </div>
   );
 }

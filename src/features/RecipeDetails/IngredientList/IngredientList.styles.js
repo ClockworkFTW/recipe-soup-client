@@ -1,22 +1,29 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const List = styled.ul`
   list-style-type: none;
   margin: 0;
   padding: 0;
-`;
-
-export const Ingredient = styled.li`
-  border-bottom: 1px solid #e5e5e5;
-  :hover {
-    cursor: pointer;
+  :last-child {
+    border: none;
   }
 `;
 
+export const Ingredient = styled.li`
+  ${({ theme: { colors } }) => css`
+    border-bottom: 2px solid ${colors.base100};
+    :hover {
+      cursor: pointer;
+    }
+  `}
+`;
+
 export const Text = styled.div`
-  padding: 10px 0;
-  transition: opacity 0.2s, text-decoration 0.2s;
-  opacity: ${({ $isComplete }) => ($isComplete ? "0.4" : "1")};
-  text-decoration: ${({ $isComplete }) =>
-    `line-through ${$isComplete ? "currentcolor" : "transparent"}`};
+  ${({ $isComplete }) => css`
+    padding: 0.75em 0;
+    transition: opacity 200ms, text-decoration 200ms;
+    opacity: ${$isComplete ? "0.4" : "1"};
+    text-decoration: line-through
+      ${$isComplete ? "currentcolor" : "transparent"};
+  `}
 `;

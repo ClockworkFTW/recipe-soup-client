@@ -1,14 +1,16 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Button = styled.button`
-  padding: 4px;
-  background-color: transparent;
-  border: none;
-  outline: none;
-  font-size: 18px;
-  color: ${({ $isActive }) => ($isActive ? "#facc15" : "#e5e5e5")};
-  transition: color 0.2s;
-  &:hover {
-    cursor: pointer;
-  }
+  ${({ theme: { colors }, $isActive }) => css`
+    padding: 0.25em;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 1.125em;
+    color: ${$isActive ? colors.yellow : colors.base200};
+    transition: color 200ms;
+    &:hover {
+      cursor: pointer;
+    }
+  `}
 `;

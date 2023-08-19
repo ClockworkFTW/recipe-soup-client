@@ -1,5 +1,4 @@
 import Counter from "../../../components/Counter";
-import * as Styled from "./RecipeServings.styles";
 
 const RecipeServings = ({ servings }) => {
   function handleDecrementServings() {

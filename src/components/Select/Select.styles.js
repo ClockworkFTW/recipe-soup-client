@@ -1,7 +1,9 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Container = styled.div`
-  position: ${({ $isOpen }) => ($isOpen ? "relative" : "static")};
+  ${({ $isOpen }) => css`
+    position: ${$isOpen ? "relative" : "static"};
+  `}
 `;
 
 export const Label = styled.label`
@@ -10,19 +12,21 @@ export const Label = styled.label`
 `;
 
 export const Selection = styled.div`
-  display: inline-grid;
-  grid-template-columns: auto auto;
-  column-gap: 10px;
-  padding: 0.5em;
-  border-radius: 0.6em;
-  background-color: #f5f5f5;
-  border: ${({ $isOpen }) => `1px solid ${$isOpen ? "#0ea5e9" : "#e5e5e5"}`};
-  outline: ${({ $isOpen }) => `3px solid ${$isOpen ? "#bae6fd" : "#ffffff"}`};
-  transition: outline 0.2s;
-  &:hover {
-    cursor: pointer;
-    border: 1px solid #0ea5e9;
-  }
+  ${({ theme: { colors }, $isOpen }) => css`
+    display: inline-grid;
+    grid-template-columns: auto auto;
+    column-gap: 10px;
+    padding: 0.5em;
+    border-radius: 0.6em;
+    background-color: #f5f5f5;
+    transition: border 200ms, box-shadow 200ms;
+    border: 2px solid ${$isOpen ? colors.primary400 : colors.base200};
+    box-shadow: 0 2px 6px ${$isOpen ? colors.primary200 : "white"};
+    &:hover {
+      cursor: pointer;
+      border: 2px solid ${colors.primary400};
+    }
+  `}
 `;
 
 export const Value = styled.div`
@@ -30,30 +34,41 @@ export const Value = styled.div`
 `;
 
 export const Arrow = styled.div`
-  display: flex;
-  align-items: center;
-  color: #a3a3a3;
+  ${({ theme: { colors } }) => css`
+    display: flex;
+    align-items: center;
+    color: ${colors.base400};
+  `}
 `;
 
 export const Options = styled.ul`
-  z-index: 2;
-  position: absolute;
-  top: calc(100% + 10px);
-  left: 0;
-  right: 0;
-  max-height: 400px;
-  overflow-y: scroll;
-  margin: 0;
-  padding: 0;
-  border-radius: 8px;
-  border: 1px solid #e5e5e5;
-  list-style-type: none;
-  background-color: #f5f5f5;
+  ${({ theme: { colors } }) => css`
+    z-index: 2;
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    right: 0;
+    max-height: 400px;
+    overflow-y: scroll;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    border-radius: 8px;
+    background-color: ${colors.base100};
+    border: 2px solid ${colors.primary400};
+    box-shadow: 0 2px 6px ${colors.primary200};
+  `}
 `;
 
 export const Option = styled.li`
-  padding: 0.5em;
-  &:hover {
-    cursor: pointer;
-  }
+  ${({ theme: { colors } }) => css`
+    margin: 5px;
+    padding: 5px;
+    border-radius: 4px;
+    transition: background-color 200ms;
+    &:hover {
+      cursor: pointer;
+      background-color: ${colors.base200};
+    }
+  `}
 `;

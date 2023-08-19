@@ -1,31 +1,36 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Item = styled.li`
   display: grid;
-  grid-template-columns: minmax(20px, auto) 1fr auto;
-  column-gap: 10px;
-  margin-bottom: 18px;
+  grid-template-columns: minmax(1.25em, auto) 1fr auto;
+  column-gap: 0.75em;
+  margin-bottom: 1em;
 `;
 
 export const Content = styled.div`
-  font-weight: ${({ fontWeight }) => fontWeight};
+  ${({ $isSection }) => css`
+    font-weight: ${$isSection ? "bold" : "normal"};
+  `}
 `;
 
 export const Icon = styled.span`
-  padding: 4px 0;
-  font-weight: bold;
-  text-align: center;
-  color: #0ea5e9;
-  &:hover {
-    cursor: pointer;
-    color: #e5e5e5;
-  }
+  ${({ theme: { colors } }) => css`
+    padding: 0.25em 0;
+    font-weight: bold;
+    text-align: center;
+    color: ${colors.primary400};
+    &:hover {
+      cursor: pointer;
+      color: ${colors.base200};
+    }
+  `}
 `;
-
 export const Grip = styled.span`
-  padding: 4px;
-  color: #e5e5e5;
-  &:hover {
-    cursor: grab;
-  }
+  ${({ theme: { colors } }) => css`
+    padding: 0.25em;
+    color: ${colors.base200};
+    &:hover {
+      cursor: grab;
+    }
+  `}
 `;

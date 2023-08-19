@@ -7,7 +7,7 @@ import Button from "../../../components/Button";
 import { InputForm } from "../../../components/Input";
 import { useAuth } from "../../../hooks/useAuth";
 import { useRegisterUser } from "../../../hooks/useRegisterUser";
-import * as Styled from "./Register.styles";
+import * as Styled from "../Auth.styles";
 
 const schema = yup.object({
   username: yup.string().required("Required"),

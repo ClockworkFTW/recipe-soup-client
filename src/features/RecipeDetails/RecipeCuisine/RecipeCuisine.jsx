@@ -1,5 +1,4 @@
 import { countries } from "../../../config";
-
 import Country from "../../../components/Country/Country";
 
 function RecipeCuisine({ cuisine }) {

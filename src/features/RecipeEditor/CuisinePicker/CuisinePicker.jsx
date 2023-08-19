@@ -53,18 +53,16 @@ function CuisinePicker() {
           <Country code={country.code} label={country.cuisine} />
         </Styled.Selection>
       ) : (
-        <Styled.Search>
-          <InputNorm
-            autoFocus
-            icon="earth-americas"
-            type="text"
-            name="cuisine"
-            placeholder="Cuisine"
-            value={searchPattern}
-            onChange={handleChangeSearch}
-            errors={formState.errors}
-          />
-        </Styled.Search>
+        <InputNorm
+          autoFocus
+          icon="earth-americas"
+          type="text"
+          name="cuisine"
+          placeholder="Cuisine"
+          value={searchPattern}
+          onChange={handleChangeSearch}
+          errors={formState.errors}
+        />
       )}
       {(isSearching || !cuisine) && results.some(() => true) && (
         <Styled.Options>
