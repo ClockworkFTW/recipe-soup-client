@@ -13,9 +13,7 @@ export const Content = styled.div`
     display: inline-grid;
     grid-template-columns: auto auto auto;
     border-radius: 0.6em;
-    border: 2px solid ${colors.base200};
-    background-color: ${colors.base100};
-    transition: border 200ms;
+    background-color: ${colors.neutral100};
   `}
 `;
 
@@ -25,7 +23,7 @@ export const Button = styled.button`
     border: none;
     outline: none;
     background: none;
-    color: ${colors.base400};
+    color: ${colors.neutral400};
     &:hover {
       cursor: pointer;
     }

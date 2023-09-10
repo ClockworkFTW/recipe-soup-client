@@ -16,8 +16,7 @@ const Layout = () => {
         {auth ? (
           <>
             <nav>
-              <Link to="/">Landing</Link>
-              <Link to="/recipes">Recipes</Link>
+              <Link to="/recipes">Home</Link>
             </nav>
             <nav>
               <Link to="/profile">{auth.username}</Link>
@@ -27,7 +26,7 @@ const Layout = () => {
         ) : (
           <>
             <nav>
-              <Link to="/">Landing</Link>
+              <Link to="/">Home</Link>
             </nav>
             <nav>
               <Link to="/login">Login</Link>

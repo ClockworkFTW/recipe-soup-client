@@ -12,12 +12,10 @@ export const Selection = styled.div`
     display: flex;
     padding: 0.5em;
     border-radius: 0.5em;
-    background-color: ${colors.base100};
-    border: 2px solid ${colors.base200};
+    background-color: ${colors.neutral100};
     transition: border 0.2s;
     &:hover {
       cursor: pointer;
-      border: 2px solid ${colors.primary400};
     }
   `}
 `;
@@ -31,8 +29,8 @@ export const Options = styled.ul`
     right: 0;
     margin: 0;
     border-radius: 0.5em;
-    border: 2px solid ${colors.base200};
-    background-color: ${colors.base100};
+    border: 2px solid ${colors.neutral200};
+    background-color: ${colors.neutral100};
   `}
 `;
 
@@ -45,7 +43,7 @@ export const Option = styled.li`
     transition: background-color 0.2s;
     &:hover {
       cursor: pointer;
-      background-color: ${colors.base200};
+      background-color: ${colors.neutral200};
     }
   `}
 `;

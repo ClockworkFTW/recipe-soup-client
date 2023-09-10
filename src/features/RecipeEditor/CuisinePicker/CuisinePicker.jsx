@@ -2,9 +2,8 @@ import { useState } from "react";
 import { useFormContext } from "react-hook-form";
 import Fuse from "fuse.js";
 
-import { countries } from "../../../config";
 import { useOutsideClick } from "../../../hooks/useOutsideClick";
-import Country from "../../../components/Country";
+import Cuisine, { cuisines } from "../../../components/Cuisine";
 import { InputNorm } from "../../../components/Input";
 import * as Styled from "./CuisinePicker.style";
 
@@ -13,12 +12,10 @@ function CuisinePicker() {
 
   const cuisine = getValues("cuisine");
 
-  const country = cuisine && countries.find((c) => c.cuisine === cuisine);
-
   const [searchPattern, setSearchPattern] = useState("");
   const [isSearching, setIsSearching] = useState(false);
 
-  const fuse = new Fuse(countries, {
+  const fuse = new Fuse(cuisines, {
     keys: ["code", "cuisine"],
     threshold: 0.3,
   });
@@ -50,12 +47,11 @@ function CuisinePicker() {
     <Styled.Container ref={ref} $isSearching={isSearching || !cuisine}>
       {cuisine && !isSearching ? (
         <Styled.Selection onClick={handleOpenSearch}>
-          <Country code={country.code} label={country.cuisine} />
+          <Cuisine cuisine={cuisine} />
         </Styled.Selection>
       ) : (
         <InputNorm
           autoFocus
-          icon="earth-americas"
           type="text"
           name="cuisine"
           placeholder="Cuisine"
@@ -69,9 +65,9 @@ function CuisinePicker() {
           {results.map(({ item }) => (
             <Styled.Option
               key={item.code}
-              onClick={() => handleUpdateCuisine(item.cuisine)}
+              onClick={() => handleUpdateCuisine(item.name)}
             >
-              <Country code={item.code} label={item.cuisine} />
+              <Cuisine cuisine={item.name} />
             </Styled.Option>
           ))}
         </Styled.Options>

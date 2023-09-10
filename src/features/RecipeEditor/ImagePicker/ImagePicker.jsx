@@ -24,15 +24,15 @@ const ImagePicker = () => {
   }
 
   return (
-    <Styled.Container>
-      <Styled.Button $hasUrl={url} $hasError={error}>
+    <Styled.Container $hasError={error}>
+      <Styled.Button $hasError={error}>
         <Icon icon="pen" />
         <input type="file" onChange={handleImageChange} hidden />
       </Styled.Button>
       {url ? (
         <Styled.Image src={url} alt="recipe-image" />
       ) : (
-        <Styled.Placeholder $hasError={error}>
+        <Styled.Placeholder>
           <Styled.Icon>
             <Icon icon="camera-retro" />
           </Styled.Icon>

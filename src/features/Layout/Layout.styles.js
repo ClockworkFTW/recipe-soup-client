@@ -12,21 +12,14 @@ export const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2em;
-  padding: 2em 4em;
+  padding: 2em;
 `;
 
 export const Main = styled.main`
-  ${({ theme: { colors } }) => css`
-    padding: 4em;
-    border-radius: 0.75em;
-    border: 2px solid ${colors.base200};
-    background-color: white;
-  `}
+  padding: 2em;
 `;
 
 export const Footer = styled.footer`
-  margin-top: 2em;
-  padding: 2em 4em;
+  padding: 2em;
   text-align: center;
 `;

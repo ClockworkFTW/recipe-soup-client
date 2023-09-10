@@ -2,10 +2,10 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import { useGetRecipe } from "../../hooks/useGetRecipe";
 import Button from "../../components/Button";
+import Cuisine from "../../components/Cuisine";
+import Rating from "../../components/Rating";
 import Time from "../../components/Time";
 import RecipeImage from "./RecipeImage";
-import RecipeCuisine from "./RecipeCuisine";
-import RecipeRating from "./RecipeRating";
 import RecipeServings from "./RecipeServings";
 import IngredientList from "./IngredientList";
 import InstructionList from "./InstructionList";
@@ -30,14 +30,14 @@ function RecipeDetails() {
   }
 
   return recipe ? (
-    <div>
+    <Styled.Container>
       <Styled.Header>
         <RecipeImage image={recipe.image} />
         <Styled.Content>
           <Styled.ContentTop>
-            <RecipeCuisine cuisine={recipe.cuisine} />
+            <Cuisine cuisine={recipe.cuisine} />
             <h1>{recipe.name}</h1>
-            <RecipeRating rating={recipe.rating} />
+            <Rating rating={recipe.rating} />
           </Styled.ContentTop>
           <Styled.ContentBottom>
             <RecipeServings servings={recipe.servings} />
@@ -59,7 +59,7 @@ function RecipeDetails() {
         <IngredientList ingredients={recipe.ingredients} />
         <InstructionList instructions={recipe.instructions} />
       </Styled.Body>
-    </div>
+    </Styled.Container>
   ) : null;
 }
 

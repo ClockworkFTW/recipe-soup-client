@@ -1,5 +1,12 @@
 import styled, { css } from "styled-components";
 
+export const Container = styled.div`
+  padding: 4em;
+  border-radius: 0.75em;
+  background-color: white;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+`;
+
 export const Header = styled.div`
   display: grid;
   grid-template-columns: 220px 1fr;
@@ -28,7 +35,7 @@ export const Spacer = styled.div`
   ${({ theme: { colors } }) => css`
     width: 2px;
     height: 100%;
-    background: ${colors.base100};
+    background: ${colors.neutral100};
   `}
 `;
 

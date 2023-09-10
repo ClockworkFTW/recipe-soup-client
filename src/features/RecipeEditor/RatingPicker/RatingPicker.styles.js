@@ -7,7 +7,7 @@ export const Button = styled.button`
     border: none;
     outline: none;
     font-size: 1.125em;
-    color: ${$isActive ? colors.yellow : colors.base200};
+    color: ${$isActive ? colors.yellow : colors.neutral200};
     transition: color 200ms;
     &:hover {
       cursor: pointer;

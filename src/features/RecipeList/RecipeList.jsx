@@ -1,28 +1,28 @@
 import { Link, useNavigate } from "react-router-dom";
 
 import Button from "../../components/Button";
+import RecipeCard from "./RecipeCard";
 import { useGetRecipes } from "../../hooks/useGetRecipes";
+import * as Styled from "./RecipeList.style";
 
 function RecipeList() {
   const navigate = useNavigate();
 
   const { data: recipes } = useGetRecipes();
 
-  function initRecipe() {
+  function onAddRecipe() {
     navigate("/recipes/edit/new");
   }
 
   return (
     <div>
       <h2>Recipe List</h2>
-      <Button label="Add Recipe" onClick={initRecipe} />
-      <ul>
+      <Button label="Add Recipe" onClick={onAddRecipe} />
+      <Styled.Grid>
         {recipes.map((recipe) => (
-          <li key={recipe.id}>
-            <Link to={`/recipes/${recipe.id}`}>{recipe.name}</Link>
-          </li>
+          <RecipeCard key={recipe.id} recipe={recipe} />
         ))}
-      </ul>
+      </Styled.Grid>
     </div>
   );
 }

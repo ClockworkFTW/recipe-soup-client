@@ -9,25 +9,12 @@ export const Content = styled.div`
     position: relative;
     display: grid;
     grid-template-columns: 1fr auto;
-    background-color: ${colors.base100};
-    transition: border 0.2s, box-shadow 0.2s;
+    background-color: ${colors.neutral100};
+    transition: outline 200ms;
     font-weight: inherit;
     border-radius: 0.6em;
-    border: 2px solid
-      ${$hasError
-        ? colors.error400
-        : $isFocused
-        ? colors.primary400
-        : colors.base200};
-    box-shadow: 0 2px 6px
-      ${$hasError && $isFocused
-        ? colors.error200
-        : $isFocused
-        ? colors.primary200
-        : "white"};
-    &:hover {
-      border: 2px solid ${$hasError ? colors.error400 : colors.primary400};
-    }
+    outline: 2px solid
+      ${$hasError ? colors.error500 : $isFocused ? colors.primary400 : "white"};
     > span {
       z-index: 1;
       display: block;
@@ -44,7 +31,8 @@ export const Placeholder = styled.div`
     top: 50%;
     transform: translateY(-50%);
     font-weight: normal;
-    color: ${colors.base400};
+    color: ${colors.neutral400};
+    text-transform: capitalize;
   `}
 `;
 

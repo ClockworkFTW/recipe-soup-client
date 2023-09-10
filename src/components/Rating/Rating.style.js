@@ -4,6 +4,6 @@ export const Icon = styled.span`
   ${({ theme: { colors }, $isActive }) => css`
     padding: 4px;
     font-size: 18px;
-    color: ${$isActive ? colors.yellow : colors.base200};
+    color: ${$isActive ? colors.yellow : colors.neutral200};
   `}
 `;

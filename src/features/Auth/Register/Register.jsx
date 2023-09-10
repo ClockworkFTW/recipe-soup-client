@@ -31,7 +31,7 @@ const Register = () => {
   return auth ? (
     <Navigate to="/recipes" />
   ) : (
-    <div>
+    <Styled.Container>
       <h2>Register</h2>
       <form onSubmit={handleSubmit(registerUser)}>
         {error && <p>{error.message}</p>}
@@ -84,7 +84,7 @@ const Register = () => {
           Already have an account? Login <Link to="/login">here</Link>
         </p>
       </form>
-    </div>
+    </Styled.Container>
   );
 };
 

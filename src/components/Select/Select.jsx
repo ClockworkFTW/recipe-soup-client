@@ -36,6 +36,7 @@ function Select({ label, options, value, unit, onChange }) {
           {options.map((option) => (
             <Styled.Option
               key={option}
+              $isSelected={option === value}
               onClick={() => handleOptionClick(option)}
             >
               {option}

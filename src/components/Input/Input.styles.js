@@ -5,25 +5,18 @@ export const Container = styled.div``;
 export const Content = styled.div`
   ${({ theme: { colors }, $hasError, $hasIcon, $isFocused }) => css`
     display: grid;
-    grid-template-columns: auto 1fr ${$hasIcon && "auto"};
+    grid-template-columns: ${$hasIcon && $hasError
+      ? "auto 1fr auto"
+      : $hasIcon
+      ? "auto 1fr"
+      : $hasError
+      ? "1fr auto"
+      : "1fr"};
     border-radius: 0.6em;
-    transition: border 200ms, box-shadow 200ms;
-    background-color: ${colors.base100};
-    border: 2px solid
-      ${$hasError
-        ? colors.error400
-        : $isFocused
-        ? colors.primary400
-        : colors.base200};
-    box-shadow: 0 2px 6px
-      ${$hasError && $isFocused
-        ? colors.error200
-        : $isFocused
-        ? colors.primary200
-        : "white"};
-    &:hover {
-      border: 2px solid ${$hasError ? colors.error400 : colors.primary400};
-    }
+    background-color: ${colors.neutral100};
+    transition: outline 200ms;
+    outline: 2px solid
+      ${$hasError ? colors.error500 : $isFocused ? colors.primary400 : "white"};
   `}
 `;
 
@@ -38,7 +31,7 @@ export const Icon = styled.div`
     align-items: center;
     padding-left: 0.5em;
     font-size: 1.1rem;
-    color: ${colors.base300};
+    color: ${colors.neutral400};
     &:hover {
       cursor: text;
     }
@@ -46,17 +39,19 @@ export const Icon = styled.div`
 `;
 
 export const Input = styled.input`
-  width: 100%;
-  padding: 0.5em;
-  border: none;
-  outline: none;
-  background: none;
-  font-weight: inherit;
-  color: inherit;
-  &::placeholder {
-    font-weight: normal;
-    color: #a3a3a3;
-  }
+  ${({ theme: { colors } }) => css`
+    width: 100%;
+    padding: 0.5em;
+    border: none;
+    outline: none;
+    background: none;
+    font-weight: inherit;
+    color: inherit;
+    &::placeholder {
+      font-weight: normal;
+      color: ${colors.neutral400};
+    }
+  `}
 `;
 
 export const Error = styled.div`

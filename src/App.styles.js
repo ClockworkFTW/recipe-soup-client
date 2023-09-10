@@ -19,6 +19,7 @@ import {
   faQuoteLeft,
   faSquareSmall,
   faStar,
+  faTimer,
   faTrashCan,
 } from "@fortawesome/pro-solid-svg-icons";
 
@@ -39,6 +40,7 @@ library.add(
   faQuoteLeft,
   faSquareSmall,
   faStar,
+  faTimer,
   faTrashCan
 );
 
@@ -57,15 +59,15 @@ export const GlobalStyle = createGlobalStyle`
     }
     &::-webkit-scrollbar-thumb {
       border-radius: 6px;
-      background: ${(props) => props.theme.colors.base200};
+      background: ${(props) => props.theme.colors.neutral200};
     }
   }
 
   body {
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
-    color: ${(props) => props.theme.colors.base800};
-    background-color: ${(props) => props.theme.colors.base100};
+    color: ${(props) => props.theme.colors.neutral800};
+    background-color: ${(props) => props.theme.colors.neutral100};
     font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji'
   }
 
@@ -95,17 +97,17 @@ export const GlobalStyle = createGlobalStyle`
 export const theme = {
   colors: {
     // Gray
-    base50: "#fafafa",
-    base100: "#f4f4f5",
-    base200: "#e4e4e7",
-    base300: "#d4d4d8",
-    base400: "#a1a1aa",
-    base500: "#71717a",
-    base600: "#52525b",
-    base700: "#3f3f46",
-    base800: "#27272a",
-    base900: "#18181b",
-    base950: "#09090b",
+    neutral50: "#fafafa",
+    neutral100: "#f4f4f5",
+    neutral200: "#e4e4e7",
+    neutral300: "#d4d4d8",
+    neutral400: "#a1a1aa",
+    neutral500: "#71717a",
+    neutral600: "#52525b",
+    neutral700: "#3f3f46",
+    neutral800: "#27272a",
+    neutral900: "#18181b",
+    neutral950: "#09090b",
     // Blue
     primary50: "#f0f9ff",
     primary100: "#e0f2fe",

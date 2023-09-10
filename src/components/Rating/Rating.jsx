@@ -1,8 +1,7 @@
-import * as Styled from "./RecipeRating.styles";
+import Icon from "../Icon";
+import * as Styled from "./Rating.style";
 
-import Icon from "../../../components/Icon";
-
-const RecipeRating = ({ rating }) => (
+const Rating = ({ rating }) => (
   <div>
     {[...Array(5)].map((_, index) => {
       const $isActive = index + 1 <= rating;
@@ -15,4 +14,4 @@ const RecipeRating = ({ rating }) => (
   </div>
 );
 
-export default RecipeRating;
+export default Rating;

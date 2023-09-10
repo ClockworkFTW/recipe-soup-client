@@ -2,28 +2,34 @@ import styled, { css } from "styled-components";
 
 export const Item = styled.li`
   display: grid;
-  grid-template-columns: minmax(1.25em, auto) 1fr auto;
-  column-gap: 0.75em;
+  grid-template-columns: 1.5em 1fr 1.5em;
+  column-gap: 0.5em;
   margin-bottom: 1em;
 `;
 
-export const Icon = styled.span`
-  ${({ theme: { colors } }) => css`
-    padding: 0.25em 0;
-    font-weight: bold;
+export const Bullet = styled.span`
+  position: relative;
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+export const Icon = styled.div`
+  ${({ theme: { colors }, $opacity }) => css`
+    position: absolute;
+    width: 100%;
     text-align: center;
+    opacity: ${$opacity};
     color: ${colors.primary400};
-    &:hover {
-      cursor: pointer;
-      color: ${colors.base200};
-    }
+    font-weight: bold;
+    transition: opacity 200ms;
   `}
 `;
 
 export const Grip = styled.span`
   ${({ theme: { colors } }) => css`
-    padding: 0.25em;
-    color: ${colors.base200};
+    text-align: center;
+    color: ${colors.neutral200};
     &:hover {
       cursor: grab;
     }

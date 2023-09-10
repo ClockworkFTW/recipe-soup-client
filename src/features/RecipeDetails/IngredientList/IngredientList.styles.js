@@ -11,7 +11,7 @@ export const List = styled.ul`
 
 export const Ingredient = styled.li`
   ${({ theme: { colors } }) => css`
-    border-bottom: 2px solid ${colors.base100};
+    border-bottom: 2px solid ${colors.neutral100};
     :hover {
       cursor: pointer;
     }

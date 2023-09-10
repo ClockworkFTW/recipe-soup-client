@@ -19,12 +19,10 @@ export const Selection = styled.div`
     padding: 0.5em;
     border-radius: 0.6em;
     background-color: #f5f5f5;
-    transition: border 200ms, box-shadow 200ms;
-    border: 2px solid ${$isOpen ? colors.primary400 : colors.base200};
-    box-shadow: 0 2px 6px ${$isOpen ? colors.primary200 : "white"};
+    transition: outline 200ms;
+    outline: 2px solid ${$isOpen ? colors.primary400 : "white"};
     &:hover {
       cursor: pointer;
-      border: 2px solid ${colors.primary400};
     }
   `}
 `;
@@ -37,7 +35,7 @@ export const Arrow = styled.div`
   ${({ theme: { colors } }) => css`
     display: flex;
     align-items: center;
-    color: ${colors.base400};
+    color: ${colors.neutral400};
   `}
 `;
 
@@ -54,21 +52,22 @@ export const Options = styled.ul`
     padding: 0;
     list-style-type: none;
     border-radius: 8px;
-    background-color: ${colors.base100};
-    border: 2px solid ${colors.primary400};
-    box-shadow: 0 2px 6px ${colors.primary200};
+    background-color: ${colors.neutral100};
+    border: 2px solid ${colors.neutral200};
   `}
 `;
 
 export const Option = styled.li`
-  ${({ theme: { colors } }) => css`
+  ${({ theme: { colors }, $isSelected }) => css`
     margin: 5px;
     padding: 5px;
     border-radius: 4px;
+    color: ${$isSelected ? "white" : "inherit"};
+    background-color: ${$isSelected ? colors.primary400 : "none"};
     transition: background-color 200ms;
     &:hover {
       cursor: pointer;
-      background-color: ${colors.base200};
+      background-color: ${$isSelected ? colors.primary400 : colors.neutral200};
     }
   `}
 `;
