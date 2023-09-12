@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import jwtDecode from "jwt-decode";
-import { AuthContext } from "../features/Auth/Auth.context";
+import { AuthContext } from "../features/Auth";
 
 export function useAuth() {
   const { token } = useContext(AuthContext);

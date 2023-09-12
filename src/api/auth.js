@@ -23,3 +23,11 @@ export async function refreshAccessToken() {
   const result = await authApi.post("/refresh");
   return result.data.accessToken;
 }
+
+export async function forgotPassword(credentials) {
+  return await authApi.post(`/forgot-password`, credentials);
+}
+
+export async function resetPassword(credentials, token) {
+  return await authApi.post(`/reset-password/${token}`, credentials);
+}

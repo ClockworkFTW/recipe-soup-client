@@ -1,19 +1,15 @@
-import { useContext, useState } from "react";
-import { AuthContext } from "../features/Auth/Auth.context";
+import { useState } from "react";
 import * as authApi from "../api/auth";
 
-export function useLogoutUser() {
-  const { setToken } = useContext(AuthContext);
-
+export function useForgotPassword() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(null);
 
-  async function logoutUser() {
+  async function forgotPassword(credentials) {
     try {
       setLoading(true);
-      await authApi.logoutUser();
-      setToken(null);
+      await authApi.forgotPassword(credentials);
       setError(null);
       setSuccess(true);
     } catch (error) {
@@ -24,5 +20,5 @@ export function useLogoutUser() {
     }
   }
 
-  return { logoutUser, loading, success, error };
+  return { forgotPassword, loading, success, error };
 }

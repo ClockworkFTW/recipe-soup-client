@@ -1,19 +1,20 @@
-import { useContext, useState } from "react";
-import { AuthContext } from "../features/Auth/Auth.context";
+import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import * as authApi from "../api/auth";
 
-export function useLogoutUser() {
-  const { setToken } = useContext(AuthContext);
+export function useResetPassword() {
+  const [searchParams] = useSearchParams();
+
+  const token = searchParams.get("token");
 
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(null);
 
-  async function logoutUser() {
+  async function resetPassword(credentials) {
     try {
       setLoading(true);
-      await authApi.logoutUser();
-      setToken(null);
+      await authApi.resetPassword(credentials, token);
       setError(null);
       setSuccess(true);
     } catch (error) {
@@ -24,5 +25,5 @@ export function useLogoutUser() {
     }
   }
 
-  return { logoutUser, loading, success, error };
+  return { resetPassword, loading, success, error };
 }

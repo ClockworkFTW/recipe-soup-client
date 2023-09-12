@@ -5,7 +5,6 @@ import * as yup from "yup";
 
 import Button from "../../../components/Button";
 import { InputForm } from "../../../components/Input";
-import { useAuth } from "../../../hooks/useAuth";
 import { useLoginUser } from "../../../hooks/useLoginUser";
 import * as Styled from "../Auth.styles";
 
@@ -15,7 +14,6 @@ const schema = yup.object({
 });
 
 const Login = () => {
-  const auth = useAuth();
   const { loginUser, loading, error } = useLoginUser();
 
   const resolver = yupResolver(schema);
@@ -26,42 +24,41 @@ const Login = () => {
     formState: { errors },
   } = useForm({ resolver });
 
-  return auth ? (
-    <Navigate to="/recipes" />
-  ) : (
-    <Styled.Container>
+  return (
+    <form onSubmit={handleSubmit(loginUser)}>
       <h2>Login</h2>
-      <form onSubmit={handleSubmit(loginUser)}>
-        {error && <p>{error.message}</p>}
-        <Styled.InputGroup>
-          <InputForm
-            name="email"
-            type="text"
-            label="Email"
-            placeholder="Email"
-            icon="envelope"
-            register={register}
-            errors={errors}
-          />
-        </Styled.InputGroup>
-        <Styled.InputGroup>
-          <InputForm
-            name="password"
-            type="password"
-            label="Password"
-            placeholder="Password"
-            icon="lock"
-            register={register}
-            errors={errors}
-          />
-        </Styled.InputGroup>
-
-        <Button type="submit" label={loading ? "Loading" : "Submit"} />
-        <p>
-          Don't have an account yet? Register <Link to="/register">here</Link>
-        </p>
-      </form>
-    </Styled.Container>
+      {!error && <p>Welcome back, chef!</p>}
+      {error && <p>{error.message}</p>}
+      <Styled.Input>
+        <InputForm
+          name="email"
+          type="text"
+          label="Email"
+          placeholder="Email"
+          icon="envelope"
+          register={register}
+          errors={errors}
+        />
+      </Styled.Input>
+      <Styled.Input>
+        <InputForm
+          name="password"
+          type="password"
+          label="Password"
+          placeholder="Password"
+          icon="lock"
+          register={register}
+          errors={errors}
+        />
+      </Styled.Input>
+      <p>
+        <Link to="/forgot-password">Forgot your Password?</Link>
+      </p>
+      <Button type="submit" label={loading ? "Loading..." : "Login"} />
+      <p>
+        Don't have an account yet? Register <Link to="/register">here</Link>
+      </p>
+    </form>
   );
 };
 

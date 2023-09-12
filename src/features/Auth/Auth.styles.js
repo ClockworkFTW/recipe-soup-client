@@ -1,14 +1,12 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const Container = styled.div`
-  ${({ theme: { colors } }) => css`
-    padding: 4em;
-    border-radius: 0.75em;
-    border: 2px solid ${colors.neutral200};
-    background-color: white;
-  `}
+  padding: 4em;
+  border-radius: 0.75em;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  background-color: white;
 `;
 
-export const InputGroup = styled.div`
-  margin-bottom: 1em;
+export const Input = styled.div`
+  margin: 1em 0;
 `;

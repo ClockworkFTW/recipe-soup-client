@@ -14,8 +14,10 @@ export function useLoginUser() {
       setLoading(true);
       const accessToken = await authApi.loginUser(credentials);
       setToken(accessToken);
+      setError(null);
       setSuccess(true);
     } catch (error) {
+      setSuccess(false);
       setError(error.response.data);
     } finally {
       setLoading(false);

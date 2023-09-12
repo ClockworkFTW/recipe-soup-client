@@ -14,8 +14,10 @@ export function useRegisterUser() {
       setLoading(true);
       const accessToken = await authApi.registerUser(credentials);
       setToken(accessToken);
+      setError(null);
       setSuccess(true);
     } catch (error) {
+      setSuccess(false);
       setError(error.response.data);
     } finally {
       setLoading(false);

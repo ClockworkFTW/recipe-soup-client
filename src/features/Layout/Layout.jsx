@@ -16,17 +16,17 @@ const Layout = () => {
         {auth ? (
           <>
             <nav>
-              <Link to="/recipes">Home</Link>
+              <Link to="/recipes">RecipeSoup</Link>
             </nav>
             <nav>
-              <Link to="/profile">{auth.username}</Link>
+              <Link to="/profile">Profile</Link>
               <Button label="Logout" onClick={logoutUser} />
             </nav>
           </>
         ) : (
           <>
             <nav>
-              <Link to="/">Home</Link>
+              <Link to="/">RecipeSoup</Link>
             </nav>
             <nav>
               <Link to="/login">Login</Link>
@@ -36,10 +36,13 @@ const Layout = () => {
         )}
       </Styled.Header>
       <Styled.Main>
+        {auth && !auth.isVerified && <p>Please validate your email</p>}
         <Outlet />
       </Styled.Main>
       <Styled.Footer>
-        <p>Created by JNB</p>
+        <p>
+          Created by <a href="https://github.com/clockworkftw">JNB</a>
+        </p>
       </Styled.Footer>
     </Styled.Container>
   );
