@@ -43,9 +43,13 @@ const ResetPassword = () => {
         />
       </Styled.Input>
       <p>
-        <Link to="/login">Return to login</Link>
+        <Styled.Link>
+          <Link to="/login">Return to login.</Link>
+        </Styled.Link>
       </p>
-      <Button type="submit" label={loading ? "Loading..." : "Send Link"} />
+      <Styled.Button>
+        <Button type="submit" label={loading ? "Loading..." : "Send Link"} />
+      </Styled.Button>
     </form>
   );
 };

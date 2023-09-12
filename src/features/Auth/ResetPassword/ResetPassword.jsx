@@ -31,7 +31,10 @@ const ResetPassword = () => {
       {success && (
         <p>
           Your password has been updated successfully. Please proceed to the{" "}
-          <Link to="/login">login</Link> page
+          <Styled.Link>
+            <Link to="/login">login</Link>
+          </Styled.Link>{" "}
+          page.
         </p>
       )}
       <Styled.Input>
@@ -56,7 +59,12 @@ const ResetPassword = () => {
           errors={errors}
         />
       </Styled.Input>
-      <Button type="submit" label={loading ? "Loading..." : "Reset Password"} />
+      <Styled.Button>
+        <Button
+          type="submit"
+          label={loading ? "Loading..." : "Reset Password"}
+        />
+      </Styled.Button>
     </form>
   );
 };

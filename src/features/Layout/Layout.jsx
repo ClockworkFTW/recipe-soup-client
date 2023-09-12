@@ -19,7 +19,7 @@ const Layout = () => {
               <Link to="/recipes">RecipeSoup</Link>
             </nav>
             <nav>
-              <Link to="/profile">Profile</Link>
+              <Link to={`/profile/${auth.sub}`}>{auth.username}</Link>
               <Button label="Logout" onClick={logoutUser} />
             </nav>
           </>

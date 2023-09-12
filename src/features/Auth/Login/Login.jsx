@@ -52,11 +52,19 @@ const Login = () => {
         />
       </Styled.Input>
       <p>
-        <Link to="/forgot-password">Forgot your Password?</Link>
+        <Styled.Link>
+          <Link to="/forgot-password">Forgot your Password?</Link>
+        </Styled.Link>
       </p>
-      <Button type="submit" label={loading ? "Loading..." : "Login"} />
+      <Styled.Button>
+        <Button type="submit" label={loading ? "Loading..." : "Login"} />
+      </Styled.Button>
       <p>
-        Don't have an account yet? Register <Link to="/register">here</Link>
+        Don't have an account yet? Register{" "}
+        <Styled.Link>
+          <Link to="/register">here</Link>
+        </Styled.Link>
+        .
       </p>
     </form>
   );

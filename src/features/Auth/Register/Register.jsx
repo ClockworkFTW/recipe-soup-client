@@ -9,6 +9,7 @@ import { useRegisterUser } from "../../../hooks/useRegisterUser";
 import * as Styled from "../Auth.styles";
 
 const schema = yup.object({
+  username: yup.string().required("Required"),
   email: yup.string().email("Not a valid email").required("Required"),
   passwordA: yup.string().required("Required").min(10, "10 characters minimum"),
   passwordB: yup.string().required("Required").min(10, "10 characters minimum"),
@@ -30,6 +31,17 @@ const Register = () => {
       <h2>Register an Account</h2>
       {!error && <p>Ready to begin your culinary adventure?</p>}
       {error && <p>{error.message}</p>}
+      <Styled.Input>
+        <InputForm
+          name="username"
+          type="text"
+          label="Username"
+          placeholder="Username"
+          icon="hat-chef"
+          register={register}
+          errors={errors}
+        />
+      </Styled.Input>
       <Styled.Input>
         <InputForm
           name="email"
@@ -63,9 +75,15 @@ const Register = () => {
           errors={errors}
         />
       </Styled.Input>
-      <Button type="submit" label={loading ? "Loading..." : "Register"} />
+      <Styled.Button>
+        <Button type="submit" label={loading ? "Loading..." : "Register"} />
+      </Styled.Button>
       <p>
-        Already have an account? Login <Link to="/login">here</Link>
+        Already have an account? Login{" "}
+        <Styled.Link>
+          <Link to="/login">here</Link>
+        </Styled.Link>
+        .
       </p>
     </form>
   );
