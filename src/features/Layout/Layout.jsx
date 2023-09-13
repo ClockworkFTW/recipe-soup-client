@@ -1,6 +1,7 @@
 import { Link, Outlet } from "react-router-dom";
 
 import Button from "../../components/Button";
+import Icon from "../../components/Icon";
 import { useAuth } from "../../hooks/useAuth";
 import { useLogoutUser } from "../../hooks/useLogoutUser";
 import * as Styled from "./Layout.styles";
@@ -16,7 +17,11 @@ const Layout = () => {
         {auth ? (
           <>
             <nav>
-              <Link to="/recipes">RecipeSoup</Link>
+              <Styled.Logo>
+                <Link to="/recipes">
+                  <Icon icon="pot-food" /> Recipe Soup
+                </Link>
+              </Styled.Logo>
             </nav>
             <nav>
               <Link to={`/profile/${auth.sub}`}>{auth.username}</Link>
@@ -26,7 +31,11 @@ const Layout = () => {
         ) : (
           <>
             <nav>
-              <Link to="/">RecipeSoup</Link>
+              <Styled.Logo>
+                <Link to="/">
+                  <Icon icon="pot-food" /> Recipe Soup
+                </Link>
+              </Styled.Logo>
             </nav>
             <nav>
               <Link to="/login">Login</Link>

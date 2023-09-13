@@ -17,6 +17,7 @@ import {
   faLock,
   faMinus,
   faPlus,
+  faPotFood,
   faPen,
   faQuoteLeft,
   faSquareSmall,
@@ -38,6 +39,7 @@ library.add(
   faLock,
   faMinus,
   faPlus,
+  faPotFood,
   faPen,
   faQuoteLeft,
   faSquareSmall,
@@ -72,7 +74,7 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${(props) => props.theme.colors.neutral100};
     background-image: url(${background});
     background-size: 256px 256px;
-    font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji'
+    font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
   }
 
   img, picture, video, canvas, svg {

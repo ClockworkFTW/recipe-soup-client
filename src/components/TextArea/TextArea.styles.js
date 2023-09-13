@@ -9,12 +9,16 @@ export const Content = styled.div`
     position: relative;
     display: grid;
     grid-template-columns: 1fr auto;
-    background-color: ${colors.neutral100};
+    background-color: ${$hasError ? colors.error100 : colors.neutral100};
     transition: outline 200ms;
     font-weight: inherit;
     border-radius: 0.6em;
     outline: 2px solid
-      ${$hasError ? colors.error500 : $isFocused ? colors.primary400 : "white"};
+      ${$isFocused
+        ? $hasError
+          ? colors.error400
+          : colors.primary400
+        : "white"};
     > span {
       z-index: 1;
       display: block;
@@ -25,13 +29,13 @@ export const Content = styled.div`
 `;
 
 export const Placeholder = styled.div`
-  ${({ theme: { colors } }) => css`
+  ${({ theme: { colors }, $hasError }) => css`
     position: absolute;
     left: 0.75em;
     top: 50%;
     transform: translateY(-50%);
     font-weight: normal;
-    color: ${colors.neutral400};
+    color: ${$hasError ? colors.error400 : colors.neutral400};
     text-transform: capitalize;
   `}
 `;
@@ -42,6 +46,6 @@ export const Error = styled.div`
     align-items: center;
     padding-right: 0.5em;
     font-size: 1.2rem;
-    color: ${colors.error500};
+    color: ${colors.error400};
   `}
 `;

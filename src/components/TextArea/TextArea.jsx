@@ -37,7 +37,9 @@ const TextArea = ({ autofocus = false, name, label, placeholder }) => {
             {label && <Styled.Label>{label}</Styled.Label>}
             <Styled.Content $isFocused={isFocused} $hasError={fieldState.error}>
               {field.value === "" && placeholder && (
-                <Styled.Placeholder>{placeholder}</Styled.Placeholder>
+                <Styled.Placeholder $hasError={fieldState.error}>
+                  {placeholder}
+                </Styled.Placeholder>
               )}
               <ContentEditable
                 innerRef={handleRef}

@@ -15,6 +15,16 @@ export const Header = styled.header`
   padding: 2em;
 `;
 
+export const Logo = styled.h1`
+  ${({ theme: { colors } }) => css`
+    font-size: 2em;
+    > a {
+      text-decoration: none;
+      color: ${colors.neutral800};
+    }
+  `}
+`;
+
 export const Main = styled.main`
   padding: 2em;
 `;

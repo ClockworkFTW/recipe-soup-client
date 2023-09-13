@@ -42,7 +42,7 @@ const InputNorm = (props) => {
       {label && <Styled.Label htmlFor={name}>{label}</Styled.Label>}
       <Styled.Content $isFocused={isFocused} $hasError={error} $hasIcon={icon}>
         {icon && (
-          <Styled.Icon onClick={handleIconClick}>
+          <Styled.Icon $hasError={error} onClick={handleIconClick}>
             <Icon icon={icon} />
           </Styled.Icon>
         )}
@@ -56,6 +56,7 @@ const InputNorm = (props) => {
           onFocus={handleFocus}
           onBlur={handleBlur}
           autoFocus={autoFocus}
+          $hasError={error}
         />
         {error && (
           <Styled.Error id={`${name}-error-tooltip`}>

@@ -16,7 +16,6 @@ function RecipeList() {
 
   return (
     <div>
-      <h2>Recipe List</h2>
       <Button label="Add Recipe" onClick={onAddRecipe} />
       <Styled.Grid>
         {recipes.map((recipe) => (

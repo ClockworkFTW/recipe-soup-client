@@ -12,11 +12,15 @@ export const Content = styled.div`
       : $hasError
       ? "1fr auto"
       : "1fr"};
-    border-radius: 0.6em;
-    background-color: ${colors.neutral100};
+    border-radius: 0.5em;
+    background-color: ${$hasError ? colors.error100 : colors.neutral100};
     transition: outline 200ms;
     outline: 2px solid
-      ${$hasError ? colors.error500 : $isFocused ? colors.primary400 : "white"};
+      ${$isFocused
+        ? $hasError
+          ? colors.error400
+          : colors.primary400
+        : "white"};
   `}
 `;
 
@@ -26,12 +30,12 @@ export const Label = styled.label`
 `;
 
 export const Icon = styled.div`
-  ${({ theme: { colors } }) => css`
+  ${({ theme: { colors }, $hasError }) => css`
     display: flex;
     align-items: center;
     padding-left: 0.5em;
     font-size: 1.1rem;
-    color: ${colors.neutral400};
+    color: ${$hasError ? colors.error400 : colors.neutral400};
     &:hover {
       cursor: text;
     }
@@ -39,7 +43,7 @@ export const Icon = styled.div`
 `;
 
 export const Input = styled.input`
-  ${({ theme: { colors } }) => css`
+  ${({ theme: { colors }, $hasError }) => css`
     width: 100%;
     padding: 0.5em;
     border: none;
@@ -49,7 +53,7 @@ export const Input = styled.input`
     color: inherit;
     &::placeholder {
       font-weight: normal;
-      color: ${colors.neutral400};
+      color: ${$hasError ? colors.error400 : colors.neutral400};
     }
   `}
 `;
@@ -60,6 +64,6 @@ export const Error = styled.div`
     align-items: center;
     padding-right: 0.5em;
     font-size: 1.2rem;
-    color: ${colors.error500};
+    color: ${colors.error400};
   `}
 `;
