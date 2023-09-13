@@ -1,7 +1,8 @@
 import axios from "axios";
+import config from "../config";
 
 const recipeApi = axios.create({
-  baseURL: "http://localhost:3000/api/recipe",
+  baseURL: `${config.API_URL}/recipe`,
   withCredentials: true,
 });
 
