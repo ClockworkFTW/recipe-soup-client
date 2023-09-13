@@ -1,5 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
+import background from "./assets/background.png";
+
 import { library } from "@fortawesome/fontawesome-svg-core";
 
 import {
@@ -68,6 +70,8 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     color: ${(props) => props.theme.colors.neutral800};
     background-color: ${(props) => props.theme.colors.neutral100};
+    background-image: url(${background});
+    background-size: 256px 256px;
     font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji'
   }
 
