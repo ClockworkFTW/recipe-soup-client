@@ -6,15 +6,19 @@ const userApi = axios.create({
   withCredentials: true,
 });
 
-export async function getUser(userId) {
-  const result = await userApi.get(`/${userId}`);
+function createAuthHeader(token) {
+  return { headers: { Authorization: `Bearer ${token}` } };
+}
+
+export async function getUser({ token, userId }) {
+  const result = await userApi.get(`/${userId}`, createAuthHeader(token));
   return result.data;
 }
 
-export async function updateUser({ userId, user }) {
-  return await userApi.patch(`/${userId}`, user);
+export async function updateUser({ token, userId, data }) {
+  return await userApi.patch(`/${userId}`, data, createAuthHeader(token));
 }
 
-export async function deleteUser(userId) {
-  return await userApi.delete(`/${userId}`);
+export async function deleteUser({ token, userId }) {
+  return await userApi.delete(`/${userId}`, createAuthHeader(token));
 }

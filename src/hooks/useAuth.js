@@ -9,5 +9,5 @@ export function useAuth() {
 
   const decoded = jwtDecode(token);
 
-  return decoded;
+  return { ...decoded, token };
 }

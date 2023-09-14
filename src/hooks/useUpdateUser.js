@@ -1,14 +1,12 @@
 import { useContext } from "react";
-import { AuthContext } from "../features/Auth/Auth.context";
 import { useMutation } from "@tanstack/react-query";
-import { deleteUser } from "../api/user";
+import { updateUser } from "../api/user";
 import { useAuth } from "./useAuth";
 
-export function useDeleteUser() {
+export function useUpdateUser() {
   const { token } = useAuth();
-  const { setToken } = useContext(AuthContext);
   return useMutation({
-    mutationFn: (userId) => deleteUser({ token, userId }),
+    mutationFn: ({ userId, data }) => updateUser({ token, userId, data }),
     onSuccess: () => {
       setToken(null);
     },

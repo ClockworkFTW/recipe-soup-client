@@ -6,24 +6,28 @@ const recipeApi = axios.create({
   withCredentials: true,
 });
 
-export async function getRecipes() {
-  const result = await recipeApi.get("/");
+function createAuthHeader(token) {
+  return { headers: { Authorization: `Bearer ${token}` } };
+}
+
+export async function getRecipes({ token }) {
+  const result = await recipeApi.get("/", createAuthHeader(token));
   return result.data;
 }
 
-export async function getRecipe(recipeId) {
-  const result = await recipeApi.get(`/${recipeId}`);
+export async function getRecipe({ token, recipeId }) {
+  const result = await recipeApi.get(`/${recipeId}`, createAuthHeader(token));
   return result.data;
 }
 
-export async function createRecipe(recipe) {
-  return await recipeApi.post(`/`, recipe);
+export async function createRecipe({ token, recipe }) {
+  return await recipeApi.post(`/`, recipe, createAuthHeader(token));
 }
 
-export async function updateRecipe({ recipeId, recipe }) {
-  return await recipeApi.patch(`/${recipeId}`, recipe);
+export async function updateRecipe({ token, recipeId, recipe }) {
+  return await recipeApi.patch(`/${recipeId}`, recipe, createAuthHeader(token));
 }
 
-export async function deleteRecipe(recipeId) {
-  return await recipeApi.delete(`/${recipeId}`);
+export async function deleteRecipe({ token, recipeId }) {
+  return await recipeApi.delete(`/${recipeId}`, createAuthHeader(token));
 }
