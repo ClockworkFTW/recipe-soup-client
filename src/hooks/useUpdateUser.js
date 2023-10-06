@@ -1,13 +1,11 @@
 import { useMutation } from "@tanstack/react-query";
 import { updateUser } from "../api/user";
-import { useToken } from "./useAuth";
 
 export function useUpdateUser() {
-  const { setToken } = useToken();
   return useMutation({
-    mutationFn: ({ userId, data }) => updateUser({ token, userId, data }),
-    onSuccess: () => {
-      setToken(null);
+    mutationFn: ({ userId, data }) => updateUser({ userId, data }),
+    onSuccess: (data) => {
+      console.log(data);
     },
     onError: (error) => {
       console.log(error);

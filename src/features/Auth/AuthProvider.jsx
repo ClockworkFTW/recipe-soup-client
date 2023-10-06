@@ -6,24 +6,28 @@ import { useToken } from "../../hooks/useAuth";
 export function AuthProvider({ children }) {
   const { setToken } = useToken();
 
-  const [effectRan, setEffectRan] = useState(false);
+  const [isInitialized, setIsInitialized] = useState(false);
+
+  async function initAuth() {
+    try {
+      const accessToken = await authApi.refreshAccessToken();
+      setToken(accessToken);
+    } catch (error) {
+      setToken(null);
+    } finally {
+      setIsInitialized(true);
+    }
+  }
 
   useEffect(() => {
-    async function initAuth() {
-      try {
-        const accessToken = await authApi.refreshAccessToken();
-        setToken(accessToken);
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setEffectRan(true);
-      }
-    }
+    initAuth();
 
-    if (!effectRan) {
-      initAuth();
-    }
+    window.addEventListener("focus", initAuth);
+
+    return () => {
+      window.removeEventListener("focus", initAuth);
+    };
   }, []);
 
-  return effectRan ? children : null;
+  return isInitialized ? children : null;
 }
