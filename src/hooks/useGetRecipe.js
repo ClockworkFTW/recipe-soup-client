@@ -1,13 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import { getRecipe } from "../api/recipe";
-import { useAuth } from "./useAuth";
 
 export function useGetRecipe(recipeId) {
-  const { token } = useAuth();
   return useQuery({
+    initialData: null,
     enabled: recipeId !== "new",
     queryKey: ["recipes", recipeId],
-    queryFn: () => getRecipe({ token, recipeId }),
+    queryFn: () => getRecipe({ recipeId }),
     onSuccess: (data) => {
       console.log(data);
     },

@@ -1,13 +1,17 @@
-import { useContext } from "react";
+import { create } from "zustand";
 import jwtDecode from "jwt-decode";
-import { AuthContext } from "../features/Auth";
 
-export function useAuth() {
-  const { token } = useContext(AuthContext);
+const useAuthStore = create((set) => ({
+  token: null,
+  setToken: (token) => set({ token }),
+}));
 
-  if (!token) return null;
-
-  const decoded = jwtDecode(token);
-
-  return { ...decoded, token };
+export function useToken() {
+  return useAuthStore((state) => state);
 }
+
+export function useUser() {
+  return useAuthStore((state) => state.token && jwtDecode(state.token));
+}
+
+export default useAuthStore;

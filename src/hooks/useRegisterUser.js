@@ -1,9 +1,9 @@
-import { useContext, useState } from "react";
-import { AuthContext } from "../features/Auth/Auth.context";
+import { useState } from "react";
+import { useToken } from "./useAuth";
 import * as authApi from "../api/auth";
 
 export function useRegisterUser() {
-  const { setToken } = useContext(AuthContext);
+  const { setToken } = useToken();
 
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -12,8 +12,8 @@ export function useRegisterUser() {
   async function registerUser(credentials) {
     try {
       setLoading(true);
-      const accessToken = await authApi.registerUser(credentials);
-      setToken(accessToken);
+      const token = await authApi.registerUser(credentials);
+      setToken(token);
       setError(null);
       setSuccess(true);
     } catch (error) {

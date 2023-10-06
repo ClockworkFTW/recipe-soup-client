@@ -1,12 +1,12 @@
 import { Navigate, Outlet } from "react-router-dom";
 
-import { useAuth } from "../../hooks/useAuth";
+import { useToken } from "../../hooks/useAuth";
 import * as Styled from "./Auth.styles";
 
 const Auth = () => {
-  const auth = useAuth();
+  const { token } = useToken();
 
-  return auth ? (
+  return token ? (
     <Navigate to="/recipes" />
   ) : (
     <Styled.Container>

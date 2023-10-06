@@ -1,9 +1,9 @@
-import { useContext, useState } from "react";
-import { AuthContext } from "../features/Auth/Auth.context";
+import { useState } from "react";
+import { useToken } from "./useAuth";
 import * as authApi from "../api/auth";
 
 export function useLogoutUser() {
-  const { setToken } = useContext(AuthContext);
+  const { setToken } = useToken();
 
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);

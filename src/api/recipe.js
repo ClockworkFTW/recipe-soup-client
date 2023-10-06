@@ -1,36 +1,71 @@
 import axios from "axios";
 import config from "../config";
+import useAuth from "../hooks/useAuth";
+import { refreshAccessToken } from "./auth";
 
 const recipeApi = axios.create({
   baseURL: `${config.API_URL}/recipe`,
   withCredentials: true,
 });
 
-function createAuthHeader(token) {
-  return { headers: { Authorization: `Bearer ${token}` } };
-}
+recipeApi.interceptors.request.use(
+  (config) => {
+    if (config._retry) {
+      return config;
+    }
 
-export async function getRecipes({ token, page, query, sort }) {
-  const result = await recipeApi.get(
-    `/?page=${page}&query=${query}&sort=${sort}`,
-    createAuthHeader(token)
-  );
+    const { token } = useAuth.getState();
+    config.headers["Authorization"] = `Bearer ${token}`;
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
+recipeApi.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  async (error) => {
+    if (error.response.status === 403 && !error.config._retry) {
+      error.config._retry = true;
+
+      const { setToken } = useAuth.getState();
+      const token = await refreshAccessToken();
+      setToken(token);
+
+      error.config.headers["Authorization"] = `Bearer ${token}`;
+
+      return recipeApi.request(error.config);
+    }
+    return Promise.reject(error);
+  }
+);
+
+export async function getRecipes({ page, query, sort }) {
+  const endpoint = `/?page=${page}&query=${query}&sort=${sort}`;
+  const result = await recipeApi.get(endpoint);
   return result.data;
 }
 
-export async function getRecipe({ token, recipeId }) {
-  const result = await recipeApi.get(`/${recipeId}`, createAuthHeader(token));
+export async function getRecipe({ recipeId }) {
+  const endpoint = `/${recipeId}`;
+  const result = await recipeApi.get(endpoint);
   return result.data;
 }
 
-export async function createRecipe({ token, recipe }) {
-  return await recipeApi.post(`/`, recipe, createAuthHeader(token));
+export async function createRecipe({ recipe }) {
+  const endpoint = `/`;
+  return await recipeApi.post(endpoint, recipe);
 }
 
-export async function updateRecipe({ token, recipeId, recipe }) {
-  return await recipeApi.patch(`/${recipeId}`, recipe, createAuthHeader(token));
+export async function updateRecipe({ recipeId, recipe }) {
+  const endpoint = `/${recipeId}`;
+  return await recipeApi.patch(endpoint, recipe);
 }
 
-export async function deleteRecipe({ token, recipeId }) {
-  return await recipeApi.delete(`/${recipeId}`, createAuthHeader(token));
+export async function deleteRecipe({ recipeId }) {
+  const endpoint = `/${recipeId}`;
+  return await recipeApi.delete(endpoint);
 }

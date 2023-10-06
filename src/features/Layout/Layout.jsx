@@ -2,19 +2,19 @@ import { Link, Outlet } from "react-router-dom";
 
 import Button from "../../components/Button";
 import Icon from "../../components/Icon";
-import { useAuth } from "../../hooks/useAuth";
+import { useUser } from "../../hooks/useAuth";
 import { useLogoutUser } from "../../hooks/useLogoutUser";
 import * as Styled from "./Layout.styles";
 
 const Layout = () => {
-  const auth = useAuth();
+  const user = useUser();
 
   const { logoutUser } = useLogoutUser();
 
   return (
     <Styled.Container>
       <Styled.Header>
-        {auth ? (
+        {user ? (
           <>
             <nav>
               <Styled.Logo>
@@ -24,7 +24,7 @@ const Layout = () => {
               </Styled.Logo>
             </nav>
             <nav>
-              <Link to={`/profile/${auth.sub}`}>{auth.username}</Link>
+              <Link to={`/profile/${user.sub}`}>{user.username}</Link>
               <Button label="Logout" onClick={logoutUser} />
             </nav>
           </>
@@ -45,7 +45,7 @@ const Layout = () => {
         )}
       </Styled.Header>
       <Styled.Main>
-        {auth && !auth.isVerified && <p>Please validate your email</p>}
+        {user && !user.isVerified && <p>Please validate your email</p>}
         <Outlet />
       </Styled.Main>
       <Styled.Footer>

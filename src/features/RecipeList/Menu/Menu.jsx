@@ -41,7 +41,6 @@ function Menu() {
             defaultValue={query}
             onKeyUp={handleQueryChange}
           />
-          <Icon icon="sort" />
           <Styled.Button
             $isActive={sort === "new"}
             onClick={() => handleSortChange("new")}
