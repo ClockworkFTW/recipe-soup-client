@@ -2,12 +2,13 @@ import { useQuery } from "@tanstack/react-query";
 import { getRecipes } from "../api/recipe";
 import { useAuth } from "./useAuth";
 
-export function useGetRecipes() {
+export function useGetRecipes({ page, query, sort }) {
   const { token } = useAuth();
+
   return useQuery({
-    queryKey: ["recipes"],
-    queryFn: () => getRecipes({ token }),
-    initialData: [],
+    queryKey: ["recipes", page, query, sort],
+    queryFn: () => getRecipes({ token, page, query, sort }),
+    initialData: { count: 0, recipes: [] },
     onSuccess: (data) => {
       console.log(data);
     },

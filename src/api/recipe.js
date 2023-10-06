@@ -10,8 +10,11 @@ function createAuthHeader(token) {
   return { headers: { Authorization: `Bearer ${token}` } };
 }
 
-export async function getRecipes({ token }) {
-  const result = await recipeApi.get("/", createAuthHeader(token));
+export async function getRecipes({ token, page, query, sort }) {
+  const result = await recipeApi.get(
+    `/?page=${page}&query=${query}&sort=${sort}`,
+    createAuthHeader(token)
+  );
   return result.data;
 }
 

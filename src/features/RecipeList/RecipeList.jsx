@@ -1,27 +1,31 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
-import Button from "../../components/Button";
+import Menu from "./Menu";
+import Pagination from "./Pagination";
 import RecipeCard from "./RecipeCard";
 import { useGetRecipes } from "../../hooks/useGetRecipes";
 import * as Styled from "./RecipeList.style";
 
 function RecipeList() {
-  const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const { data: recipes } = useGetRecipes();
-
-  function onAddRecipe() {
-    navigate("/recipes/edit/new");
-  }
+  const {
+    data: { count, recipes },
+  } = useGetRecipes({
+    page: searchParams.get("page") || 1,
+    query: searchParams.get("query") || "",
+    sort: searchParams.get("sort") || "new",
+  });
 
   return (
     <div>
-      <Button label="Add Recipe" onClick={onAddRecipe} />
+      <Menu />
       <Styled.Grid>
         {recipes.map((recipe) => (
           <RecipeCard key={recipe.id} recipe={recipe} />
         ))}
       </Styled.Grid>
+      <Pagination count={count} />
     </div>
   );
 }
