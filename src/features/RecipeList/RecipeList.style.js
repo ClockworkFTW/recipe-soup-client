@@ -10,6 +10,8 @@ export const Grid = styled.div`
     grid-template-columns: 1fr 1fr;
   }
   @media (max-width: 600px) {
-    grid-template-columns: 2fr;
+    grid-template-columns: 1fr;
+    row-gap: 1em;
+    margin: 1em 0;
   }
 `;

@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const Container = styled.div`
   display: grid;
@@ -10,26 +10,18 @@ export const Container = styled.div`
 
 export const Header = styled.header`
   display: flex;
+  flex-shrink: 0;
   justify-content: space-between;
   align-items: center;
   padding: 2em;
   @media (max-width: 800px) {
-    padding: 1em;
+    padding: 1em 1em 0 1em;
   }
-`;
-
-export const Logo = styled.h1`
-  ${({ theme: { colors } }) => css`
-    font-size: 2em;
-    > a {
-      text-decoration: none;
-      color: ${colors.neutral800};
-    }
-  `}
 `;
 
 export const Navigation = styled.nav`
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   column-gap: 1em;
 `;

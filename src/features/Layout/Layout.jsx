@@ -1,7 +1,7 @@
-import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
+import Logo from "./Logo";
 import { ButtonPrimary, ButtonTertiary } from "../../components/Button";
-import Icon from "../../components/Icon";
 import { useUser } from "../../hooks/useAuth";
 import { useLogoutUser } from "../../hooks/useLogoutUser";
 import * as Styled from "./Layout.styles";
@@ -11,9 +11,6 @@ const Layout = () => {
   const { logoutUser } = useLogoutUser();
 
   const navigate = useNavigate();
-  const { pathname } = useLocation();
-
-  const test = pathname === "/" || pathname === "/recipes";
 
   function handleProfileClicked() {
     navigate(`/profile/${user.sub}`);
@@ -28,11 +25,7 @@ const Layout = () => {
       <Styled.Header>
         {user ? (
           <>
-            <Styled.Logo>
-              <Link to="/recipes">
-                <Icon icon={test ? "pot-food" : "left"} /> Recipe Soup
-              </Link>
-            </Styled.Logo>
+            <Logo user={user} />
             <Styled.Navigation>
               <ButtonTertiary
                 label={user.username}
@@ -48,11 +41,7 @@ const Layout = () => {
           </>
         ) : (
           <>
-            <Styled.Logo>
-              <Link to="/">
-                <Icon icon={test ? "pot-food" : "left"} /> Recipe Soup
-              </Link>
-            </Styled.Logo>
+            <Logo user={user} />
             <Styled.Navigation>
               <ButtonPrimary
                 label="Login"

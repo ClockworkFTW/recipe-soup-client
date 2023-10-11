@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-import background from "./assets/background.png";
+import background from "./assets/background.svg";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 
@@ -90,9 +90,9 @@ export const GlobalStyle = createGlobalStyle`
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     color: ${(props) => props.theme.colors.neutral800};
-    background-color: ${(props) => props.theme.colors.neutral100};
+    background-color: ${(props) => props.theme.colors.neutral50};
     background-image: url(${background});
-    background-size: 256px 256px;
+    background-size: 150px 150px;
     font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
   }
 
