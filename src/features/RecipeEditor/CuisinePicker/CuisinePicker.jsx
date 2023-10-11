@@ -16,7 +16,7 @@ function CuisinePicker() {
   const [isSearching, setIsSearching] = useState(false);
 
   const fuse = new Fuse(cuisines, {
-    keys: ["code", "cuisine"],
+    keys: ["name"],
     threshold: 0.3,
   });
 
