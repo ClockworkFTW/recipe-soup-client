@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-import Button from "../../../components/Button";
+import { ButtonPrimary } from "../../../components/Button";
 import { InputForm } from "../../../components/Input";
 import { useRegisterUser } from "../../../hooks/useRegisterUser";
 import * as Styled from "../Auth.styles";
@@ -76,7 +76,10 @@ const Register = () => {
         />
       </Styled.Input>
       <Styled.Button>
-        <Button type="submit" label={loading ? "Loading..." : "Register"} />
+        <ButtonPrimary
+          type="submit"
+          label={loading ? "Loading..." : "Register"}
+        />
       </Styled.Button>
       <p>
         Already have an account? Login{" "}

@@ -1,9 +1,9 @@
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-import Button from "../../../components/Button";
+import { ButtonPrimary } from "../../../components/Button";
 import { InputForm } from "../../../components/Input";
 import { useLoginUser } from "../../../hooks/useLoginUser";
 import * as Styled from "../Auth.styles";
@@ -57,7 +57,7 @@ const Login = () => {
         </Styled.Link>
       </p>
       <Styled.Button>
-        <Button type="submit" label={loading ? "Loading..." : "Login"} />
+        <ButtonPrimary type="submit" label={loading ? "Loading..." : "Login"} />
       </Styled.Button>
       <p>
         Don't have an account yet? Register{" "}

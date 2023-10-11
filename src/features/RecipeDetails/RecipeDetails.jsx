@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 
 import { useGetRecipe } from "../../hooks/useGetRecipe";
-import Button from "../../components/Button";
+import { ButtonPrimary } from "../../components/Button";
 import Cuisine from "../../components/Cuisine";
 import Rating from "../../components/Rating";
 import Time from "../../components/Time";
@@ -49,9 +49,9 @@ function RecipeDetails() {
             <Time label="Total" values={[recipe.prepTime, recipe.cookTime]} />
           </Styled.ContentBottom>
           <Styled.Menu>
-            <Button label="Edit" onClick={editRecipe} />
-            <Button label="Share" onClick={shareRecipe} />
-            <Button label="Print" onClick={printRecipe} />
+            <ButtonPrimary label="Edit" onClick={editRecipe} />
+            <ButtonPrimary label="Share" onClick={shareRecipe} />
+            <ButtonPrimary label="Print" onClick={printRecipe} />
           </Styled.Menu>
         </Styled.Content>
       </Styled.Header>

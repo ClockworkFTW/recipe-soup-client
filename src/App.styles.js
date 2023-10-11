@@ -13,14 +13,18 @@ import {
   faClock,
   faEarthAmericas,
   faEnvelope,
+  faFloppyDisk,
   faGripVertical,
   faHatChef,
+  faLeft,
   faLock,
   faMinus,
   faPlus,
   faPotFood,
   faPen,
   faQuoteLeft,
+  faRightFromBracket,
+  faRightToBracket,
   faSeedling,
   faSquareSmall,
   faStar,
@@ -37,14 +41,18 @@ library.add(
   faClock,
   faEarthAmericas,
   faEnvelope,
+  faFloppyDisk,
   faGripVertical,
   faHatChef,
+  faLeft,
   faLock,
   faMinus,
   faPlus,
   faPotFood,
   faPen,
   faQuoteLeft,
+  faRightFromBracket,
+  faRightToBracket,
   faSeedling,
   faSquareSmall,
   faStar,
@@ -68,6 +76,13 @@ export const GlobalStyle = createGlobalStyle`
     &::-webkit-scrollbar-thumb {
       border-radius: 6px;
       background: ${(props) => props.theme.colors.neutral200};
+    }
+  }
+
+  html {
+    font-size: 16px;
+    @media (max-width: 600px) {
+      font-size: 14px;
     }
   }
 

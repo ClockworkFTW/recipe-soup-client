@@ -4,7 +4,7 @@ import { SortableContext } from "@dnd-kit/sortable";
 import { verticalListSortingStrategy } from "@dnd-kit/sortable";
 import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
 
-import Button from "../../../components/Button";
+import { ButtonPrimary } from "../../../components/Button";
 import IngredientItem from "./IngredientItem";
 import * as Styled from "./IngredientList.styles";
 
@@ -61,7 +61,7 @@ function IngredientList() {
         </DndContext>
       </Styled.List>
       <Styled.Controls>
-        <Button label="Add Ingredient" onClick={handleAddIngredient} />
+        <ButtonPrimary label="Add Ingredient" onClick={handleAddIngredient} />
       </Styled.Controls>
     </div>
   );

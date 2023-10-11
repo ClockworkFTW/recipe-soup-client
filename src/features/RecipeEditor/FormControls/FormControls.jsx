@@ -4,7 +4,7 @@ import { useFormContext } from "react-hook-form";
 import { useCreateRecipe } from "../../../hooks/useCreateRecipe";
 import { useUpdateRecipe } from "../../../hooks/useUpdateRecipe";
 import { useDeleteRecipe } from "../../../hooks/useDeleteRecipe";
-import Button from "../../../components/Button";
+import { ButtonPrimary, ButtonSecondary } from "../../../components/Button";
 
 function FormControls() {
   const navigate = useNavigate();
@@ -73,9 +73,23 @@ function FormControls() {
 
   return (
     <>
-      <Button label="Discard" onClick={handleDiscardEdits} />
-      <Button label="Save" onClick={handleSaveEdits} />
-      {!isNewRecipe && <Button label="Delete" onClick={handleDeleteRecipe} />}
+      <ButtonSecondary
+        label="Discard"
+        icon="left"
+        onClick={handleDiscardEdits}
+      />
+      <ButtonPrimary
+        label="Save"
+        icon="floppy-disk"
+        onClick={handleSaveEdits}
+      />
+      {!isNewRecipe && (
+        <ButtonPrimary
+          label="Delete"
+          icon="trash-can"
+          onClick={handleDeleteRecipe}
+        />
+      )}
     </>
   );
 }

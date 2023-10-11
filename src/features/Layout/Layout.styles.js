@@ -13,6 +13,9 @@ export const Header = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 2em;
+  @media (max-width: 800px) {
+    padding: 1em;
+  }
 `;
 
 export const Logo = styled.h1`
@@ -25,8 +28,17 @@ export const Logo = styled.h1`
   `}
 `;
 
+export const Navigation = styled.nav`
+  display: flex;
+  align-items: center;
+  column-gap: 1em;
+`;
+
 export const Main = styled.main`
   padding: 2em;
+  @media (max-width: 800px) {
+    padding: 1em;
+  }
 `;
 
 export const Footer = styled.footer`

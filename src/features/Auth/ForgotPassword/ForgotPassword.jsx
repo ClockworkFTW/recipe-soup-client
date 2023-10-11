@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-import Button from "../../../components/Button";
+import { ButtonPrimary } from "../../../components/Button";
 import { InputForm } from "../../../components/Input";
 import { useForgotPassword } from "../../../hooks/useForgotPassword";
 import * as Styled from "../Auth.styles";
@@ -48,7 +48,10 @@ const ResetPassword = () => {
         </Styled.Link>
       </p>
       <Styled.Button>
-        <Button type="submit" label={loading ? "Loading..." : "Send Link"} />
+        <ButtonPrimary
+          type="submit"
+          label={loading ? "Loading..." : "Send Link"}
+        />
       </Styled.Button>
     </form>
   );

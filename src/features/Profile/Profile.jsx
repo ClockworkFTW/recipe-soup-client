@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 
 import { useGetUser } from "../../hooks/useGetUser";
 import { useDeleteUser } from "../../hooks/useDeleteUser";
-import Button from "../../components/Button";
+import { ButtonPrimary } from "../../components/Button";
 import * as Styled from "./Profile.style";
 
 const Profile = () => {
@@ -29,7 +29,7 @@ const Profile = () => {
         </p>
         <p>Created: {dayjs(user.createdAt).format("M/DD/YYYY")}</p>
       </Styled.Content>
-      <Button label="Delete Account" onClick={handleDeleteAccount} />
+      <ButtonPrimary label="Delete Account" onClick={handleDeleteAccount} />
     </Styled.Container>
   ) : null;
 };

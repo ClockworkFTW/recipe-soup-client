@@ -4,7 +4,7 @@ import { SortableContext } from "@dnd-kit/sortable";
 import { verticalListSortingStrategy } from "@dnd-kit/sortable";
 import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
 
-import Button from "../../../components/Button";
+import { ButtonPrimary } from "../../../components/Button";
 import InstructionItem from "./InstructionItem";
 import * as Styled from "./InstructionList.styles";
 
@@ -72,8 +72,11 @@ function InstructionList() {
         </DndContext>
       </Styled.List>
       <Styled.Controls>
-        <Button label="Add Section" onClick={handleAddInstructionSection} />
-        <Button label="Add Step" onClick={handleAddInstructionStep} />
+        <ButtonPrimary
+          label="Add Section"
+          onClick={handleAddInstructionSection}
+        />
+        <ButtonPrimary label="Add Step" onClick={handleAddInstructionStep} />
       </Styled.Controls>
     </div>
   );
