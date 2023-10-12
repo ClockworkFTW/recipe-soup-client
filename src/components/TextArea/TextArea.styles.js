@@ -10,10 +10,10 @@ export const Content = styled.div`
     display: grid;
     grid-template-columns: 1fr auto;
     background-color: ${$hasError ? colors.error100 : colors.neutral100};
-    transition: outline 200ms;
+    transition: box-shadow 200ms;
     font-weight: inherit;
     border-radius: 0.6em;
-    outline: 2px solid
+    box-shadow: 0 0 0 2px
       ${$isFocused
         ? $hasError
           ? colors.error400

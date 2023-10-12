@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-import { ButtonPrimary } from "../../../components/Button";
+import { ButtonPrimary, ButtonSecondary } from "../../../components/Button";
 import { InputForm } from "../../../components/Input";
 import { useLoginUser } from "../../../hooks/useLoginUser";
 import * as Styled from "../Auth.styles";
@@ -24,10 +24,16 @@ const Login = () => {
     formState: { errors },
   } = useForm({ resolver });
 
+  function handleDemoClicked() {
+    loginUser({ email: "demo@recipesoup.app", password: "password123" });
+  }
+
   return (
     <form onSubmit={handleSubmit(loginUser)}>
-      <h2>Login</h2>
-      {!error && <p>Welcome back, chef!</p>}
+      <Styled.Header>
+        <h2>Login</h2>
+        {!error && <p>Welcome back, chef!</p>}
+      </Styled.Header>
       {error && <p>{error.message}</p>}
       <Styled.Input>
         <InputForm
@@ -51,21 +57,33 @@ const Login = () => {
           errors={errors}
         />
       </Styled.Input>
-      <p>
-        <Styled.Link>
-          <Link to="/forgot-password">Forgot your Password?</Link>
-        </Styled.Link>
-      </p>
-      <Styled.Button>
-        <ButtonPrimary type="submit" label={loading ? "Loading..." : "Login"} />
-      </Styled.Button>
-      <p>
-        Don't have an account yet? Register{" "}
-        <Styled.Link>
-          <Link to="/register">here</Link>
-        </Styled.Link>
-        .
-      </p>
+      <Styled.Footer>
+        <p>
+          <Styled.Link>
+            <Link to="/forgot-password">Forgot your Password?</Link>
+          </Styled.Link>
+        </p>
+        <Styled.Button>
+          <ButtonPrimary
+            type="submit"
+            label={loading ? "Loading..." : "Login"}
+          />
+          <ButtonSecondary
+            label={loading ? "Loading..." : "Demo"}
+            onClick={handleDemoClicked}
+          />
+        </Styled.Button>
+
+        <p>
+          Don't have an account yet?
+          <br />
+          Register{" "}
+          <Styled.Link>
+            <Link to="/register">here</Link>
+          </Styled.Link>
+          .
+        </p>
+      </Styled.Footer>
     </form>
   );
 };

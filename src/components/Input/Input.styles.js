@@ -14,8 +14,8 @@ export const Content = styled.div`
       : "1fr"};
     border-radius: 0.5em;
     background-color: ${$hasError ? colors.error100 : colors.neutral100};
-    transition: outline 200ms;
-    outline: 2px solid
+    transition: box-shadow 200ms;
+    box-shadow: 0 0 0 2px
       ${$isFocused
         ? $hasError
           ? colors.error400

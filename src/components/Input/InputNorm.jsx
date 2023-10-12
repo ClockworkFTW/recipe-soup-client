@@ -12,9 +12,10 @@ const InputNorm = (props) => {
     label,
     name,
     onChange,
+    onKeyUp,
     placeholder,
     type,
-    value,
+    ...rest
   } = props;
 
   const inputRef = useRef(null);
@@ -26,7 +27,9 @@ const InputNorm = (props) => {
   }
 
   function handleChange(event) {
-    onChange(event.target.value);
+    if (rest.value || rest.value === "") {
+      onChange(event.target.value);
+    }
   }
 
   function handleIconClick() {
@@ -50,13 +53,14 @@ const InputNorm = (props) => {
           ref={inputRef}
           id={name}
           type={type}
-          value={value}
           placeholder={placeholder}
           onChange={handleChange}
           onFocus={handleFocus}
           onBlur={handleBlur}
+          onKeyUp={onKeyUp}
           autoFocus={autoFocus}
           $hasError={error}
+          {...rest}
         />
         {error && (
           <Styled.Error id={`${name}-error-tooltip`}>

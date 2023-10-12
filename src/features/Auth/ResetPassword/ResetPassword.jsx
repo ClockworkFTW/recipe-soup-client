@@ -26,45 +26,53 @@ const ResetPassword = () => {
 
   return (
     <form onSubmit={handleSubmit(resetPassword)}>
-      <h2>Reset Password</h2>
-      {error && <p>{error.message}</p>}
-      {success && (
-        <p>
-          Your password has been updated successfully. Please proceed to the{" "}
-          <Styled.Link>
-            <Link to="/login">login</Link>
-          </Styled.Link>{" "}
-          page.
-        </p>
-      )}
-      <Styled.Input>
-        <InputForm
-          name="passwordA"
-          type="password"
-          label="New Password"
-          placeholder="Password"
-          icon="lock"
-          register={register}
-          errors={errors}
-        />
-      </Styled.Input>
-      <Styled.Input>
-        <InputForm
-          name="passwordB"
-          type="password"
-          label="Confirm Password"
-          placeholder="Password"
-          icon="lock"
-          register={register}
-          errors={errors}
-        />
-      </Styled.Input>
-      <Styled.Button>
-        <ButtonPrimary
-          type="submit"
-          label={loading ? "Loading..." : "Reset Password"}
-        />
-      </Styled.Button>
+      <Styled.Header>
+        <h2>Reset Password</h2>
+        {success && (
+          <p>
+            Your password has been updated successfully.
+            <br />
+            Please proceed to the{" "}
+            <Styled.Link>
+              <Link to="/login">login</Link>
+            </Styled.Link>{" "}
+            page.
+          </p>
+        )}
+      </Styled.Header>
+      <Styled.Content>
+        {error && <p>{error.message}</p>}
+        <Styled.Input>
+          <InputForm
+            name="passwordA"
+            type="password"
+            label="New Password"
+            placeholder="Password"
+            icon="lock"
+            register={register}
+            errors={errors}
+          />
+        </Styled.Input>
+        <Styled.Input>
+          <InputForm
+            name="passwordB"
+            type="password"
+            label="Confirm Password"
+            placeholder="Password"
+            icon="lock"
+            register={register}
+            errors={errors}
+          />
+        </Styled.Input>
+      </Styled.Content>
+      <Styled.Footer>
+        <Styled.Button>
+          <ButtonPrimary
+            type="submit"
+            label={loading ? "Loading..." : "Reset Password"}
+          />
+        </Styled.Button>
+      </Styled.Footer>
     </form>
   );
 };

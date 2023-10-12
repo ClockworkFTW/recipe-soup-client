@@ -1,6 +1,6 @@
 import { useSearchParams } from "react-router-dom";
 
-import * as Styled from "./Query.style";
+import InputNorm from "../../../../components/Input/InputNorm";
 
 function Query() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -18,7 +18,10 @@ function Query() {
   }
 
   return (
-    <Styled.Input
+    <InputNorm
+      type="text"
+      name="query"
+      icon="magnifying-glass"
       placeholder="Search Recipes..."
       defaultValue={query}
       onKeyUp={handleQueryChange}

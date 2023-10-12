@@ -25,34 +25,40 @@ const ResetPassword = () => {
 
   return (
     <form onSubmit={handleSubmit(forgotPassword)}>
-      <h2>Forgot your Password?</h2>
-      {!success && !error && (
-        <p>No worries, we will send you a link to reset it.</p>
-      )}
-      {success && <p>A reset link has been sent to your email account.</p>}
-      {error && <p>{error.message}</p>}
-      <Styled.Input>
-        <InputForm
-          name="email"
-          type="email"
-          label="Email"
-          placeholder="Email"
-          icon="envelope"
-          register={register}
-          errors={errors}
-        />
-      </Styled.Input>
-      <p>
-        <Styled.Link>
-          <Link to="/login">Return to login.</Link>
-        </Styled.Link>
-      </p>
-      <Styled.Button>
-        <ButtonPrimary
-          type="submit"
-          label={loading ? "Loading..." : "Send Link"}
-        />
-      </Styled.Button>
+      <Styled.Header>
+        <h2>Forgot your Password?</h2>
+        {!success && !error && (
+          <p>No worries, we will send you a link to reset it.</p>
+        )}
+        {success && <p>A reset link has been sent to your email account.</p>}
+      </Styled.Header>
+      <Styled.Content>
+        {error && <p>{error.message}</p>}
+        <Styled.Input>
+          <InputForm
+            name="email"
+            type="email"
+            label="Email"
+            placeholder="Email"
+            icon="envelope"
+            register={register}
+            errors={errors}
+          />
+        </Styled.Input>
+      </Styled.Content>
+      <Styled.Footer>
+        <p>
+          <Styled.Link>
+            <Link to="/login">Return to login.</Link>
+          </Styled.Link>
+        </p>
+        <Styled.Button>
+          <ButtonPrimary
+            type="submit"
+            label={loading ? "Loading..." : "Send Link"}
+          />
+        </Styled.Button>
+      </Styled.Footer>
     </form>
   );
 };

@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 
-import Icon from "../../../components/Icon";
+import Icon from "../../../../components/Icon";
 import * as Styled from "./Logo.style";
 
 const Logo = ({ user }) => {
