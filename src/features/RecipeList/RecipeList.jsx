@@ -8,7 +8,7 @@ import { useGetRecipes } from "../../hooks/useGetRecipes";
 import * as Styled from "./RecipeList.style";
 
 function RecipeList() {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   const {
     data: { count, recipes },
@@ -22,17 +22,19 @@ function RecipeList() {
 
   return (
     <>
-      <Menu />
-      {recipes.length ? (
-        <Styled.Grid>
-          {recipes.map((recipe) => (
-            <RecipeCard key={recipe.id} recipe={recipe} />
-          ))}
-        </Styled.Grid>
-      ) : (
-        <Empty />
-      )}
-      <Pagination count={count} />
+      <Styled.Container>
+        <Menu />
+        {recipes.length ? (
+          <Styled.Grid>
+            {recipes.map((recipe) => (
+              <RecipeCard key={recipe.id} recipe={recipe} />
+            ))}
+          </Styled.Grid>
+        ) : (
+          <Empty />
+        )}
+        <Pagination count={count} />
+      </Styled.Container>
     </>
   );
 }

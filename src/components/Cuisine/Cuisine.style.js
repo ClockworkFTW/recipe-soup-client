@@ -8,7 +8,13 @@ export const Container = styled.div`
 `;
 
 export const Flag = styled.img`
+  width: 2rem;
+  height: 1.5rem;
   border-radius: 4px;
+  @media (max-width: 600px) {
+    width: 1.5rem;
+    height: 1rem;
+  }
 `;
 
 export const Label = styled.span``;

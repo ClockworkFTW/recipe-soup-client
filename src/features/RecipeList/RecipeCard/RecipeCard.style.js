@@ -1,15 +1,6 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  border-radius: 0.75em;
-  background-color: white;
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  transition: transform 200ms, box-shadow 200ms;
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
-      0 4px 6px -4px rgb(0 0 0 / 0.1);
-  }
   > a {
     text-decoration: none;
     color: inherit;
@@ -17,7 +8,14 @@ export const Wrapper = styled.div`
 `;
 
 export const Container = styled.div`
-  padding: 1em;
+  display: grid;
+  grid-template-rows: repeat(2, max-content);
+  row-gap: 1rem;
+  @media (max-width: 600px) {
+    grid-template-columns: 30% 1fr;
+    column-gap: 1rem;
+    row-gap: 0;
+  }
 `;
 
 export const Image = styled.img`
@@ -25,8 +23,9 @@ export const Image = styled.img`
   aspect-ratio: 3 / 2;
   object-fit: cover;
   border-radius: 0.5em;
+  @media (max-width: 600px) {
+    aspect-ratio: 1/1;
+  }
 `;
 
-export const Content = styled.div`
-  margin-top: 1em;
-`;
+export const Content = styled.div``;

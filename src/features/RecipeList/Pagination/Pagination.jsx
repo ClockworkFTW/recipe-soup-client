@@ -1,5 +1,6 @@
 import { useSearchParams } from "react-router-dom";
 
+import { ButtonPrimary, ButtonSecondary } from "../../../components/Button";
 import * as Styled from "./Pagination.style";
 
 function Pagination({ count }) {
@@ -15,15 +16,25 @@ function Pagination({ count }) {
 
   return pages > 1 ? (
     <Styled.Container>
-      {[...Array(pages)].map((_, i) => (
-        <Styled.Button
-          key={i}
-          $isActive={page == i + 1}
-          onClick={() => handleButtonClicked(i + 1)}
-        >
-          {i + 1}
-        </Styled.Button>
-      ))}
+      {[...Array(pages)].map((_, i) =>
+        page == i + 1 ? (
+          <ButtonPrimary
+            key={i}
+            label={i + 1}
+            onClick={() => handleButtonClicked(i + 1)}
+          >
+            {i + 1}
+          </ButtonPrimary>
+        ) : (
+          <ButtonSecondary
+            key={i}
+            label={i + 1}
+            onClick={() => handleButtonClicked(i + 1)}
+          >
+            {i + 1}
+          </ButtonSecondary>
+        )
+      )}
     </Styled.Container>
   ) : null;
 }

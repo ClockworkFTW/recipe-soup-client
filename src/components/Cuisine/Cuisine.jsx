@@ -9,13 +9,7 @@ function Cuisine({ cuisine }) {
 
   return (
     <Styled.Container>
-      <Styled.Flag
-        src={src}
-        srcSet={srcset}
-        width="32"
-        height="24"
-        alt={name}
-      />
+      <Styled.Flag src={src} srcSet={srcset} alt={name} />
       <Styled.Label>{name}</Styled.Label>
     </Styled.Container>
   );

@@ -47,7 +47,7 @@ export const ButtonTertiary = styled(Button)`
 export const Label = styled.span`
   ${({ $hasIcon }) => css`
     margin-left: ${$hasIcon ? "0.5em" : "0"};
-    @media (max-width: 800px) {
+    @media (max-width: 900px) {
       display: ${$hasIcon ? "none" : "inherit"};
     }
   `}

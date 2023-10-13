@@ -14,15 +14,9 @@ function Menu() {
 
   return (
     <Styled.Container>
-      <Styled.Content>
-        <Query />
-        <Sort />
-        <ButtonPrimary
-          label="Add Recipe"
-          icon="plus"
-          onClick={handleAddRecipe}
-        />
-      </Styled.Content>
+      <Query />
+      <Sort />
+      <ButtonPrimary label="Add Recipe" icon="plus" onClick={handleAddRecipe} />
     </Styled.Container>
   );
 }

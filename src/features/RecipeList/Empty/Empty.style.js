@@ -1,12 +1,8 @@
 import styled, { css } from "styled-components";
 
 export const Container = styled.div`
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: 5rem;
+  margin-top: 3rem;
+  text-align: center;
 `;
 
 export const Icon = styled.div`
@@ -15,8 +11,4 @@ export const Icon = styled.div`
     font-size: 6rem;
     color: ${colors.neutral400};
   `}
-`;
-
-export const Button = styled.div`
-  margin-top: 2.5rem;
 `;

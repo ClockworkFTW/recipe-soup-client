@@ -12,7 +12,7 @@ export const Container = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 2em;
-  @media (max-width: 800px) {
+  @media (max-width: 900px) {
     padding: 1em 1em 0 1em;
   }
 `;
