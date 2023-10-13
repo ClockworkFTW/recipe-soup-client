@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import Menu from "./Menu";
 import Pagination from "./Pagination";
 import RecipeCard from "./RecipeCard";
+import Empty from "./Empty";
 import { useGetRecipes } from "../../hooks/useGetRecipes";
 import * as Styled from "./RecipeList.style";
 
@@ -17,16 +18,22 @@ function RecipeList() {
     sort: searchParams.get("sort") || "new",
   });
 
+  console.log(recipes);
+
   return (
-    <div>
+    <>
       <Menu />
-      <Styled.Grid>
-        {recipes.map((recipe) => (
-          <RecipeCard key={recipe.id} recipe={recipe} />
-        ))}
-      </Styled.Grid>
+      {recipes.length ? (
+        <Styled.Grid>
+          {recipes.map((recipe) => (
+            <RecipeCard key={recipe.id} recipe={recipe} />
+          ))}
+        </Styled.Grid>
+      ) : (
+        <Empty />
+      )}
       <Pagination count={count} />
-    </div>
+    </>
   );
 }
 
