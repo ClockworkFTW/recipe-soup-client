@@ -1,9 +1,8 @@
 import styled, { css } from "styled-components";
 
 export const List = styled.ul`
+  margin-top: 1rem;
   list-style-type: none;
-  margin: 0;
-  padding: 0;
 `;
 
 export const Instruction = styled.li`

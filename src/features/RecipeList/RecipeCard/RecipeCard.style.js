@@ -4,6 +4,9 @@ export const Wrapper = styled.div`
   > a {
     text-decoration: none;
     color: inherit;
+    &:hover {
+      text-decoration: none;
+    }
   }
 `;
 

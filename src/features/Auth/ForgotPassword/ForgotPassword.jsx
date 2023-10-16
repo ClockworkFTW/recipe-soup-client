@@ -47,11 +47,7 @@ const ResetPassword = () => {
         </Styled.Input>
       </Styled.Content>
       <Styled.Footer>
-        <p>
-          <Styled.Link>
-            <Link to="/login">Return to login.</Link>
-          </Styled.Link>
-        </p>
+        <Link to="/login">Return to login.</Link>
         <Styled.Button>
           <ButtonPrimary
             type="submit"

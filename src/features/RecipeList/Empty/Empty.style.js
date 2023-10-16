@@ -7,7 +7,6 @@ export const Container = styled.div`
 
 export const Icon = styled.div`
   ${({ theme: { colors } }) => css`
-    margin-bottom: 1rem;
     font-size: 6rem;
     color: ${colors.neutral400};
   `}

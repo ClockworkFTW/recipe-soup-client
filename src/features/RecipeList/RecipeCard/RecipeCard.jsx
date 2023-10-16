@@ -13,7 +13,7 @@ function RecipeCard({ recipe }) {
           <Styled.Image src={recipe.image} />
           <Styled.Content>
             <Cuisine cuisine={recipe.cuisine} />
-            <h3>{recipe.name}</h3>
+            <h5>{recipe.name}</h5>
             <Rating rating={recipe.rating} />
             <Time values={[recipe.prepTime, recipe.cookTime]} />
           </Styled.Content>

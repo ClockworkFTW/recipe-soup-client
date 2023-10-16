@@ -20,7 +20,7 @@ function InstructionList({ instructions }) {
       case "section":
         return (
           <Styled.Section>
-            <h3>{text}</h3>
+            <h6>{text}</h6>
           </Styled.Section>
         );
       case "step":
@@ -64,7 +64,7 @@ function InstructionList({ instructions }) {
 
   return (
     <div>
-      <h2>Instructions</h2>
+      <h4>Instructions</h4>
       <Styled.List>
         {instructions.map(renderInstructionList, { stepNumber: 0 })}
       </Styled.List>

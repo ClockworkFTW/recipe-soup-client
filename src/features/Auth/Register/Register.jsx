@@ -29,7 +29,7 @@ const Register = () => {
   return (
     <form onSubmit={handleSubmit(registerUser)}>
       <Styled.Header>
-        <h2>Register an Account</h2>
+        <h2>Register</h2>
         {!error && <p>Ready to begin your culinary adventure?</p>}
       </Styled.Header>
       <Styled.Content>
@@ -89,11 +89,7 @@ const Register = () => {
         <p>
           Already have an account?
           <br />
-          Login{" "}
-          <Styled.Link>
-            <Link to="/login">here</Link>
-          </Styled.Link>
-          .
+          Login <Link to="/login">here</Link>.
         </p>
       </Styled.Footer>
     </form>

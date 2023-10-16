@@ -59,9 +59,7 @@ const Login = () => {
       </Styled.Input>
       <Styled.Footer>
         <p>
-          <Styled.Link>
-            <Link to="/forgot-password">Forgot your Password?</Link>
-          </Styled.Link>
+          <Link to="/forgot-password">Forgot your Password?</Link>
         </p>
         <Styled.Button>
           <ButtonPrimary
@@ -77,11 +75,7 @@ const Login = () => {
         <p>
           Don't have an account yet?
           <br />
-          Register{" "}
-          <Styled.Link>
-            <Link to="/register">here</Link>
-          </Styled.Link>
-          .
+          Register <Link to="/register">here</Link>.
         </p>
       </Styled.Footer>
     </form>

@@ -8,7 +8,9 @@ export const Container = styled.h1`
 `;
 
 export const Text = styled.span`
-  margin-left: 0.25em;
+  ${({ $isOnMainPage }) => css`
+    margin-left: ${$isOnMainPage ? "0" : "0.25em"};
+  `}
 `;
 
 export const Highlight = styled.span`

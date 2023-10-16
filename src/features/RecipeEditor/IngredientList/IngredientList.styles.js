@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-export const List = styled.div`
-  list-style-type: none;
+export const List = styled.ul`
+  margin-top: 1rem;
 `;
 
 export const Controls = styled.div`

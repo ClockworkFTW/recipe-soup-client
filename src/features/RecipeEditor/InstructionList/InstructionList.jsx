@@ -57,7 +57,7 @@ function InstructionList() {
 
   return (
     <div>
-      <h2>Instructions</h2>
+      <h4>Instructions</h4>
       <Styled.List>
         <DndContext
           onDragEnd={handleReorderInstructions}

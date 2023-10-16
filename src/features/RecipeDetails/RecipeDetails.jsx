@@ -36,7 +36,7 @@ function RecipeDetails() {
         <Styled.Content>
           <Styled.ContentTop>
             <Cuisine cuisine={recipe.cuisine} />
-            <h1>{recipe.name}</h1>
+            <h3>{recipe.name}</h3>
             <Rating rating={recipe.rating} />
           </Styled.ContentTop>
           <Styled.ContentBottom>

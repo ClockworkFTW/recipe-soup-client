@@ -22,7 +22,7 @@ const IngredientList = ({ ingredients }) => {
 
   return (
     <div>
-      <h2>Ingredients</h2>
+      <h4>Ingredients</h4>
       <Styled.List>
         {ingredients.map(({ index, text }) => (
           <Styled.Ingredient

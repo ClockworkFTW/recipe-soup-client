@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const Container = styled.div`
   padding: 4em;
@@ -24,15 +24,6 @@ export const Footer = styled.div`
 
 export const Input = styled.div`
   margin: 1em 0;
-`;
-
-export const Link = styled.span`
-  ${({ theme: { colors } }) => css`
-    > a {
-      color: ${colors.primary500};
-      text-decoration: none;
-    }
-  `}
 `;
 
 export const Button = styled.div`

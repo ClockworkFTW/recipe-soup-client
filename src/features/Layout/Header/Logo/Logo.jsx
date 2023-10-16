@@ -19,8 +19,8 @@ const Logo = ({ user }) => {
 
   return (
     <Styled.Container onClick={handleLogoClicked}>
-      <Icon icon={isOnMainPage ? "pot-food" : "left"} />
-      <Styled.Text>RecipeSoup</Styled.Text>
+      {!isOnMainPage && <Icon icon="left" />}
+      <Styled.Text $isOnMainPage={isOnMainPage}>RecipeSoup</Styled.Text>
     </Styled.Container>
   );
 };

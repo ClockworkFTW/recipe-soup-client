@@ -76,7 +76,7 @@ export const GlobalStyle = createGlobalStyle`
   * {
     margin: 0;
     &::-webkit-scrollbar {
-      width: 1em;
+      width: 14px;
     }
     &::-webkit-scrollbar-track {
       background: transparent;
@@ -101,7 +101,7 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${(props) => props.theme.colors.neutral50};
     background-image: url(${background});
     background-size: 150px 150px;
-    font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+    font-family: 'Poppins', sans-serif;
   }
 
   img, picture, video, canvas, svg {
@@ -118,8 +118,49 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
   }
 
-  p, h1, h2, h3, h4, h5, h6 {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Lora', serif;
     overflow-wrap: break-word;
+  }
+
+  h1 {
+    font-size: 3.75rem;
+  }
+
+  h2 {
+    font-size: 3rem;
+  }
+
+  h3 {
+    font-size: 2.25rem;
+  }
+
+  h4 {
+    font-size: 1.875rem;
+  }
+
+  h5 {
+    font-size: 1.5rem;
+  }
+
+  h6 {
+    font-size: 1.25rem;
+  }
+
+  p {
+    padding: 1rem 0;
+    font-size: 1rem;
+    overflow-wrap: break-word;
+    color: ${(props) => props.theme.colors.neutral500};
+  }
+
+  a {
+    color: ${(props) => props.theme.colors.primary500};
+    text-decoration: underline transparent;
+    transition: text-decoration 200ms;
+    &:hover {
+      text-decoration: underline currentColor;
+    }
   }
 
   #root {
