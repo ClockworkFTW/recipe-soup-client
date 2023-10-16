@@ -5,12 +5,12 @@ import * as Styled from "./InstructionList.style";
 function InstructionList({ instructions }) {
   const [focusedStep, setFocusedStep] = useState(null);
 
-  function handleInstructionClicked(id, type) {
+  function handleInstructionClicked(index, type) {
     if (type === "step") {
-      if (focusedStep === id) {
+      if (focusedStep === index) {
         setFocusedStep(null);
       } else {
-        setFocusedStep(id);
+        setFocusedStep(index);
       }
     }
   }
@@ -35,26 +35,26 @@ function InstructionList({ instructions }) {
     }
   }
 
-  function renderInstructionList({ id, type, text }) {
+  function renderInstructionList({ index, type, text }) {
     if (type === "section") {
       this.stepNumber = 0;
     } else {
       this.stepNumber += 1;
     }
 
-    const opacity = focusedStep ? (focusedStep === id ? 1 : 0.4) : 1;
+    const opacity = focusedStep ? (focusedStep === index ? 1 : 0.4) : 1;
 
     const instructionItem = {
       type,
       text,
       stepNumber: this.stepNumber,
-      isFocused: focusedStep && focusedStep === id,
+      isFocused: focusedStep && focusedStep === index,
     };
 
     return (
       <Styled.Instruction
-        key={id}
-        onClick={() => handleInstructionClicked(id, type)}
+        key={index}
+        onClick={() => handleInstructionClicked(index, type)}
         $opacity={opacity}
       >
         {renderInstructionItem(instructionItem)}

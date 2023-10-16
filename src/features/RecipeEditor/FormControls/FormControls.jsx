@@ -19,7 +19,7 @@ function FormControls() {
   const { getValues, handleSubmit } = useFormContext();
 
   function handleSaveEdits() {
-    handleSubmit(({ image, ...data }) => {
+    handleSubmit(({ originalRecipe, image, ...data }) => {
       const recipe = new FormData();
 
       if (typeof image !== "string") {

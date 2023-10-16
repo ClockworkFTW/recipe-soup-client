@@ -6,7 +6,7 @@ export function useUpdateRecipe() {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
   return useMutation({
-    mutationFn: (recipeId, recipe) => updateRecipe({ recipeId, recipe }),
+    mutationFn: ({ recipeId, recipe }) => updateRecipe({ recipeId, recipe }),
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ["recipes"] });
       navigate(`/recipes/${data.data.id}`);

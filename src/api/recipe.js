@@ -62,6 +62,7 @@ export async function createRecipe({ recipe }) {
 
 export async function updateRecipe({ recipeId, recipe }) {
   const endpoint = `/${recipeId}`;
+  console.log(recipeId, recipe);
   return await recipeApi.patch(endpoint, recipe);
 }
 

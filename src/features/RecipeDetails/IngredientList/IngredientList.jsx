@@ -5,13 +5,18 @@ import * as Styled from "./IngredientList.styles";
 const IngredientList = ({ ingredients }) => {
   const [completedIngredients, setCompletedIngredients] = useState([]);
 
-  function handleIngredientClicked(id) {
-    if (completedIngredients.includes(id)) {
+  function handleIngredientClicked(index) {
+    if (completedIngredients.includes(index)) {
       setCompletedIngredients(
-        completedIngredients.filter((completedId) => completedId !== id)
+        completedIngredients.filter(
+          (completedIndex) => completedIndex !== index
+        )
       );
     } else {
-      setCompletedIngredients((completedIds) => [...completedIds, id]);
+      setCompletedIngredients((completedIndices) => [
+        ...completedIndices,
+        index,
+      ]);
     }
   }
 
@@ -19,12 +24,12 @@ const IngredientList = ({ ingredients }) => {
     <div>
       <h2>Ingredients</h2>
       <Styled.List>
-        {ingredients.map(({ id, text }) => (
+        {ingredients.map(({ index, text }) => (
           <Styled.Ingredient
-            key={id}
-            onClick={() => handleIngredientClicked(id)}
+            key={index}
+            onClick={() => handleIngredientClicked(index)}
           >
-            <Styled.Text $isComplete={completedIngredients.includes(id)}>
+            <Styled.Text $isComplete={completedIngredients.includes(index)}>
               {text}
             </Styled.Text>
           </Styled.Ingredient>

@@ -34,7 +34,6 @@ function RecipeEditor() {
 
   const recipe = data || {
     name: "",
-    description: "",
     prepTime: null,
     cookTime: null,
     cuisine: null,
