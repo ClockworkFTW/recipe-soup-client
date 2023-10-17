@@ -18,12 +18,14 @@ const ServingsInput = () => {
   }
 
   return (
-    <Counter
-      unit="servings"
-      value={servings}
-      decrementValue={handleDecrementServings}
-      incrementValue={handleIncrementServings}
-    />
+    <Styled.Container>
+      <Counter
+        unit="servings"
+        value={servings}
+        decrementValue={handleDecrementServings}
+        incrementValue={handleIncrementServings}
+      />
+    </Styled.Container>
   );
 };
 

@@ -5,6 +5,7 @@ import { useCreateRecipe } from "../../../hooks/useCreateRecipe";
 import { useUpdateRecipe } from "../../../hooks/useUpdateRecipe";
 import { useDeleteRecipe } from "../../../hooks/useDeleteRecipe";
 import { ButtonPrimary, ButtonSecondary } from "../../../components/Button";
+import * as Styled from "./FormControls.style";
 
 function FormControls() {
   const navigate = useNavigate();
@@ -72,7 +73,7 @@ function FormControls() {
   }
 
   return (
-    <>
+    <Styled.Container>
       <ButtonSecondary
         label="Discard"
         icon="left"
@@ -90,7 +91,7 @@ function FormControls() {
           onClick={handleDeleteRecipe}
         />
       )}
-    </>
+    </Styled.Container>
   );
 }
 

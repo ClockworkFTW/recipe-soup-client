@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 export const Container = styled.div`
   ${({ $isSearching }) => css`
     position: ${$isSearching ? "relative" : "static"};
-    width: 25%;
+    width: 30%;
   `}
 `;
 

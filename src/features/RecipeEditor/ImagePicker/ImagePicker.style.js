@@ -6,6 +6,9 @@ export const Container = styled.div`
   width: 100%;
   aspect-ratio: 1;
   border-radius: 0.5rem;
+  @media (max-width: 900px) {
+    aspect-ratio: 2/1;
+  }
 `;
 
 export const Image = styled.img`

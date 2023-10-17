@@ -30,7 +30,7 @@ const schema = yup.object({
 function RecipeEditor() {
   const { recipeId } = useParams();
 
-  const { data, isLoading, isError, isSuccess } = useGetRecipe(recipeId);
+  const { data, isSuccess } = useGetRecipe(recipeId);
 
   const recipe = data || {
     name: "",
@@ -63,21 +63,19 @@ function RecipeEditorForm({ defaultValues }) {
         <Styled.Header>
           <ImagePicker />
           <Styled.Content>
-            <div>
+            <Styled.ContentTop>
               <CuisinePicker />
+              <FormControls />
+            </Styled.ContentTop>
+            <Styled.ContentMid>
               <NameInput />
               <RatingPicker />
-            </div>
-            <Styled.Selectors>
+            </Styled.ContentMid>
+            <Styled.ContentBot>
               <ServingSelect />
-              <Styled.Spacer />
               <TimeSelect timeType="prep" />
-              <Styled.Spacer />
               <TimeSelect timeType="cook" />
-            </Styled.Selectors>
-            <Styled.Menu>
-              <FormControls />
-            </Styled.Menu>
+            </Styled.ContentBot>
           </Styled.Content>
         </Styled.Header>
         <Styled.Body>
