@@ -15,11 +15,3 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div``;
-
-export const Image = styled.img`
-  width: 100%;
-  aspect-ratio: 1/1;
-  object-fit: cover;
-  filter: drop-shadow(0 4px 6px rgb(0 0 0 / 0.1))
-    drop-shadow(0 2px 4px rgb(0 0 0 / 0.1));
-`;
