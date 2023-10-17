@@ -1,9 +1,11 @@
+import Icon from "../../../components/Icon";
 import * as Styled from "./Footer.style";
 
 const Footer = () => {
   return (
     <Styled.Container>
-      Created by <a href="https://github.com/clockworkftw">JNB</a>
+      Made with <Icon icon="pizza-slice" /> by{" "}
+      <a href="https://github.com/clockworkftw">JNB</a>
     </Styled.Container>
   );
 };
