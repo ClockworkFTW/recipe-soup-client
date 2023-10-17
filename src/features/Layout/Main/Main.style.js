@@ -10,10 +10,7 @@ export const Container = styled.div`
     max-width: ${$isOnAuthPage ? "550px" : "1100px"};
     height: 100%;
     margin: 0 auto;
-    padding: 2rem;
-    @media (max-width: 900px) {
-      padding: 1rem;
-    }
+    padding: 2rem 1rem;
     @media (max-width: 600px) {
       padding: 1rem 0;
     }

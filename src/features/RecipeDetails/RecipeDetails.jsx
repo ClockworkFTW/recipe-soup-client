@@ -1,33 +1,20 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import { useGetRecipe } from "../../hooks/useGetRecipe";
-import { ButtonPrimary, ButtonSecondary } from "../../components/Button";
 import Cuisine from "../../components/Cuisine";
 import Rating from "../../components/Rating";
-import Time from "../../components/Time";
-import RecipeImage from "./RecipeImage";
+import RecipeMenu from "./RecipeMenu";
 import RecipeServings from "./RecipeServings";
+import RecipeTime from "./RecipeTime";
+import RecipeImage from "./RecipeImage";
 import IngredientList from "./IngredientList";
 import InstructionList from "./InstructionList";
 import * as Styled from "./RecipeDetails.style";
 
 function RecipeDetails() {
-  const navigate = useNavigate();
   const { recipeId } = useParams();
 
   const { data: recipe } = useGetRecipe(recipeId);
-
-  function editRecipe() {
-    navigate(`/recipes/edit/${recipeId}`);
-  }
-
-  function shareRecipe() {
-    alert("Share");
-  }
-
-  function printRecipe() {
-    alert("Print");
-  }
 
   return recipe ? (
     <Styled.Container>
@@ -36,23 +23,16 @@ function RecipeDetails() {
         <Styled.Content>
           <Styled.ContentTop>
             <Cuisine cuisine={recipe.cuisine} />
+            <RecipeMenu recipeId={recipeId} />
+          </Styled.ContentTop>
+          <Styled.ContentMid>
             <h3>{recipe.name}</h3>
             <Rating rating={recipe.rating} />
-          </Styled.ContentTop>
-          <Styled.ContentBottom>
+          </Styled.ContentMid>
+          <Styled.ContentBot>
             <RecipeServings servings={recipe.servings} />
-            <Styled.Spacer />
-            <Time label="Prep" values={[recipe.prepTime]} />
-            <Styled.Spacer />
-            <Time label="Cook" values={[recipe.cookTime]} />
-            <Styled.Spacer />
-            <Time label="Total" values={[recipe.prepTime, recipe.cookTime]} />
-          </Styled.ContentBottom>
-          <Styled.Menu>
-            <ButtonSecondary label="Share" icon="share" onClick={shareRecipe} />
-            <ButtonSecondary label="Print" icon="print" onClick={printRecipe} />
-            <ButtonPrimary label="Edit" icon="pen" onClick={editRecipe} />
-          </Styled.Menu>
+            <RecipeTime prepTime={recipe.prepTime} cookTime={recipe.cookTime} />
+          </Styled.ContentBot>
         </Styled.Content>
       </Styled.Header>
       <Styled.Body>

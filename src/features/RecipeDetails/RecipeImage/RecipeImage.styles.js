@@ -5,4 +5,7 @@ export const Image = styled.img`
   aspect-ratio: 1;
   object-fit: cover;
   border-radius: 0.5rem;
+  @media (max-width: 900px) {
+    aspect-ratio: 2/1;
+  }
 `;

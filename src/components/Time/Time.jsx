@@ -12,6 +12,15 @@ function Time({ label, values }) {
   const h = duration.get("h").toString();
   const m = duration.get("m").toString();
 
+  if (values.length === 1 && !values[0]) {
+    return (
+      <div>
+        {label && <Styled.Label>{label}</Styled.Label>}
+        <Styled.Content>None</Styled.Content>
+      </div>
+    );
+  }
+
   return (
     <div>
       {label && <Styled.Label>{label}</Styled.Label>}

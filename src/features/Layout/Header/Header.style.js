@@ -11,7 +11,7 @@ export const Container = styled.header`
   flex-shrink: 0;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem;
+  padding: 2rem 1rem;
   @media (max-width: 900px) {
     padding: 1rem 1rem 0 1rem;
   }
