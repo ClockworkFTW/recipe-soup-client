@@ -22,12 +22,19 @@ const Profile = () => {
     <Styled.Container>
       <h2>Profile</h2>
       <Styled.Content>
-        <p>Username: {user.username}</p>
         <p>
-          Email: {user.email}{" "}
+          <strong>Username:</strong> {user.username}
+        </p>
+        <p>
+          <strong>Email:</strong> {user.email}{" "}
           {user.isVerified ? "(verified)" : "(not verified)"}
         </p>
-        <p>Created: {dayjs(user.createdAt).format("M/DD/YYYY")}</p>
+        <p>
+          <strong>Created:</strong> {dayjs(user.createdAt).format("M/DD/YYYY")}
+        </p>
+        <p>
+          <strong>Recipes:</strong> {user.recipeCount}
+        </p>
       </Styled.Content>
       <ButtonPrimary label="Delete Account" onClick={handleDeleteAccount} />
     </Styled.Container>
