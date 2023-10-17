@@ -7,5 +7,5 @@ export const List = styled.ul`
 export const Controls = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  column-gap: 2em;
+  column-gap: 2rem;
 `;

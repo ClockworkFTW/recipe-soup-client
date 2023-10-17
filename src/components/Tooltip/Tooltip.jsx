@@ -6,7 +6,7 @@ const style = {
   backgroundColor: "#ef4444",
   fontSize: "16px",
   fontWeight: "normal",
-  padding: "0.5em",
+  padding: "0.5rem",
 };
 
 const Tooltip = ({ anchorSelect, content }) => (

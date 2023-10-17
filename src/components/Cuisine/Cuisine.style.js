@@ -4,7 +4,7 @@ export const Container = styled.div`
   display: inline-grid;
   grid-template-columns: auto auto;
   align-items: center;
-  column-gap: 0.5em;
+  column-gap: 0.5rem;
 `;
 
 export const Flag = styled.img`

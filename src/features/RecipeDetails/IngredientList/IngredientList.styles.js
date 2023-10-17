@@ -19,7 +19,7 @@ export const Ingredient = styled.li`
 
 export const Text = styled.div`
   ${({ $isComplete }) => css`
-    padding: 0.75em 0;
+    padding: 0.75rem 0;
     transition: opacity 200ms, text-decoration 200ms;
     opacity: ${$isComplete ? "0.4" : "1"};
     text-decoration: line-through

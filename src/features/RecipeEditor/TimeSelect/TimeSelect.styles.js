@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: inline-grid;
   grid-template-columns: auto auto auto;
-  column-gap: 0.75em;
+  column-gap: 0.75rem;
   align-items: center;
 `;
 

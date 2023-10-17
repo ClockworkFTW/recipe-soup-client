@@ -10,8 +10,8 @@ export const Container = styled.div`
 export const Selection = styled.div`
   ${({ theme: { colors } }) => css`
     display: flex;
-    padding: 0.5em;
-    border-radius: 0.5em;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
     background-color: ${colors.neutral100};
     transition: border 0.2s;
     &:hover {
@@ -24,11 +24,11 @@ export const Options = styled.ul`
   ${({ theme: { colors } }) => css`
     z-index: 1;
     position: absolute;
-    top: calc(100% + 0.75em);
+    top: calc(100% + 0.75rem);
     left: 0;
     right: 0;
     margin: 0;
-    border-radius: 0.5em;
+    border-radius: 0.5rem;
     border: 2px solid ${colors.neutral200};
     background-color: ${colors.neutral100};
   `}

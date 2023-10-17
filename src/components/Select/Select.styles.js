@@ -16,7 +16,7 @@ export const Selection = styled.div`
     display: inline-grid;
     grid-template-columns: auto auto;
     column-gap: 10px;
-    padding: 0.5em;
+    padding: 0.5rem;
     border-radius: 0.6em;
     background-color: #f5f5f5;
     transition: outline 200ms;

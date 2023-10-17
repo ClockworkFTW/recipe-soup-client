@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
 export const Container = styled.footer`
-  padding: 2em;
+  padding: 2rem;
   text-align: center;
 `;

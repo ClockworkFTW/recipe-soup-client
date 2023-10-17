@@ -19,7 +19,7 @@ export const Content = styled.div`
 
 export const Button = styled.button`
   ${({ theme: { colors } }) => css`
-    padding: 0.5em;
+    padding: 0.5rem;
     border: none;
     outline: none;
     background: none;
@@ -31,6 +31,6 @@ export const Button = styled.button`
 `;
 
 export const Value = styled.span`
-  padding: 0.5em;
+  padding: 0.5rem;
   white-space: nowrap;
 `;

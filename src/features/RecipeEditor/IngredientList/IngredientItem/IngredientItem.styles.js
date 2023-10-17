@@ -2,9 +2,9 @@ import styled, { css } from "styled-components";
 
 export const Item = styled.li`
   display: grid;
-  grid-template-columns: 1.5em 1fr 1.5em;
-  column-gap: 0.5em;
-  margin-bottom: 1em;
+  grid-template-columns: 1.5em 1fr 1.5rem;
+  column-gap: 0.5rem;
+  margin-bottom: 1rem;
 `;
 
 export const Bullet = styled.span`

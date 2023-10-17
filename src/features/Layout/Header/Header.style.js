@@ -11,9 +11,9 @@ export const Container = styled.header`
   flex-shrink: 0;
   justify-content: space-between;
   align-items: center;
-  padding: 2em;
+  padding: 2rem;
   @media (max-width: 900px) {
-    padding: 1em 1em 0 1em;
+    padding: 1rem 1rem 0 1rem;
   }
 `;
 
@@ -21,5 +21,5 @@ export const Navigation = styled.nav`
   display: flex;
   flex-shrink: 0;
   align-items: center;
-  column-gap: 1em;
+  column-gap: 1rem;
 `;

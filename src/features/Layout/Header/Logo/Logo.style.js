@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 export const Container = styled.h1`
-  font-size: 2em;
+  font-size: 2rem;
   &:hover {
     cursor: pointer;
   }

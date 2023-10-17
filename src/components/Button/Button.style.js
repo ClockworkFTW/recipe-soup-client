@@ -2,8 +2,8 @@ import styled, { css } from "styled-components";
 
 const Button = styled.button`
   ${({ theme: { colors } }) => css`
-    padding: 0.5em 0.75em;
-    border-radius: 0.5em;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
     border: none;
     outline: none;
     transition: color 200ms, background-color 200ms, box-shadow 200ms;
@@ -46,7 +46,7 @@ export const ButtonTertiary = styled(Button)`
 
 export const Label = styled.span`
   ${({ $hasIcon }) => css`
-    margin-left: ${$hasIcon ? "0.5em" : "0"};
+    margin-left: ${$hasIcon ? "0.5rem" : "0"};
     @media (max-width: 900px) {
       display: ${$hasIcon ? "none" : "inherit"};
     }

@@ -19,10 +19,10 @@ export const Section = styled.div`
 export const Step = styled.div`
   ${({ theme: { colors }, $isFocused }) => css`
     display: inline-grid;
-    grid-template-columns: minmax(1.25em, auto) auto;
-    column-gap: 0.75em;
-    border-radius: 0.5em;
-    padding: ${$isFocused ? "0.5em" : "0.5em 0px"};
+    grid-template-columns: minmax(1.25rem, auto) auto;
+    column-gap: 0.75rem;
+    border-radius: 0.5rem;
+    padding: ${$isFocused ? "0.5rem" : "0.5rem 0px"};
     background-color: ${$isFocused && colors.neutral100};
     transition: padding 200ms, background-color 200ms;
     :hover {
@@ -35,7 +35,7 @@ export const Number = styled.span`
   ${({ theme: { colors } }) => css`
     font-weight: bold;
     text-align: center;
-    font-size: 1.125em;
+    font-size: 1.125rem;
     color: ${colors.primary400};
   `}
 `;

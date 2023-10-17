@@ -6,7 +6,7 @@ export const Button = styled.button`
     background-color: transparent;
     border: none;
     outline: none;
-    font-size: 1.125em;
+    font-size: 1.125rem;
     color: ${$isActive ? colors.yellow : colors.neutral200};
     transition: color 200ms;
     &:hover {

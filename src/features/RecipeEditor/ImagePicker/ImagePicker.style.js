@@ -5,7 +5,7 @@ export const Container = styled.div`
   overflow: hidden;
   width: 100%;
   aspect-ratio: 1;
-  border-radius: 0.5em;
+  border-radius: 0.5rem;
 `;
 
 export const Image = styled.img`
@@ -27,7 +27,7 @@ export const Placeholder = styled.div`
 `;
 
 export const Icon = styled.div`
-  font-size: 4em;
+  font-size: 4rem;
 `;
 
 export const Button = styled.label`
@@ -35,12 +35,12 @@ export const Button = styled.label`
     position: absolute;
     bottom: 0;
     right: 0;
-    width: 2em;
-    height: 2em;
+    width: 2rem;
+    height: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-top-left-radius: 0.5em;
+    border-top-left-radius: 0.5rem;
     color: white;
     transition: background-color 200ms;
     background-color: ${$hasError ? colors.error400 : colors.primary400};
