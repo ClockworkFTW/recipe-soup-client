@@ -1,19 +1,12 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
-  > a {
-    text-decoration: none;
-    color: inherit;
-    &:hover {
-      text-decoration: none;
-    }
-  }
-`;
-
 export const Container = styled.div`
   display: grid;
   grid-template-rows: repeat(2, max-content);
   row-gap: 1rem;
+  &:hover {
+    cursor: pointer;
+  }
   @media (max-width: 600px) {
     grid-template-columns: 30% 1fr;
     column-gap: 1rem;

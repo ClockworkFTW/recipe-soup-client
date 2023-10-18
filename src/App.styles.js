@@ -211,4 +211,9 @@ export const theme = {
     // Yellow
     yellow: "#facc15",
   },
+  skeleton: {
+    baseColor: "#f4f4f5",
+    highlightColor: "#ffffff",
+    borderRadius: "0.5rem",
+  },
 };

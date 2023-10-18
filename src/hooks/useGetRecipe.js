@@ -3,7 +3,6 @@ import { getRecipe } from "../api/recipe";
 
 export function useGetRecipe(recipeId) {
   return useQuery({
-    initialData: null,
     enabled: recipeId !== "new",
     queryKey: ["recipes", recipeId],
     queryFn: () => getRecipe({ recipeId }),

@@ -2,6 +2,7 @@ import axios from "axios";
 import config from "../config";
 import useAuth from "../hooks/useAuth";
 import { refreshAccessToken } from "./auth";
+import { sleep } from "../utilities/sleep";
 
 const recipeApi = axios.create({
   baseURL: `${config.API_URL}/recipe`,
@@ -46,6 +47,7 @@ recipeApi.interceptors.response.use(
 export async function getRecipes({ page, query, sort }) {
   const endpoint = `/?page=${page}&query=${query}&sort=${sort}`;
   const result = await recipeApi.get(endpoint);
+  await sleep(1000);
   return result.data;
 }
 
