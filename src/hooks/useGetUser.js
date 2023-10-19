@@ -6,11 +6,5 @@ export function useGetUser(userId) {
     initialData: null,
     queryKey: ["users", userId],
     queryFn: () => getUser({ userId }),
-    onSuccess: (data) => {
-      console.log(data);
-    },
-    onError: (error) => {
-      console.log(error);
-    },
   });
 }

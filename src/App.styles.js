@@ -213,7 +213,7 @@ export const theme = {
   },
   skeleton: {
     baseColor: "#f4f4f5",
-    highlightColor: "#ffffff",
+    highlightColor: "#e4e4e7",
     borderRadius: "0.5rem",
   },
 };

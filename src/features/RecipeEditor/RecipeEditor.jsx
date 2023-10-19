@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import Skeleton from "react-loading-skeleton";
 import * as yup from "yup";
 
 import { useGetRecipe } from "../../hooks/useGetRecipe";
@@ -30,7 +31,7 @@ const schema = yup.object({
 function RecipeEditor() {
   const { recipeId } = useParams();
 
-  const { data, isSuccess } = useGetRecipe(recipeId);
+  const { data, isLoading, isSuccess, isError } = useGetRecipe(recipeId);
 
   const recipe = data || {
     name: "",
@@ -43,6 +44,34 @@ function RecipeEditor() {
     ingredients: [{ text: "" }],
     instructions: [{ text: "", type: "step" }],
   };
+
+  if (isLoading && recipeId !== "new") {
+    return (
+      <Styled.Container>
+        <Styled.Header>
+          <Skeleton style={{ aspectRatio: 1 }} />
+          <Styled.Content>
+            <Skeleton height={30} />
+            <Skeleton height={30} />
+            <Skeleton height={30} />
+            <Skeleton height={30} />
+          </Styled.Content>
+        </Styled.Header>
+        <Styled.Body>
+          <div>
+            <Skeleton count={10} height={30} style={{ marginBottom: "1rem" }} />
+          </div>
+          <div>
+            <Skeleton count={10} height={30} style={{ marginBottom: "1rem" }} />
+          </div>
+        </Styled.Body>
+      </Styled.Container>
+    );
+  }
+
+  if (isError) {
+    return null;
+  }
 
   return isSuccess || recipeId === "new" ? (
     <RecipeEditorForm defaultValues={recipe} />

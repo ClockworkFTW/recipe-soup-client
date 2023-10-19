@@ -10,8 +10,5 @@ export function useDeleteUser() {
     onSuccess: () => {
       setToken(null);
     },
-    onError: (error) => {
-      console.log(error);
-    },
   });
 }

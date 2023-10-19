@@ -12,8 +12,5 @@ export function useCreateRecipe() {
       queryClient.invalidateQueries({ queryKey: ["recipes"] });
       navigate(`/recipes/${data.data.id}`);
     },
-    onError: (error) => {
-      console.log(error);
-    },
   });
 }

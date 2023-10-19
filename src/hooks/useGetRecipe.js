@@ -6,11 +6,5 @@ export function useGetRecipe(recipeId) {
     enabled: recipeId !== "new",
     queryKey: ["recipes", recipeId],
     queryFn: () => getRecipe({ recipeId }),
-    onSuccess: (data) => {
-      console.log(data);
-    },
-    onError: (error) => {
-      console.log(error);
-    },
   });
 }

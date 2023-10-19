@@ -54,6 +54,7 @@ export async function getRecipes({ page, query, sort }) {
 export async function getRecipe({ recipeId }) {
   const endpoint = `/${recipeId}`;
   const result = await recipeApi.get(endpoint);
+  await sleep(1000);
   return result.data;
 }
 

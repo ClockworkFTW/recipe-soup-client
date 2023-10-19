@@ -32,7 +32,7 @@ export function SkeletonCard() {
   return (
     <Styled.Container>
       <Skeleton style={{ aspectRatio: "3/2" }} />
-      <Skeleton count={4} />
+      <Skeleton count={4} height={20} style={{ marginBottom: "0.5rem" }} />
     </Styled.Container>
   );
 }

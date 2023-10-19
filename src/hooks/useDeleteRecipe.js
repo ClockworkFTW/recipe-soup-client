@@ -12,8 +12,5 @@ export function useDeleteRecipe() {
       queryClient.invalidateQueries({ queryKey: ["recipes"] });
       navigate("/recipes");
     },
-    onError: (error) => {
-      console.log(error);
-    },
   });
 }
